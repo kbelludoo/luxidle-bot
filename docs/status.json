@@ -1,0 +1,112 @@
+{
+  "accounts": [
+    {
+      "currentArea": "zaoan-draken-walls",
+      "durationSec": 490,
+      "expPerHour": 33845031.70589533,
+      "gold": 2202385,
+      "hp": 3498,
+      "id": "acc-1",
+      "kills": 76,
+      "level": 221,
+      "logs": [
+        "Entrou no jogo como Personagem #1 (Level 220 knight)",
+        "[00:14:11] Aviso: você já pegou a recompensa de hoje"
+      ],
+      "mana": 820,
+      "maxHp": 3498,
+      "maxMana": 1135,
+      "name": "Personagem #1",
+      "status": "hunting",
+      "updatedAt": 1792369332981,
+      "vocation": "knight"
+    },
+    {
+      "currentArea": "",
+      "durationSec": 490,
+      "expPerHour": 5121952.977585213,
+      "gold": 12250,
+      "hp": 351,
+      "id": "acc-2",
+      "kills": 0,
+      "level": 43,
+      "logs": [
+        "Entrou no jogo como Personagem #2 (Level 40 druid)",
+        "[00:14:11] Aviso: você já pegou a recompensa de hoje"
+      ],
+      "mana": 1233,
+      "maxHp": 360,
+      "maxMana": 1295,
+      "name": "Personagem #2",
+      "status": "hunting",
+      "updatedAt": 1792369333022,
+      "vocation": "druid"
+    },
+    {
+      "currentArea": "vip-rotworm",
+      "durationSec": 490,
+      "expPerHour": 9172022.210318098,
+      "gold": 15485,
+      "hp": 357,
+      "id": "acc-3",
+      "kills": 441,
+      "level": 44,
+      "logs": [
+        "Entrou no jogo como klord (Level 39 sorcerer)",
+        "[00:14:11] Aviso: você já pegou a recompensa de hoje"
+      ],
+      "mana": 1325,
+      "maxHp": 365,
+      "maxMana": 1325,
+      "name": "Personagem #3",
+      "status": "hunting",
+      "updatedAt": 1792369333000,
+      "vocation": "sorcerer"
+    },
+    {
+      "currentArea": "",
+      "durationSec": 490,
+      "expPerHour": 5002345.786062313,
+      "gold": 8048,
+      "hp": 500,
+      "id": "acc-4",
+      "kills": 238,
+      "level": 36,
+      "logs": [
+        "Entrou no jogo como secondpally (Level 27 paladin)",
+        "[00:14:11] Aviso: você já pegou a recompensa de hoje"
+      ],
+      "mana": 548,
+      "maxHp": 500,
+      "maxMana": 560,
+      "name": "Personagem #4",
+      "status": "hunting",
+      "updatedAt": 1792369332981,
+      "vocation": "paladin"
+    },
+    {
+      "currentArea": "vip-rotworm",
+      "durationSec": 490,
+      "expPerHour": 4135349.547215618,
+      "gold": 6972,
+      "hp": 577,
+      "id": "acc-5",
+      "kills": 196,
+      "level": 34,
+      "logs": [
+        "Entrou no jogo como mojo (Level 23 monk)"
+      ],
+      "mana": 344,
+      "maxHp": 579,
+      "maxMana": 365,
+      "name": "Personagem #5",
+      "status": "hunting",
+      "updatedAt": 1792369332961,
+      "vocation": "monk"
+    }
+  ],
+  "goroutines": 16,
+  "ramAllocMB": 3.3695831298828125,
+  "ramSysMB": 93.4162826538086,
+  "uptime": "8m11s"
+}
