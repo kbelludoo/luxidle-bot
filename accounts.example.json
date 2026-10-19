@@ -1,0 +1,62 @@
+[
+  {
+    "id": "lux-1",
+    "name": "Conta 1 (Principal)",
+    "enabled": true,
+    "bindIP": "",
+    "credentials": {
+      "email": "conta1@email.com",
+      "password": "senha_segura_aqui",
+      "characterName": "",
+      "token": ""
+    },
+    "settings": {
+      "huntTarget": "auto",
+      "huntMode": "online",
+      "strategy": "nearest",
+      "distance": 0,
+      "lure": 2,
+      "autoHunt": true,
+      "autoSell": true,
+      "autoBless": true,
+      "autoDaily": true,
+      "autoTasks": true,
+      "autoBoss": true,
+      "autoTraining": true,
+      "autoPromote": true,
+      "autoParty": true,
+      "autoAssist": true,
+      "minHpPercent": 30
+    }
+  },
+  {
+    "id": "lux-2",
+    "name": "Conta 2 (IP Secundário VPS)",
+    "enabled": false,
+    "bindIP": "10.0.0.2",
+    "credentials": {
+      "email": "conta2@email.com",
+      "password": "senha_segura_aqui",
+      "characterName": "",
+      "token": ""
+    },
+    "settings": {
+      "huntTarget": "auto",
+      "huntMode": "online",
+      "strategy": "lowest",
+      "distance": 3,
+      "lure": 0,
+      "autoHunt": true,
+      "autoSell": true,
+      "autoBless": true,
+      "autoDaily": true,
+      "autoTasks": true,
+      "autoBoss": true,
+      "autoTraining": true,
+      "autoPromote": true,
+      "autoParty": true,
+      "autoAssist": true,
+      "minHpPercent": 35
+    }
+  }
+]

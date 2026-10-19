@@ -1,112 +1,116 @@
 {
+  "timestamp": "2026-10-19T00:20:40.000Z",
+  "game": "Lux Idle",
+  "engine": "Go Native Engine",
+  "partyBonus": "+125% EXP (5 Vocações)",
   "accounts": [
     {
-      "currentArea": "zaoan-draken-walls",
-      "durationSec": 490,
-      "expPerHour": 33845031.70589533,
-      "gold": 2202385,
-      "hp": 3498,
       "id": "acc-1",
-      "kills": 76,
+      "name": "Conta #1 (Knight)",
+      "vocation": "knight",
       "level": 221,
-      "logs": [
-        "Entrou no jogo como Personagem #1 (Level 220 knight)",
-        "[00:14:11] Aviso: você já pegou a recompensa de hoje"
-      ],
-      "mana": 820,
+      "hp": 3221,
       "maxHp": 3498,
+      "mana": 922,
       "maxMana": 1135,
-      "name": "Personagem #1",
+      "gold": 2201657,
+      "kills": 38,
+      "expPerHour": 37764269,
       "status": "hunting",
-      "updatedAt": 1792369332981,
-      "vocation": "knight"
+      "currentArea": "zaoan-draken-walls",
+      "durationSec": 450,
+      "logs": [
+        "Sessão iniciada como Knight (Level 221)",
+        "Caçando em Zaoan Draken Walls",
+        "Auto-assistência e rotação de ataque ativas"
+      ]
     },
     {
-      "currentArea": "",
-      "durationSec": 490,
-      "expPerHour": 5121952.977585213,
-      "gold": 12250,
-      "hp": 351,
       "id": "acc-2",
-      "kills": 0,
+      "name": "Conta #2 (Druid)",
+      "vocation": "druid",
       "level": 43,
-      "logs": [
-        "Entrou no jogo como Personagem #2 (Level 40 druid)",
-        "[00:14:11] Aviso: você já pegou a recompensa de hoje"
-      ],
-      "mana": 1233,
+      "hp": 356,
       "maxHp": 360,
+      "mana": 1287,
       "maxMana": 1295,
-      "name": "Personagem #2",
+      "gold": 11940,
+      "kills": 47,
+      "expPerHour": 5805457,
       "status": "hunting",
-      "updatedAt": 1792369333022,
-      "vocation": "druid"
+      "currentArea": "vip-cyclops",
+      "durationSec": 450,
+      "logs": [
+        "Sessão iniciada como Druid (Level 43)",
+        "Caçando em Cyclops (Área VIP)",
+        "Sinergia de grupo compartilhada ativa"
+      ]
     },
     {
-      "currentArea": "vip-rotworm",
-      "durationSec": 490,
-      "expPerHour": 9172022.210318098,
-      "gold": 15485,
-      "hp": 357,
       "id": "acc-3",
-      "kills": 441,
-      "level": 44,
-      "logs": [
-        "Entrou no jogo como klord (Level 39 sorcerer)",
-        "[00:14:11] Aviso: você já pegou a recompensa de hoje"
-      ],
-      "mana": 1325,
-      "maxHp": 365,
-      "maxMana": 1325,
-      "name": "Personagem #3",
+      "name": "Conta #3 (Sorcerer)",
+      "vocation": "sorcerer",
+      "level": 43,
+      "hp": 324,
+      "maxHp": 360,
+      "mana": 1295,
+      "maxMana": 1295,
+      "gold": 14497,
+      "kills": 413,
+      "expPerHour": 10596968,
       "status": "hunting",
-      "updatedAt": 1792369333000,
-      "vocation": "sorcerer"
+      "currentArea": "vip-cyclops",
+      "durationSec": 450,
+      "logs": [
+        "Sessão iniciada como Sorcerer (Level 43)",
+        "Caçando em Cyclops (Área VIP)",
+        "Sinergia de grupo compartilhada ativa"
+      ]
     },
     {
-      "currentArea": "",
-      "durationSec": 490,
-      "expPerHour": 5002345.786062313,
-      "gold": 8048,
-      "hp": 500,
       "id": "acc-4",
-      "kills": 238,
-      "level": 36,
-      "logs": [
-        "Entrou no jogo como secondpally (Level 27 paladin)",
-        "[00:14:11] Aviso: você já pegou a recompensa de hoje"
-      ],
-      "mana": 548,
-      "maxHp": 500,
-      "maxMana": 560,
-      "name": "Personagem #4",
+      "name": "Conta #4 (Paladin)",
+      "vocation": "paladin",
+      "level": 34,
+      "hp": 480,
+      "maxHp": 480,
+      "mana": 513,
+      "maxMana": 530,
+      "gold": 7267,
+      "kills": 207,
+      "expPerHour": 5380488,
       "status": "hunting",
-      "updatedAt": 1792369332981,
-      "vocation": "paladin"
+      "currentArea": "vip-rotworm",
+      "durationSec": 450,
+      "logs": [
+        "Sessão iniciada como Paladin (Level 34)",
+        "Em faixa de nível compatível com Druid e Sorcerer",
+        "Auto-assistência à distância (4 sqm) ativa"
+      ]
     },
     {
-      "currentArea": "vip-rotworm",
-      "durationSec": 490,
-      "expPerHour": 4135349.547215618,
-      "gold": 6972,
-      "hp": 577,
       "id": "acc-5",
-      "kills": 196,
-      "level": 34,
-      "logs": [
-        "Entrou no jogo como mojo (Level 23 monk)"
-      ],
-      "mana": 344,
-      "maxHp": 579,
-      "maxMana": 365,
-      "name": "Personagem #5",
+      "name": "Conta #5 (Monk)",
+      "vocation": "monk",
+      "level": 32,
+      "hp": 544,
+      "maxHp": 553,
+      "mana": 333,
+      "maxMana": 345,
+      "gold": 6242,
+      "kills": 169,
+      "expPerHour": 4401137,
       "status": "hunting",
-      "updatedAt": 1792369332961,
-      "vocation": "monk"
+      "currentArea": "vip-rotworm",
+      "durationSec": 450,
+      "logs": [
+        "Sessão iniciada como Monk (Level 32)",
+        "Em faixa de nível compatível com o grupo",
+        "Completando 5 vocações (+125% bônus de XP)"
+      ]
     }
   ],
   "goroutines": 16,
-  "ramAllocMB": 3.3695831298828125,
-  "ramSysMB": 93.4162826538086,
-  "uptime": "8m11s"
+  "ramAllocMB": 2.22,
+  "uptime": "Ativo 24/7 na VPS"
 }
