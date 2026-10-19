@@ -2,24 +2,27 @@
   "accounts": [
     {
       "currentArea": "auto",
-      "durationSec": 95,
+      "durationSec": 98,
       "expPerHour": 0,
       "gold": 0,
       "hp": 0,
       "id": "acc-1",
       "kills": 0,
       "level": 0,
-      "logs": [],
+      "logs": [
+        "Anti-Cheat ativado (sessionTaken: conflito de concorrência). Em repouso preventivo.",
+        "[00:42:18] Aviso: entre com um personagem primeiro"
+      ],
       "mana": 0,
       "maxHp": 0,
       "maxMana": 0,
       "name": "Personagem #1",
-      "status": "Autenticando...",
-      "updatedAt": 1792370534596
+      "status": "SEGURANÇA (Circuit Breaker Ativo)",
+      "updatedAt": 1792370537083
     },
     {
       "currentArea": "auto",
-      "durationSec": 93,
+      "durationSec": 213,
       "expPerHour": 0,
       "gold": 0,
       "hp": 0,
@@ -32,11 +35,11 @@
       "maxMana": 0,
       "name": "Personagem #2",
       "status": "Autenticando...",
-      "updatedAt": 1792370532586
+      "updatedAt": 1792370652595
     },
     {
       "currentArea": "auto",
-      "durationSec": 88,
+      "durationSec": 210,
       "expPerHour": 0,
       "gold": 0,
       "hp": 0,
@@ -49,11 +52,11 @@
       "maxMana": 0,
       "name": "Personagem #3",
       "status": "Autenticando...",
-      "updatedAt": 1792370527579
+      "updatedAt": 1792370649323
     },
     {
       "currentArea": "auto",
-      "durationSec": 94,
+      "durationSec": 214,
       "expPerHour": 0,
       "gold": 0,
       "hp": 0,
@@ -66,11 +69,11 @@
       "maxMana": 0,
       "name": "Personagem #4",
       "status": "Autenticando...",
-      "updatedAt": 1792370533589
+      "updatedAt": 1792370653599
     },
     {
       "currentArea": "auto",
-      "durationSec": 89,
+      "durationSec": 210,
       "expPerHour": 0,
       "gold": 0,
       "hp": 0,
@@ -83,11 +86,11 @@
       "maxMana": 0,
       "name": "Personagem #5",
       "status": "Autenticando...",
-      "updatedAt": 1792370528379
+      "updatedAt": 1792370649336
     }
   ],
   "goroutines": 16,
-  "ramAllocMB": 42.314178466796875,
-  "ramSysMB": 56.916282653808594,
-  "uptime": "1m39s"
+  "ramAllocMB": 2.4199142456054688,
+  "ramSysMB": 57.166282653808594,
+  "uptime": "3m36s"
 }
