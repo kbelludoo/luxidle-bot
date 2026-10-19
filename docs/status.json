@@ -2,7 +2,7 @@
   "accounts": [
     {
       "currentArea": "Pátio dos Dummies",
-      "durationSec": 1133,
+      "durationSec": 1248,
       "expPerHour": 0,
       "gold": 2228609,
       "hp": 3513,
@@ -10,9 +10,6 @@
       "kills": 0,
       "level": 222,
       "logs": [
-        "[00:55:34] Aviso: a bolsa já está vazia",
-        "[00:55:34] Aviso: escolha uma arma de treino",
-        "[00:57:34] Treinando online nos Target Dummies.",
         "[00:57:34] Aviso: a bolsa já está vazia",
         "[00:57:34] Aviso: escolha uma arma de treino",
         "[00:59:37] Treinando online nos Target Dummies.",
@@ -24,27 +21,29 @@
         "[01:01:37] Aviso: escolha uma arma de treino",
         "[01:03:40] Treinando online nos Target Dummies.",
         "[01:03:40] Aviso: a bolsa já está vazia",
-        "[01:03:40] Aviso: escolha uma arma de treino"
+        "[01:03:40] Aviso: escolha uma arma de treino",
+        "[01:05:43] Treinando online nos Target Dummies.",
+        "[01:05:43] Aviso: a bolsa já está vazia",
+        "[01:05:43] Aviso: escolha uma arma de treino"
       ],
       "mana": 1140,
       "maxHp": 3513,
       "maxMana": 1140,
       "name": "Personagem #1",
       "status": "training (dummies)",
-      "updatedAt": 1792371853234,
+      "updatedAt": 1792371967889,
       "vocation": "knight"
     },
     {
       "currentArea": "mistrock-cyclops",
-      "durationSec": 1134,
-      "expPerHour": 912549.9010772564,
-      "gold": 15700,
-      "hp": 395,
+      "durationSec": 1253,
+      "expPerHour": 891825.6102941141,
+      "gold": 16033,
+      "hp": 391,
       "id": "acc-2",
-      "kills": 25,
+      "kills": 27,
       "level": 50,
       "logs": [
-        "[00:45:28] Iniciando caçada em 'mistrock-cyclops'",
         "[00:45:28] Prey Slot 1: presa 'werefox' selecionada (+31%)",
         "[00:45:28] Prey Slot 2: presa 'crypt-warden' selecionada (+31%)",
         "[00:45:28] Aviso: você já pegou a recompensa de hoje",
@@ -58,25 +57,26 @@
         "[00:59:40] Aviso: a bolsa já está vazia",
         "[01:00:28] Aviso: você já pegou a recompensa de hoje",
         "[01:01:40] Aviso: a bolsa já está vazia",
-        "[01:03:40] Aviso: a bolsa já está vazia"
+        "[01:03:40] Aviso: a bolsa já está vazia",
+        "[01:05:40] Aviso: a bolsa já está vazia"
       ],
       "mana": 1505,
       "maxHp": 395,
       "maxMana": 1505,
       "name": "Personagem #2",
       "status": "hunting",
-      "updatedAt": 1792371853592,
+      "updatedAt": 1792371972791,
       "vocation": "druid"
     },
     {
       "currentArea": "hive-surface",
-      "durationSec": 1134,
-      "expPerHour": 7655471.87701368,
-      "gold": 18466,
-      "hp": 470,
+      "durationSec": 1253,
+      "expPerHour": 7640019.212395184,
+      "gold": 20204,
+      "hp": 469,
       "id": "acc-3",
-      "kills": 140,
-      "level": 65,
+      "kills": 155,
+      "level": 66,
       "logs": [
         "Entrou no jogo como klord (Level 50 sorcerer)",
         "[00:45:25] Iniciando caçada em 'hive-surface'",
@@ -90,27 +90,27 @@
         "[00:55:34] Aviso: a bolsa já está vazia",
         "[00:57:37] Aviso: a bolsa já está vazia",
         "[00:59:37] Aviso: a bolsa já está vazia",
-        "[01:00:28] Aviso: você já pegou a recompensa de hoje"
+        "[01:00:28] Aviso: você já pegou a recompensa de hoje",
+        "[01:05:43] Aviso: a bolsa já está vazia"
       ],
-      "mana": 1955,
-      "maxHp": 470,
-      "maxMana": 1955,
+      "mana": 1976,
+      "maxHp": 475,
+      "maxMana": 1985,
       "name": "Personagem #3",
       "status": "hunting",
-      "updatedAt": 1792371853579,
+      "updatedAt": 1792371972779,
       "vocation": "sorcerer"
     },
     {
       "currentArea": "mistrock-cyclops",
-      "durationSec": 1134,
-      "expPerHour": 1827638.8029139068,
-      "gold": 19249,
-      "hp": 640,
+      "durationSec": 1253,
+      "expPerHour": 1851435.1923605618,
+      "gold": 19600,
+      "hp": 650,
       "id": "acc-4",
-      "kills": 50,
-      "level": 50,
+      "kills": 56,
+      "level": 51,
       "logs": [
-        "Entrou no jogo como secondpally (Level 45 paladin)",
         "[00:45:28] Iniciando caçada em 'mistrock-cyclops'",
         "[00:45:28] Prey Slot 1: presa 'imperial-lizard-sentinel' selecionada (+24%)",
         "[00:45:28] Prey Slot 2: presa 'dragon-lord' selecionada (+34%)",
@@ -124,19 +124,20 @@
         "[00:59:37] Aviso: a bolsa já está vazia",
         "[01:00:31] Aviso: você já pegou a recompensa de hoje",
         "[01:01:40] Aviso: a bolsa já está vazia",
-        "[01:03:40] Aviso: a bolsa já está vazia"
+        "[01:03:40] Aviso: a bolsa já está vazia",
+        "[01:05:40] Aviso: a bolsa já está vazia"
       ],
-      "mana": 770,
-      "maxHp": 640,
-      "maxMana": 770,
+      "mana": 785,
+      "maxHp": 650,
+      "maxMana": 785,
       "name": "Personagem #4",
       "status": "hunting",
-      "updatedAt": 1792371853589,
+      "updatedAt": 1792371972789,
       "vocation": "paladin"
     },
     {
       "currentArea": "port-hope-corym-dungeons",
-      "durationSec": 1134,
+      "durationSec": 1253,
       "expPerHour": 0,
       "gold": 14267,
       "hp": 696,
@@ -144,7 +145,6 @@
       "kills": 0,
       "level": 43,
       "logs": [
-        "[00:45:25] Prey Slot 1: presa 'putrid-mummy' selecionada (+22%)",
         "[00:45:25] Prey Slot 2: presa 'abyss-demon' selecionada (+16%)",
         "[00:45:25] Aviso: você já pegou a recompensa de hoje",
         "[00:45:25] Aviso: a bolsa já está vazia",
@@ -158,19 +158,20 @@
         "[00:59:40] Aviso: a bolsa já está vazia",
         "[01:00:28] Aviso: você já pegou a recompensa de hoje",
         "[01:01:43] Aviso: a bolsa já está vazia",
-        "[01:03:43] Aviso: a bolsa já está vazia"
+        "[01:03:43] Aviso: a bolsa já está vazia",
+        "[01:05:46] Aviso: a bolsa já está vazia"
       ],
       "mana": 455,
       "maxHp": 696,
       "maxMana": 455,
       "name": "Personagem #5",
       "status": "hunting",
-      "updatedAt": 1792371853576,
+      "updatedAt": 1792371972775,
       "vocation": "monk"
     }
   ],
   "goroutines": 16,
-  "ramAllocMB": 4.113243103027344,
+  "ramAllocMB": 2.6756134033203125,
   "ramSysMB": 65.1662826538086,
-  "uptime": "18m55s"
+  "uptime": "20m54s"
 }
