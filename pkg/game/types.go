@@ -113,16 +113,36 @@ type PouchValue struct {
 }
 
 type PartyState struct {
-	Lider    string        `json:"lider"`
-	SouLider bool          `json:"souLider"`
-	Membros  []PartyMember `json:"membros"`
+	Ativa    bool          `json:"ativa,omitempty"`
+	Bonus    float64       `json:"bonus,omitempty"`
+	Vocacoes int           `json:"vocacoes,omitempty"`
+	Lider    string        `json:"lider,omitempty"`
+	SouLider bool          `json:"souLider,omitempty"`
+	Membros  []PartyMember `json:"membros,omitempty"`
 }
 
 type PartyMember struct {
 	Name     string `json:"name"`
-	Level    int    `json:"level"`
-	Vocation string `json:"vocation"`
-	Online   bool   `json:"online"`
+	Level    int    `json:"level,omitempty"`
+	Vocation string `json:"vocation,omitempty"`
+	Online   bool   `json:"online,omitempty"`
+	Lider    bool   `json:"lider,omitempty"`
+	Estado   string `json:"estado,omitempty"`
+}
+
+func (p *PartyState) GetLeader() string {
+	if p == nil {
+		return ""
+	}
+	if p.Lider != "" {
+		return p.Lider
+	}
+	for _, m := range p.Membros {
+		if m.Lider {
+			return m.Name
+		}
+	}
+	return ""
 }
 
 type AutoBossState struct {

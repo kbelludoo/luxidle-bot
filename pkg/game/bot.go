@@ -29,6 +29,7 @@ type Bot struct {
 	character    *CharacterState
 	hunt         *HuntState
 	catalog      *CatalogData
+	manager      *engine.BotManager
 	activeChar   string
 	sessionToken string
 
@@ -96,6 +97,12 @@ func (b *Bot) ID() string {
 
 func (b *Bot) Name() string {
 	return b.config.Name
+}
+
+func (b *Bot) SetManager(m *engine.BotManager) {
+	b.mu.Lock()
+	defer b.mu.Unlock()
+	b.manager = m
 }
 
 func (b *Bot) Init(ctx context.Context) error {
@@ -608,6 +615,34 @@ func (b *Bot) performAutomationTick() {
 			}
 		}
 	} else if cfg.AutoTraining {
+		// Transição Automática: Se for o Knight esperando a party atingir o level da exp compartilhada (148)
+		if char.Level >= 200 && b.manager != nil {
+			allReady := true
+			otherCount := 0
+			for _, st := range b.manager.GetAllStatuses() {
+				if st.ID == b.ID() {
+					continue
+				}
+				otherCount++
+				if st.Level < 148 {
+					allReady = false
+					break
+				}
+			}
+			if otherCount > 0 && allReady {
+				log.Printf("[%s] 🎉 TODOS OS MEMBROS ATINGIRAM NÍVEL 148+! Ativando caçada em grupo do Knight...", b.ID())
+				b.addLog("Todos membros nível 148+! Saindo dos dummies para caçar em grupo!")
+				b.mu.Lock()
+				b.config.Settings.AutoTraining = false
+				b.config.Settings.AutoHunt = true
+				b.config.Settings.AutoParty = true
+				b.mu.Unlock()
+				_ = b.socket.SendJSON(map[string]any{"t": "training", "action": "stop"})
+				b.startSafeHunt()
+				return
+			}
+		}
+
 		// Se AutoHunt estiver desligado e AutoTraining ativado (ex: Knight aguardando a party)
 		if hunt != nil {
 			log.Printf("[%s] Parando caçada para ir ao Pátio dos Dummies treinar skills...", b.ID())
@@ -641,19 +676,23 @@ func (b *Bot) performAutomationTick() {
 		isLeader := (cfg.PartyLeader != "" && strings.EqualFold(char.Name, cfg.PartyLeader)) ||
 			(char.Party != nil && char.Party.SouLider)
 
-		if !isLeader && char.Party != nil && cfg.PartyLeader != "" && !strings.EqualFold(char.Party.Lider, cfg.PartyLeader) {
-			if now.Sub(b.lastPartyAt) > 10*time.Second {
-				b.lastPartyAt = now
-				log.Printf("[%s] 👥 Saindo da party antiga ('%s') para entrar na party de '%s'...", b.ID(), char.Party.Lider, cfg.PartyLeader)
-				b.addLog("Saindo da party antiga.")
-				_ = b.socket.SendJSON(map[string]any{
-					"t":      "grupo",
-					"action": "sair",
-				})
-				_ = b.socket.SendJSON(map[string]any{
-					"t":      "grupo",
-					"action": "desfazer",
-				})
+		partyLeader := ""
+		if char.Party != nil {
+			partyLeader = char.Party.GetLeader()
+		}
+
+		// Se estamos numa party cujo líder NÃO é o líder configurado e nem nós mesmos, saímos
+		if !isLeader && char.Party != nil && len(char.Party.Membros) > 0 && cfg.PartyLeader != "" {
+			if partyLeader != "" && !strings.EqualFold(partyLeader, cfg.PartyLeader) {
+				if now.Sub(b.lastPartyAt) > 30*time.Second {
+					b.lastPartyAt = now
+					log.Printf("[%s] 👥 Saindo da party antiga ('%s') para aguardar convite de '%s'...", b.ID(), partyLeader, cfg.PartyLeader)
+					b.addLog(fmt.Sprintf("Saindo da party antiga (%s).", partyLeader))
+					_ = b.socket.SendJSON(map[string]any{
+						"t":      "grupo",
+						"action": "sair",
+					})
+				}
 			}
 		}
 
@@ -854,11 +893,46 @@ func (b *Bot) resolveBestHunt(level int) string {
 		return target
 	}
 
-	// 2. Se temos catálogo recebido do servidor, filtra os mapas onde level <= char.Level
+	// 2. Sincronização Inteligente de Party:
+	// - Se for líder: limita a escolha ao menor nível da party ativa para ninguém ficar de fora
+	// - Se for membro: caça no mesmo mapa do líder se nosso nível permitir
+	effectiveLevel := level
+	isLeader := (b.config.Settings.PartyLeader != "" && b.character != nil && strings.EqualFold(b.character.Name, b.config.Settings.PartyLeader)) ||
+		(b.character != nil && b.character.Party != nil && b.character.Party.SouLider)
+
+	if b.config.Settings.AutoParty && b.manager != nil {
+		statuses := b.manager.GetAllStatuses()
+		if isLeader {
+			for _, st := range statuses {
+				if st.ID == b.ID() || st.Level >= 200 { // ignora Knight em treino
+					continue
+				}
+				if st.Level > 0 && st.Level < effectiveLevel {
+					effectiveLevel = st.Level
+				}
+			}
+		} else if b.config.Settings.PartyLeader != "" {
+			for _, st := range statuses {
+				if strings.EqualFold(st.Name, b.config.Settings.PartyLeader) && st.CurrentArea != "" && st.Status == "hunting" {
+					if b.catalog != nil && len(b.catalog.Hunts) > 0 {
+						for _, h := range b.catalog.Hunts {
+							if h.ID == st.CurrentArea && level >= h.Level {
+								return st.CurrentArea
+							}
+						}
+					} else {
+						return st.CurrentArea
+					}
+				}
+			}
+		}
+	}
+
+	// 3. Se temos catálogo recebido do servidor, filtra os mapas onde level <= effectiveLevel
 	if b.catalog != nil && len(b.catalog.Hunts) > 0 {
 		eligible := make([]CatalogHunt, 0)
 		for _, h := range b.catalog.Hunts {
-			if h.Level <= level {
+			if h.Level <= effectiveLevel {
 				eligible = append(eligible, h)
 			}
 		}
@@ -870,18 +944,17 @@ func (b *Bot) resolveBestHunt(level int) string {
 			})
 			return eligible[0].ID
 		}
-		// Se nenhum tiver level <= char.Level, pega o primeiro da lista
 		return b.catalog.Hunts[0].ID
 	}
 
-	// 3. Fallback inicial seguro com IDs canônicos do Lux Idle
-	if level < 12 {
+	// 4. Fallback inicial seguro com IDs canônicos do Lux Idle
+	if effectiveLevel < 12 {
 		return "vip-rotworm"
-	} else if level < 30 {
+	} else if effectiveLevel < 30 {
 		return "vip-cyclops"
-	} else if level < 60 {
-		return "hive-surface"
-	} else if level < 120 {
+	} else if effectiveLevel < 60 {
+		return "mistrock-cyclops"
+	} else if effectiveLevel < 120 {
 		return "dark-pyramid"
 	}
 	return "putrid-mummies"

@@ -76,6 +76,7 @@ func main() {
 	log.Printf("Iniciando %d conta(s) em Goroutines isoladas com supervisor…\n", len(activeConfigs))
 	for _, cfg := range activeConfigs {
 		b := game.NewBot(cfg)
+		b.SetManager(manager)
 		manager.Register(b)
 		go engine.RunWithSupervisor(ctx, b)
 	}
