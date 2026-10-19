@@ -41,6 +41,7 @@ type Bot struct {
 	lastTaskAt   time.Time
 	lastBossAt   time.Time
 	lastTrainAt  time.Time
+	lastPreyAt   time.Time
 	lastStateAt  time.Time
 
 	// Canais de sinalização
@@ -383,6 +384,21 @@ func (b *Bot) handleStateReceived(p InboundPacket) {
 			if p.Character.BossCooldowns != nil {
 				b.character.BossCooldowns = p.Character.BossCooldowns
 			}
+			if len(p.Character.Prey) > 0 {
+				b.character.Prey = p.Character.Prey
+			}
+			if p.Character.Stamina != nil {
+				b.character.Stamina = p.Character.Stamina
+			}
+			if p.Character.MaxStamina != nil {
+				b.character.MaxStamina = p.Character.MaxStamina
+			}
+			if p.Character.TreinoStamina != nil {
+				b.character.TreinoStamina = p.Character.TreinoStamina
+			}
+			if p.Character.Wildcards > 0 {
+				b.character.Wildcards = p.Character.Wildcards
+			}
 		}
 
 		b.status.Level = b.character.Level
@@ -551,7 +567,7 @@ func (b *Bot) performAutomationTick() {
 		b.checkAndTriggerBoss()
 	}
 
-	// 9. Caçada Automática (AutoHunt)
+	// 9. Caçada Automática (AutoHunt) vs Treino Online nos Dummies (AutoTraining)
 	if cfg.AutoHunt {
 		if hunt == nil {
 			// Não está caçando. Inicia caçada no melhor mapa!
@@ -563,26 +579,92 @@ func (b *Bot) performAutomationTick() {
 				_ = b.socket.SendJSON(map[string]any{"t": "huntAssist", "tipo": "barra", "on": true})
 			}
 		}
-	} else if cfg.AutoTraining && hunt == nil {
-		// Se AutoHunt estiver desligado, treina online nos dummies
-		if now.Sub(b.lastTrainAt) > 5*time.Minute {
+	} else if cfg.AutoTraining {
+		// Se AutoHunt estiver desligado e AutoTraining ativado (ex: Knight aguardando a party)
+		if hunt != nil {
+			log.Printf("[%s] Parando caçada para ir ao Pátio dos Dummies treinar skills...", b.ID())
+			b.addLog("Saindo da caçada para treinar nos dummies.")
+			_ = b.socket.SendJSON(map[string]any{"t": "stopHunt"})
+		}
+		if now.Sub(b.lastTrainAt) > 2*time.Minute {
 			b.lastTrainAt = now
-			log.Printf("[%s] Iniciando treino nos bonecos de teste...", b.ID())
+			log.Printf("[%s] 🥋 Treinando online nos bonecos de teste (Target Dummies)...", b.ID())
+			b.addLog("Treinando online nos Target Dummies.")
 			_ = b.socket.SendJSON(map[string]any{
 				"t":      "training",
 				"action": "start",
 				"mode":   "online",
 			})
+			b.updateStatus(func(s *engine.AccountStatus) {
+				s.Status = "training (dummies)"
+				s.CurrentArea = "Pátio dos Dummies"
+			})
 		}
 	}
 
-	// 10. AutoParty e Puxar Personagens (Multibox)
+	// 10. Sistema de Presas (AutoPrey)
+	if cfg.AutoPrey && now.Sub(b.lastPreyAt) > 1*time.Minute {
+		b.lastPreyAt = now
+		b.checkAndHandlePrey()
+	}
+
+	// 11. AutoParty e Puxar Personagens (Multibox)
 	if cfg.AutoParty && char.Party != nil && char.Party.SouLider {
 		// Se for líder da party, puxa os outros personagens para a mesma caçada
 		_ = b.socket.SendJSON(map[string]any{
 			"t":    "meusChars",
 			"acao": "puxar",
 		})
+	}
+}
+
+func (b *Bot) checkAndHandlePrey() {
+	b.mu.RLock()
+	char := b.character
+	b.mu.RUnlock()
+
+	if char == nil || len(char.Prey) == 0 {
+		return
+	}
+
+	nowMs := time.Now().UnixMilli()
+
+	for _, slot := range char.Prey {
+		if slot.State == "locked" {
+			continue
+		}
+
+		key := ""
+		if slot.Key != nil {
+			key = *slot.Key
+		}
+
+		bonus := ""
+		if slot.Bonus != nil {
+			bonus = *slot.Bonus
+		}
+
+		// Se a presa expirou ou está sem criatura selecionada
+		if key == "" || slot.Left <= 0 {
+			if len(slot.Options) > 0 {
+				chosen := slot.Options[0]
+				log.Printf("[%s] 🎯 AutoPrey: escolhendo presa '%s' no Slot %d (Bônus: %s +%d%%)", b.ID(), chosen, slot.Index+1, bonus, slot.Percent)
+				b.addLog(fmt.Sprintf("Prey Slot %d: presa '%s' selecionada (+%d%%)", slot.Index+1, chosen, slot.Percent))
+				_ = b.socket.SendJSON(map[string]any{
+					"t":      "prey",
+					"action": "choose",
+					"slot":   slot.Index,
+					"key":    chosen,
+				})
+			} else if slot.FreeRerollAte <= nowMs {
+				log.Printf("[%s] 🎯 AutoPrey: reroll grátis de lista no Slot %d", b.ID(), slot.Index+1)
+				_ = b.socket.SendJSON(map[string]any{
+					"t":      "prey",
+					"action": "rerollList",
+					"slot":   slot.Index,
+				})
+			}
+		}
 	}
 }
 

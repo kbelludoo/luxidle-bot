@@ -703,6 +703,35 @@ func syncHub() {
 							}
 						}
 					}
+				case "luxidle":
+					if accs, ok := stMap["accounts"].([]interface{}); ok {
+						for i, a := range accs {
+							if am, ok := a.(map[string]interface{}); ok {
+								voc, _ := am["vocation"].(string)
+								if voc != "" {
+									voc = strings.Title(voc)
+								} else {
+									voc = "Hero"
+								}
+								label := fmt.Sprintf("Conta #%d (%s)", i+1, voc)
+								am["name"] = label
+								am["id"] = fmt.Sprintf("acc-%d", i+1)
+								delete(am, "bindIp")
+								delete(am, "outboundIp")
+								if logs, ok := am["logs"].([]interface{}); ok {
+									safeLogs := make([]interface{}, len(logs))
+									for li, l := range logs {
+										if s, ok := l.(string); ok {
+											safeLogs[li] = emailParenRegex.ReplaceAllString(nickRegex.ReplaceAllString(s, label), "(Sessão Autenticada)")
+										} else {
+											safeLogs[li] = l
+										}
+									}
+									am["logs"] = safeLogs
+								}
+							}
+						}
+					}
 				}
 			}
 		}

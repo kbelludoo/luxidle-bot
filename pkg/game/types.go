@@ -33,6 +33,7 @@ type GameSettings struct {
 	AutoPromote  bool   `json:"autoPromote"`            // Promover vocação no level 20+
 	AutoParty    bool   `json:"autoParty"`              // Convidar e puxar outros personagens da conta/grupo
 	AutoAssist   bool   `json:"autoAssist"`             // Manter auto-ataque e auto-barra ativados
+	AutoPrey     bool   `json:"autoPrey"`               // Selecionar e renovar bônus de Prey (presas) automaticamente
 	MinHPPercent int    `json:"minHpPercent,omitempty"` // % de vida mínima para recuar com segurança (default 30)
 }
 
@@ -70,6 +71,26 @@ type CharacterState struct {
 	BossCooldowns map[string]int64 `json:"bossCooldowns,omitempty"`
 	BossTasks     []BossTask       `json:"bossTasks,omitempty"`
 	Blessings     any              `json:"blessings,omitempty"`
+	Stamina       any              `json:"stamina,omitempty"`
+	MaxStamina    any              `json:"maxStamina,omitempty"`
+	TreinoStamina any              `json:"treinoStamina,omitempty"`
+	Prey          []PreySlot       `json:"prey,omitempty"`
+	Wildcards     int              `json:"wildcards,omitempty"`
+}
+
+type PreySlot struct {
+	Index         int      `json:"index"`
+	State         string   `json:"state"`
+	Key           *string  `json:"key"`
+	Bonus         *string  `json:"bonus"`
+	Percent       int      `json:"percent"`
+	Rarity        int      `json:"rarity"`
+	Left          int64    `json:"left"`
+	Total         int64    `json:"total"`
+	FreeRerollAte int64    `json:"freeRerollAte"`
+	Options       []string `json:"options"`
+	Locked        bool     `json:"locked"`
+	AutoReroll    bool     `json:"autoReroll"`
 }
 
 type DerivedStats struct {
