@@ -2,7 +2,7 @@
   "accounts": [
     {
       "currentArea": "Pátio dos Dummies",
-      "durationSec": 52,
+      "durationSec": 174,
       "expPerHour": 0,
       "gold": 2228609,
       "hp": 3513,
@@ -16,24 +16,27 @@
         "[00:45:28] Prey Slot 2: presa 'meandering-mushroom' selecionada (+19%)",
         "[00:45:28] Aviso: você já pegou a recompensa de hoje",
         "[00:45:28] Aviso: a bolsa já está vazia",
-        "[00:45:29] Aviso: escolha uma arma de treino"
+        "[00:45:29] Aviso: escolha uma arma de treino",
+        "[00:47:31] Treinando online nos Target Dummies.",
+        "[00:47:31] Aviso: a bolsa já está vazia",
+        "[00:47:31] Aviso: escolha uma arma de treino"
       ],
       "mana": 1140,
       "maxHp": 3513,
       "maxMana": 1140,
       "name": "Personagem #1",
       "status": "training (dummies)",
-      "updatedAt": 1792370772216,
+      "updatedAt": 1792370893594,
       "vocation": "knight"
     },
     {
       "currentArea": "mistrock-cyclops",
-      "durationSec": 53,
-      "expPerHour": 775291.6757791436,
-      "gold": 13739,
+      "durationSec": 174,
+      "expPerHour": 951348.9100049705,
+      "gold": 14035,
       "hp": 385,
       "id": "acc-2",
-      "kills": 1,
+      "kills": 4,
       "level": 48,
       "logs": [
         "Entrou no jogo como Personagem #2 (Level 48 druid)",
@@ -41,50 +44,52 @@
         "[00:45:28] Prey Slot 1: presa 'werefox' selecionada (+31%)",
         "[00:45:28] Prey Slot 2: presa 'crypt-warden' selecionada (+31%)",
         "[00:45:28] Aviso: você já pegou a recompensa de hoje",
-        "[00:45:28] Aviso: escolha pelo menos um boss que você possa enfrentar"
+        "[00:45:28] Aviso: escolha pelo menos um boss que você possa enfrentar",
+        "[00:47:31] Aviso: a bolsa já está vazia"
       ],
       "mana": 1445,
       "maxHp": 385,
       "maxMana": 1445,
       "name": "Personagem #2",
       "status": "hunting",
-      "updatedAt": 1792370772807,
+      "updatedAt": 1792370893544,
       "vocation": "druid"
     },
     {
       "currentArea": "hive-surface",
-      "durationSec": 53,
-      "expPerHour": 1440284.8069789198,
-      "gold": 2530,
-      "hp": 341,
+      "durationSec": 174,
+      "expPerHour": 6676869.911833077,
+      "gold": 3853,
+      "hp": 351,
       "id": "acc-3",
-      "kills": 4,
-      "level": 50,
+      "kills": 20,
+      "level": 52,
       "logs": [
         "Entrou no jogo como klord (Level 50 sorcerer)",
         "[00:45:25] Iniciando caçada em 'hive-surface'",
         "[00:45:25] Prey Slot 1: presa 'betrayed-wraith' selecionada (+16%)",
         "[00:45:25] Prey Slot 2: presa 'abyss-cavebear' selecionada (+15%)",
         "[00:45:25] Aviso: você já pegou a recompensa de hoje",
-        "[00:45:25] Aviso: escolha pelo menos um boss que você possa enfrentar"
+        "[00:45:25] Aviso: escolha pelo menos um boss que você possa enfrentar",
+        "[00:47:28] Aviso: a bolsa já está vazia"
       ],
-      "mana": 1477,
-      "maxHp": 395,
-      "maxMana": 1505,
+      "mana": 1553,
+      "maxHp": 405,
+      "maxMana": 1565,
       "name": "Personagem #3",
       "status": "hunting",
-      "updatedAt": 1792370772868,
+      "updatedAt": 1792370893559,
       "vocation": "sorcerer"
     },
     {
       "currentArea": "mistrock-cyclops",
-      "durationSec": 53,
-      "expPerHour": 1555898.5178478614,
-      "gold": 15597,
-      "hp": 590,
+      "durationSec": 174,
+      "expPerHour": 1911028.153701447,
+      "gold": 15872,
+      "hp": 582,
       "id": "acc-4",
-      "kills": 2,
-      "level": 45,
+      "kills": 8,
+      "level": 46,
       "logs": [
         "Entrou no jogo como secondpally (Level 45 paladin)",
         "[00:45:28] Iniciando caçada em 'mistrock-cyclops'",
@@ -92,19 +97,20 @@
         "[00:45:28] Prey Slot 2: presa 'dragon-lord' selecionada (+34%)",
         "[00:45:28] Aviso: você já pegou a recompensa de hoje",
         "[00:45:28] Aviso: a bolsa já está vazia",
-        "[00:45:28] Aviso: escolha pelo menos um boss que você possa enfrentar"
+        "[00:45:28] Aviso: escolha pelo menos um boss que você possa enfrentar",
+        "[00:47:31] Aviso: a bolsa já está vazia"
       ],
-      "mana": 695,
-      "maxHp": 590,
-      "maxMana": 695,
+      "mana": 710,
+      "maxHp": 600,
+      "maxMana": 710,
       "name": "Personagem #4",
       "status": "hunting",
-      "updatedAt": 1792370772853,
+      "updatedAt": 1792370893539,
       "vocation": "paladin"
     },
     {
       "currentArea": "port-hope-corym-dungeons",
-      "durationSec": 53,
+      "durationSec": 174,
       "expPerHour": 0,
       "gold": 14267,
       "hp": 696,
@@ -118,19 +124,20 @@
         "[00:45:25] Prey Slot 2: presa 'abyss-demon' selecionada (+16%)",
         "[00:45:25] Aviso: você já pegou a recompensa de hoje",
         "[00:45:25] Aviso: a bolsa já está vazia",
-        "[00:45:25] Aviso: escolha pelo menos um boss que você possa enfrentar"
+        "[00:45:25] Aviso: escolha pelo menos um boss que você possa enfrentar",
+        "[00:47:28] Aviso: a bolsa já está vazia"
       ],
       "mana": 455,
       "maxHp": 696,
       "maxMana": 455,
       "name": "Personagem #5",
       "status": "hunting",
-      "updatedAt": 1792370772868,
+      "updatedAt": 1792370893469,
       "vocation": "monk"
     }
   ],
   "goroutines": 16,
-  "ramAllocMB": 2.4420700073242188,
+  "ramAllocMB": 5.373199462890625,
   "ramSysMB": 65.1662826538086,
-  "uptime": "54s"
+  "uptime": "2m55s"
 }
