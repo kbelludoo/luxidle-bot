@@ -2,7 +2,7 @@
   "accounts": [
     {
       "currentArea": "Pátio dos Dummies",
-      "durationSec": 174,
+      "durationSec": 292,
       "expPerHour": 0,
       "gold": 2228609,
       "hp": 3513,
@@ -19,24 +19,27 @@
         "[00:45:29] Aviso: escolha uma arma de treino",
         "[00:47:31] Treinando online nos Target Dummies.",
         "[00:47:31] Aviso: a bolsa já está vazia",
-        "[00:47:31] Aviso: escolha uma arma de treino"
+        "[00:47:31] Aviso: escolha uma arma de treino",
+        "[00:49:31] Treinando online nos Target Dummies.",
+        "[00:49:31] Aviso: a bolsa já está vazia",
+        "[00:49:31] Aviso: escolha uma arma de treino"
       ],
       "mana": 1140,
       "maxHp": 3513,
       "maxMana": 1140,
       "name": "Personagem #1",
       "status": "training (dummies)",
-      "updatedAt": 1792370893594,
+      "updatedAt": 1792371012038,
       "vocation": "knight"
     },
     {
       "currentArea": "mistrock-cyclops",
-      "durationSec": 174,
-      "expPerHour": 951348.9100049705,
-      "gold": 14035,
+      "durationSec": 294,
+      "expPerHour": 843722.3730732243,
+      "gold": 14102,
       "hp": 385,
       "id": "acc-2",
-      "kills": 4,
+      "kills": 6,
       "level": 48,
       "logs": [
         "Entrou no jogo como Personagem #2 (Level 48 druid)",
@@ -45,25 +48,26 @@
         "[00:45:28] Prey Slot 2: presa 'crypt-warden' selecionada (+31%)",
         "[00:45:28] Aviso: você já pegou a recompensa de hoje",
         "[00:45:28] Aviso: escolha pelo menos um boss que você possa enfrentar",
-        "[00:47:31] Aviso: a bolsa já está vazia"
+        "[00:47:31] Aviso: a bolsa já está vazia",
+        "[00:49:31] Aviso: a bolsa já está vazia"
       ],
       "mana": 1445,
       "maxHp": 385,
       "maxMana": 1445,
       "name": "Personagem #2",
       "status": "hunting",
-      "updatedAt": 1792370893544,
+      "updatedAt": 1792371013817,
       "vocation": "druid"
     },
     {
       "currentArea": "hive-surface",
-      "durationSec": 174,
-      "expPerHour": 6676869.911833077,
-      "gold": 3853,
-      "hp": 351,
+      "durationSec": 294,
+      "expPerHour": 7040477.935294279,
+      "gold": 5797,
+      "hp": 376,
       "id": "acc-3",
-      "kills": 20,
-      "level": 52,
+      "kills": 35,
+      "level": 54,
       "logs": [
         "Entrou no jogo como klord (Level 50 sorcerer)",
         "[00:45:25] Iniciando caçada em 'hive-surface'",
@@ -73,22 +77,22 @@
         "[00:45:25] Aviso: escolha pelo menos um boss que você possa enfrentar",
         "[00:47:28] Aviso: a bolsa já está vazia"
       ],
-      "mana": 1553,
-      "maxHp": 405,
-      "maxMana": 1565,
+      "mana": 1625,
+      "maxHp": 415,
+      "maxMana": 1625,
       "name": "Personagem #3",
       "status": "hunting",
-      "updatedAt": 1792370893559,
+      "updatedAt": 1792371013879,
       "vocation": "sorcerer"
     },
     {
       "currentArea": "mistrock-cyclops",
-      "durationSec": 174,
-      "expPerHour": 1911028.153701447,
-      "gold": 15872,
-      "hp": 582,
+      "durationSec": 294,
+      "expPerHour": 1835744.1895727818,
+      "gold": 16360,
+      "hp": 600,
       "id": "acc-4",
-      "kills": 8,
+      "kills": 13,
       "level": 46,
       "logs": [
         "Entrou no jogo como secondpally (Level 45 paladin)",
@@ -100,17 +104,17 @@
         "[00:45:28] Aviso: escolha pelo menos um boss que você possa enfrentar",
         "[00:47:31] Aviso: a bolsa já está vazia"
       ],
-      "mana": 710,
+      "mana": 704,
       "maxHp": 600,
       "maxMana": 710,
       "name": "Personagem #4",
       "status": "hunting",
-      "updatedAt": 1792370893539,
+      "updatedAt": 1792371013857,
       "vocation": "paladin"
     },
     {
       "currentArea": "port-hope-corym-dungeons",
-      "durationSec": 174,
+      "durationSec": 294,
       "expPerHour": 0,
       "gold": 14267,
       "hp": 696,
@@ -125,19 +129,20 @@
         "[00:45:25] Aviso: você já pegou a recompensa de hoje",
         "[00:45:25] Aviso: a bolsa já está vazia",
         "[00:45:25] Aviso: escolha pelo menos um boss que você possa enfrentar",
-        "[00:47:28] Aviso: a bolsa já está vazia"
+        "[00:47:28] Aviso: a bolsa já está vazia",
+        "[00:49:31] Aviso: a bolsa já está vazia"
       ],
       "mana": 455,
       "maxHp": 696,
       "maxMana": 455,
       "name": "Personagem #5",
       "status": "hunting",
-      "updatedAt": 1792370893469,
+      "updatedAt": 1792371013808,
       "vocation": "monk"
     }
   ],
   "goroutines": 16,
-  "ramAllocMB": 5.373199462890625,
+  "ramAllocMB": 2.4585189819335938,
   "ramSysMB": 65.1662826538086,
-  "uptime": "2m55s"
+  "uptime": "4m55s"
 }
