@@ -42,6 +42,7 @@ type Bot struct {
 	lastBossAt   time.Time
 	lastTrainAt  time.Time
 	lastPreyAt   time.Time
+	lastPartyAt  time.Time
 	lastStateAt  time.Time
 
 	// Canais de sinalização
@@ -236,6 +237,33 @@ func (b *Bot) handleMessage(data []byte) {
 
 	case "tasksDeBicho":
 		b.handleTasksReceived(data)
+
+	case "grupoConvite":
+		var p struct {
+			From string `json:"from"`
+		}
+		if err := json.Unmarshal(data, &p); err == nil && p.From != "" {
+			log.Printf("[%s] 👥 Convite de party recebido de '%s'. Aceitando...", b.ID(), p.From)
+			b.addLog(fmt.Sprintf("Aceitou convite de party de '%s'", p.From))
+			_ = b.socket.SendJSON(map[string]any{
+				"t":      "grupo",
+				"action": "aceitar",
+			})
+		}
+
+	case "partyInvite":
+		var p struct {
+			From string `json:"from"`
+			Hunt string `json:"hunt"`
+		}
+		if err := json.Unmarshal(data, &p); err == nil && p.From != "" {
+			log.Printf("[%s] ⚔️ Convite de caçada em '%s' recebido de '%s'. Aceitando...", b.ID(), p.Hunt, p.From)
+			b.addLog(fmt.Sprintf("Entrando na caçada da party com '%s' em '%s'", p.From, p.Hunt))
+			_ = b.socket.SendJSON(map[string]any{
+				"t":      "party",
+				"action": "accept",
+			})
+		}
 
 	case "authError":
 		var p InboundPacket
@@ -608,13 +636,58 @@ func (b *Bot) performAutomationTick() {
 		b.checkAndHandlePrey()
 	}
 
-	// 11. AutoParty e Puxar Personagens (Multibox)
-	if cfg.AutoParty && char.Party != nil && char.Party.SouLider {
-		// Se for líder da party, puxa os outros personagens para a mesma caçada
-		_ = b.socket.SendJSON(map[string]any{
-			"t":    "meusChars",
-			"acao": "puxar",
-		})
+	// 11. AutoParty e Sincronização de Caçada em Grupo
+	if cfg.AutoParty && char != nil {
+		isLeader := (cfg.PartyLeader != "" && strings.EqualFold(char.Name, cfg.PartyLeader)) ||
+			(char.Party != nil && char.Party.SouLider)
+
+		if !isLeader && char.Party != nil && cfg.PartyLeader != "" && !strings.EqualFold(char.Party.Lider, cfg.PartyLeader) {
+			if now.Sub(b.lastPartyAt) > 10*time.Second {
+				b.lastPartyAt = now
+				log.Printf("[%s] 👥 Saindo da party antiga ('%s') para entrar na party de '%s'...", b.ID(), char.Party.Lider, cfg.PartyLeader)
+				b.addLog("Saindo da party antiga.")
+				_ = b.socket.SendJSON(map[string]any{
+					"t":      "grupo",
+					"action": "sair",
+				})
+				_ = b.socket.SendJSON(map[string]any{
+					"t":      "grupo",
+					"action": "desfazer",
+				})
+			}
+		}
+
+		if isLeader && now.Sub(b.lastPartyAt) > 15*time.Second {
+			b.lastPartyAt = now
+
+			inParty := make(map[string]bool)
+			if char.Party != nil {
+				for _, m := range char.Party.Membros {
+					inParty[strings.ToLower(m.Name)] = true
+				}
+			}
+
+			for _, memberName := range cfg.PartyMembers {
+				if strings.EqualFold(memberName, char.Name) {
+					continue
+				}
+				if !inParty[strings.ToLower(memberName)] {
+					log.Printf("[%s] 👥 AutoParty: Convidando '%s' para a party...", b.ID(), memberName)
+					_ = b.socket.SendJSON(map[string]any{
+						"t":      "grupo",
+						"action": "convidar",
+						"name":   memberName,
+					})
+				} else if hunt != nil {
+					// Se o membro já está na party e o líder está caçando, convida para a mesma caçada
+					_ = b.socket.SendJSON(map[string]any{
+						"t":      "party",
+						"action": "invite",
+						"name":   memberName,
+					})
+				}
+			}
+		}
 	}
 }
 
@@ -704,8 +777,8 @@ func (b *Bot) startSafeHunt() {
 
 	// Configurações de distância e lure
 	_ = b.socket.SendJSON(map[string]any{"t": "strategy", "value": strat})
-	_ = b.socket.SendJSON(map[string]any{"t": "distance", "value": strconv.Itoa(cfg.Distance)})
-	_ = b.socket.SendJSON(map[string]any{"t": "lure", "value": strconv.Itoa(cfg.Lure)})
+	_ = b.socket.SendJSON(map[string]any{"t": "distance", "value": cfg.Distance})
+	_ = b.socket.SendJSON(map[string]any{"t": "lure", "value": cfg.Lure})
 
 	if cfg.AutoAssist {
 		_ = b.socket.SendJSON(map[string]any{"t": "huntAssist", "tipo": "ataque", "on": true})

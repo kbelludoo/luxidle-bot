@@ -30,11 +30,13 @@ type GameSettings struct {
 	AutoTasks    bool   `json:"autoTasks"`              // Aceitar e entregar tasks de monstros
 	AutoBoss     bool   `json:"autoBoss"`               // Fazer rotação diária de bosses disponíveis
 	AutoTraining bool   `json:"autoTraining"`           // Treinar boneco online quando ocioso
-	AutoPromote  bool   `json:"autoPromote"`            // Promover vocação no level 20+
-	AutoParty    bool   `json:"autoParty"`              // Convidar e puxar outros personagens da conta/grupo
-	AutoAssist   bool   `json:"autoAssist"`             // Manter auto-ataque e auto-barra ativados
-	AutoPrey     bool   `json:"autoPrey"`               // Selecionar e renovar bônus de Prey (presas) automaticamente
-	MinHPPercent int    `json:"minHpPercent,omitempty"` // % de vida mínima para recuar com segurança (default 30)
+	AutoPromote  bool     `json:"autoPromote"`            // Promover vocação no level 20+
+	AutoParty    bool     `json:"autoParty"`              // Convidar e sincronizar caçada em grupo (party)
+	PartyLeader  string   `json:"partyLeader,omitempty"`  // Nome do personagem líder da party (ex: klord)
+	PartyMembers []string `json:"partyMembers,omitempty"` // Nomes dos membros da party (ex: lrN, secondpally, mojo)
+	AutoAssist   bool     `json:"autoAssist"`             // Manter auto-ataque e auto-barra ativados
+	AutoPrey     bool     `json:"autoPrey"`               // Selecionar e renovar bônus de Prey (presas) automaticamente
+	MinHPPercent int      `json:"minHpPercent,omitempty"` // % de vida mínima para recuar com segurança (default 30)
 }
 
 // -------------------------------------------------------------
