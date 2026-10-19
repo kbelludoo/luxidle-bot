@@ -2,7 +2,7 @@
   "accounts": [
     {
       "currentArea": "auto",
-      "durationSec": 159,
+      "durationSec": 95,
       "expPerHour": 0,
       "gold": 0,
       "hp": 0,
@@ -15,11 +15,11 @@
       "maxMana": 0,
       "name": "Personagem #1",
       "status": "Autenticando...",
-      "updatedAt": 1792370294403
+      "updatedAt": 1792370534596
     },
     {
       "currentArea": "auto",
-      "durationSec": 159,
+      "durationSec": 93,
       "expPerHour": 0,
       "gold": 0,
       "hp": 0,
@@ -32,11 +32,11 @@
       "maxMana": 0,
       "name": "Personagem #2",
       "status": "Autenticando...",
-      "updatedAt": 1792370294407
+      "updatedAt": 1792370532586
     },
     {
       "currentArea": "auto",
-      "durationSec": 159,
+      "durationSec": 88,
       "expPerHour": 0,
       "gold": 0,
       "hp": 0,
@@ -49,11 +49,11 @@
       "maxMana": 0,
       "name": "Personagem #3",
       "status": "Autenticando...",
-      "updatedAt": 1792370294407
+      "updatedAt": 1792370527579
     },
     {
       "currentArea": "auto",
-      "durationSec": 159,
+      "durationSec": 94,
       "expPerHour": 0,
       "gold": 0,
       "hp": 0,
@@ -66,11 +66,11 @@
       "maxMana": 0,
       "name": "Personagem #4",
       "status": "Autenticando...",
-      "updatedAt": 1792370294413
+      "updatedAt": 1792370533589
     },
     {
       "currentArea": "auto",
-      "durationSec": 159,
+      "durationSec": 89,
       "expPerHour": 0,
       "gold": 0,
       "hp": 0,
@@ -83,11 +83,11 @@
       "maxMana": 0,
       "name": "Personagem #5",
       "status": "Autenticando...",
-      "updatedAt": 1792370294405
+      "updatedAt": 1792370528379
     }
   ],
   "goroutines": 16,
-  "ramAllocMB": 2.8057861328125,
-  "ramSysMB": 57.09986114501953,
-  "uptime": "2m43s"
+  "ramAllocMB": 42.314178466796875,
+  "ramSysMB": 56.916282653808594,
+  "uptime": "1m39s"
 }
