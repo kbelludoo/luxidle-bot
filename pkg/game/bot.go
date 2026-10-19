@@ -45,6 +45,11 @@ type Bot struct {
 	lastPreyAt   time.Time
 	lastPartyAt  time.Time
 	lastStateAt  time.Time
+	lastBoxAt    time.Time
+	lastMountAt  time.Time
+	lastSkillsAt time.Time
+	lastCharmsAt time.Time
+	lastMarketAt time.Time
 
 	// Canais de sinalização
 	accountReady chan struct{}
@@ -245,6 +250,18 @@ func (b *Bot) handleMessage(data []byte) {
 	case "tasksDeBicho":
 		b.handleTasksReceived(data)
 
+	case "mounts":
+		b.handleMountsReceived(data)
+
+	case "arvore":
+		b.handleArvoreReceived(data)
+
+	case "charms":
+		b.handleCharmsReceived(data)
+
+	case "coinMarket":
+		b.handleCoinMarketReceived(data)
+
 	case "grupoConvite":
 		var p struct {
 			From string `json:"from"`
@@ -407,6 +424,12 @@ func (b *Bot) handleStateReceived(p InboundPacket) {
 			if p.Character.Gold > 0 {
 				b.character.Gold = p.Character.Gold
 			}
+			if p.Character.Coins > 0 {
+				b.character.Coins = p.Character.Coins
+			}
+			if p.Character.Mount > 0 {
+				b.character.Mount = p.Character.Mount
+			}
 			if p.Character.Derived != nil {
 				b.character.Derived = p.Character.Derived
 			}
@@ -433,6 +456,18 @@ func (b *Bot) handleStateReceived(p InboundPacket) {
 			}
 			if p.Character.Wildcards > 0 {
 				b.character.Wildcards = p.Character.Wildcards
+			}
+			if p.Character.ArvorePontos != nil {
+				b.character.ArvorePontos = p.Character.ArvorePontos
+			}
+			if p.Character.CharmPoints > 0 {
+				b.character.CharmPoints = p.Character.CharmPoints
+			}
+			if len(p.Character.Inventory) > 0 {
+				b.character.Inventory = p.Character.Inventory
+			}
+			if p.Character.Equipment != nil {
+				b.character.Equipment = p.Character.Equipment
 			}
 		}
 
@@ -503,7 +538,6 @@ func (b *Bot) handleTasksReceived(data []byte) {
 		return
 	}
 
-	// Se houver lista de tasks, busca alguma concluída para resgatar
 	if lista, ok := raw["tasks"].([]any); ok {
 		for _, item := range lista {
 			if m, ok := item.(map[string]any); ok {
@@ -582,12 +616,15 @@ func (b *Bot) performAutomationTick() {
 		_ = b.socket.SendJSON(map[string]any{"t": "diario"})
 	}
 
-	// 6. Limpeza e Venda de Inventário (AutoSell)
-	if cfg.AutoSell && now.Sub(b.lastSellAt) > 2*time.Minute {
+	// 6. Limpeza, Venda de Inventário, Abertura de Caixas de Boss e Aljava
+	if now.Sub(b.lastSellAt) > 2*time.Minute {
 		b.lastSellAt = now
-		_ = b.socket.SendJSON(map[string]any{"t": "venderSacolas"})
-		_ = b.socket.SendJSON(map[string]any{"t": "venderMochila"})
-		_ = b.socket.SendJSON(map[string]any{"t": "clearPouch"})
+		if cfg.AutoSell {
+			_ = b.socket.SendJSON(map[string]any{"t": "venderSacolas"})
+			_ = b.socket.SendJSON(map[string]any{"t": "venderMochila"})
+			_ = b.socket.SendJSON(map[string]any{"t": "clearPouch"})
+		}
+		b.checkAndHandleBoxesAndQuiver()
 	}
 
 	// 7. Tasks de Monstros (AutoTasks)
@@ -727,6 +764,275 @@ func (b *Bot) performAutomationTick() {
 				}
 			}
 		}
+	}
+
+	// 12. Montaria Automática (+Velocidade)
+	if now.Sub(b.lastMountAt) > 5*time.Minute {
+		b.lastMountAt = now
+		b.checkAndHandleMount()
+	}
+
+	// 13. Árvore de Habilidades (AutoSkills)
+	if now.Sub(b.lastSkillsAt) > 3*time.Minute {
+		b.lastSkillsAt = now
+		b.checkAndHandleSkills()
+	}
+
+	// 14. Bestiário e Charms (AutoCharms)
+	if now.Sub(b.lastCharmsAt) > 10*time.Minute {
+		b.lastCharmsAt = now
+		b.checkAndHandleCharms()
+	}
+
+	// 15. Cotação do Mercado de Lux Coins (CoinMarket)
+	if now.Sub(b.lastMarketAt) > 15*time.Minute {
+		b.lastMarketAt = now
+		b.checkAndHandleCoinMarket()
+	}
+}
+
+func (b *Bot) checkAndHandleBoxesAndQuiver() {
+	b.mu.RLock()
+	char := b.character
+	b.mu.RUnlock()
+
+	if char == nil {
+		return
+	}
+
+	// Consulta e abre bolsas de recompensas do jogo
+	_ = b.socket.SendJSON(map[string]any{"t": "bossPouch"})
+	_ = b.socket.SendJSON(map[string]any{"t": "storeInbox"})
+
+	for _, item := range char.Inventory {
+		isBox := item.Tipo == "caixa" ||
+			strings.Contains(strings.ToLower(item.Name), "caixa") ||
+			strings.Contains(strings.ToLower(item.Name), "box") ||
+			strings.Contains(strings.ToLower(item.Name), "bolsa") ||
+			strings.Contains(strings.ToLower(item.Name), "presente")
+		if isBox && item.ID != "" {
+			_ = b.socket.SendJSON(map[string]any{
+				"t":  "abrirTodas",
+				"id": item.ID,
+			})
+		}
+
+		// Aljava para Paladino
+		if strings.Contains(strings.ToLower(char.Vocation), "paladin") {
+			isAmmo := item.Slot == "ammo" || item.Ammo ||
+				strings.Contains(strings.ToLower(item.Name), "arrow") ||
+				strings.Contains(strings.ToLower(item.Name), "bolt")
+			if isAmmo && item.ID != "" {
+				_ = b.socket.SendJSON(map[string]any{
+					"t":       "aljavaGuardar",
+					"id":      item.ID,
+					"guardar": true,
+				})
+			}
+		}
+	}
+}
+
+func (b *Bot) checkAndHandleMount() {
+	_ = b.socket.SendJSON(map[string]any{"t": "mounts"})
+}
+
+func (b *Bot) handleMountsReceived(data []byte) {
+	var p struct {
+		Mounts []struct {
+			ID    int    `json:"id"`
+			Name  string `json:"name"`
+			Owned bool   `json:"owned"`
+		} `json:"mounts"`
+	}
+	if err := json.Unmarshal(data, &p); err != nil {
+		return
+	}
+
+	for _, m := range p.Mounts {
+		if m.Owned {
+			b.mu.Lock()
+			currentMount := 0
+			if b.character != nil {
+				currentMount = b.character.Mount
+			}
+			b.mu.Unlock()
+
+			if currentMount != m.ID {
+				log.Printf("[%s] 🐎 Montaria ativa encontrada: '%s' (ID %d). Montando para bônus de velocidade...", b.ID(), m.Name, m.ID)
+				b.addLog(fmt.Sprintf("Montando em '%s' (+Speed)", m.Name))
+				_ = b.socket.SendJSON(map[string]any{
+					"t":  "mount",
+					"id": m.ID,
+				})
+			}
+			break
+		}
+	}
+}
+
+func (b *Bot) checkAndHandleSkills() {
+	_ = b.socket.SendJSON(map[string]any{"t": "arvore"})
+}
+
+func (b *Bot) handleArvoreReceived(data []byte) {
+	var p struct {
+		View struct {
+			Pontos struct {
+				Livres int `json:"livres"`
+				Total  int `json:"total"`
+				Gastos int `json:"gastos"`
+			} `json:"pontos"`
+			Nos []struct {
+				ID    string `json:"id"`
+				Via   string `json:"via"`
+				Graus int    `json:"graus"`
+				Max   int    `json:"max"`
+			} `json:"nos"`
+			Plano map[string]int `json:"plano"`
+		} `json:"view"`
+	}
+	if err := json.Unmarshal(data, &p); err != nil || len(p.View.Nos) == 0 {
+		return
+	}
+
+	livres := p.View.Pontos.Livres
+	if livres <= 0 {
+		return
+	}
+
+	log.Printf("[%s] 🌳 Árvore de Habilidades: %d pontos livres encontrados! Distribuindo...", b.ID(), livres)
+
+	// Cria cópia do plano atual
+	plano := make(map[string]int)
+	for k, v := range p.View.Plano {
+		plano[k] = v
+	}
+
+	distribuidos := 0
+	for _, no := range p.View.Nos {
+		if livres <= 0 {
+			break
+		}
+		atual := plano[no.ID]
+		maximo := no.Max
+		if maximo <= 0 {
+			maximo = 5
+		}
+		if atual < maximo {
+			falta := maximo - atual
+			alocar := falta
+			if alocar > livres {
+				alocar = livres
+			}
+			plano[no.ID] = atual + alocar
+			livres -= alocar
+			distribuidos += alocar
+		}
+	}
+
+	if distribuidos > 0 {
+		log.Printf("[%s] 🌳 Enviando plano da Árvore de Habilidades com %d pontos alocados!", b.ID(), distribuidos)
+		b.addLog(fmt.Sprintf("Árvore de Habilidades: +%d pontos distribuídos", distribuidos))
+		_ = b.socket.SendJSON(map[string]any{
+			"t":      "arvore",
+			"action": "aplicar",
+			"plano":  plano,
+		})
+	}
+}
+
+func (b *Bot) checkAndHandleCharms() {
+	_ = b.socket.SendJSON(map[string]any{"t": "charms"})
+}
+
+func (b *Bot) handleCharmsReceived(data []byte) {
+	var p struct {
+		View struct {
+			Points int `json:"points"`
+			Charms []struct {
+				ID       string `json:"id"`
+				Name     string `json:"name"`
+				Cost     int    `json:"cost"`
+				Unlocked bool   `json:"unlocked"`
+				Assigned string `json:"assigned"`
+			} `json:"charms"`
+		} `json:"view"`
+	}
+	if err := json.Unmarshal(data, &p); err != nil || len(p.View.Charms) == 0 {
+		return
+	}
+
+	points := p.View.Points
+	for _, c := range p.View.Charms {
+		if !c.Unlocked && points >= c.Cost && c.Cost > 0 {
+			log.Printf("[%s] 🔮 Desbloqueando Charm '%s' (Custo: %d pontos)...", b.ID(), c.Name, c.Cost)
+			b.addLog(fmt.Sprintf("Charm '%s' desbloqueado!", c.Name))
+			_ = b.socket.SendJSON(map[string]any{
+				"t":      "charms",
+				"action": "upgrade",
+				"id":     c.ID,
+			})
+			points -= c.Cost
+		}
+	}
+
+	b.mu.RLock()
+	hunt := b.hunt
+	b.mu.RUnlock()
+
+	targetMonster := ""
+	if hunt != nil && len(hunt.Monsters) > 0 {
+		if m, ok := hunt.Monsters[0].(map[string]any); ok {
+			if id, ok := m["id"].(string); ok {
+				targetMonster = id
+			}
+		}
+	}
+
+	for _, c := range p.View.Charms {
+		if c.Unlocked && c.Assigned == "" && targetMonster != "" {
+			log.Printf("[%s] 🔮 Vinculando Charm '%s' ao monstro '%s'...", b.ID(), c.Name, targetMonster)
+			b.addLog(fmt.Sprintf("Charm '%s' vinculado a '%s'", c.Name, targetMonster))
+			_ = b.socket.SendJSON(map[string]any{
+				"t":       "charms",
+				"action":  "assign",
+				"id":      c.ID,
+				"monster": targetMonster,
+			})
+		}
+	}
+}
+
+func (b *Bot) checkAndHandleCoinMarket() {
+	_ = b.socket.SendJSON(map[string]any{
+		"t":      "coinMarket",
+		"pagina": 1,
+	})
+}
+
+func (b *Bot) handleCoinMarketReceived(data []byte) {
+	var p struct {
+		Orders []struct {
+			ID     string `json:"id"`
+			Kind   string `json:"kind"`
+			Amount int    `json:"amount"`
+			Price  int64  `json:"price"`
+		} `json:"orders"`
+	}
+	if err := json.Unmarshal(data, &p); err != nil || len(p.Orders) == 0 {
+		return
+	}
+
+	var lowestSell int64 = 0
+	for _, o := range p.Orders {
+		if o.Kind == "sell" && (lowestSell == 0 || o.Price < lowestSell) {
+			lowestSell = o.Price
+		}
+	}
+
+	if lowestSell > 0 {
+		log.Printf("[%s] 💰 Cotação Lux Coin: 1 Coin = %d ouro", b.ID(), lowestSell)
 	}
 }
 
