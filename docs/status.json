@@ -2,7 +2,7 @@
   "accounts": [
     {
       "currentArea": "Pátio dos Dummies",
-      "durationSec": 653,
+      "durationSec": 773,
       "expPerHour": 0,
       "gold": 2228609,
       "hp": 3513,
@@ -10,9 +10,6 @@
       "kills": 0,
       "level": 222,
       "logs": [
-        "[00:47:31] Treinando online nos Target Dummies.",
-        "[00:47:31] Aviso: a bolsa já está vazia",
-        "[00:47:31] Aviso: escolha uma arma de treino",
         "[00:49:31] Treinando online nos Target Dummies.",
         "[00:49:31] Aviso: a bolsa já está vazia",
         "[00:49:31] Aviso: escolha uma arma de treino",
@@ -24,24 +21,27 @@
         "[00:53:31] Aviso: escolha uma arma de treino",
         "[00:55:34] Treinando online nos Target Dummies.",
         "[00:55:34] Aviso: a bolsa já está vazia",
-        "[00:55:34] Aviso: escolha uma arma de treino"
+        "[00:55:34] Aviso: escolha uma arma de treino",
+        "[00:57:34] Treinando online nos Target Dummies.",
+        "[00:57:34] Aviso: a bolsa já está vazia",
+        "[00:57:34] Aviso: escolha uma arma de treino"
       ],
       "mana": 1140,
       "maxHp": 3513,
       "maxMana": 1140,
       "name": "Personagem #1",
       "status": "training (dummies)",
-      "updatedAt": 1792371372427,
+      "updatedAt": 1792371492618,
       "vocation": "knight"
     },
     {
       "currentArea": "mistrock-cyclops",
-      "durationSec": 653,
-      "expPerHour": 886766.2650653414,
-      "gold": 14863,
-      "hp": 381,
+      "durationSec": 773,
+      "expPerHour": 909307.1596955691,
+      "gold": 15099,
+      "hp": 390,
       "id": "acc-2",
-      "kills": 14,
+      "kills": 17,
       "level": 49,
       "logs": [
         "Entrou no jogo como Personagem #2 (Level 48 druid)",
@@ -54,25 +54,26 @@
         "[00:49:31] Aviso: a bolsa já está vazia",
         "[00:51:31] Aviso: a bolsa já está vazia",
         "[00:53:34] Aviso: a bolsa já está vazia",
-        "[00:55:34] Aviso: a bolsa já está vazia"
+        "[00:55:34] Aviso: a bolsa já está vazia",
+        "[00:57:37] Aviso: a bolsa já está vazia"
       ],
       "mana": 1475,
       "maxHp": 390,
       "maxMana": 1475,
       "name": "Personagem #2",
       "status": "hunting",
-      "updatedAt": 1792371373018,
+      "updatedAt": 1792371493403,
       "vocation": "druid"
     },
     {
-      "currentArea": "",
-      "durationSec": 653,
-      "expPerHour": 7773233.164998642,
-      "gold": 12072,
-      "hp": 370,
+      "currentArea": "hive-surface",
+      "durationSec": 774,
+      "expPerHour": 7796854.202781322,
+      "gold": 13684,
+      "hp": 450,
       "id": "acc-3",
-      "kills": 0,
-      "level": 60,
+      "kills": 97,
+      "level": 61,
       "logs": [
         "Entrou no jogo como klord (Level 50 sorcerer)",
         "[00:45:25] Iniciando caçada em 'hive-surface'",
@@ -83,25 +84,26 @@
         "[00:47:28] Aviso: a bolsa já está vazia",
         "[00:51:31] Aviso: a bolsa já está vazia",
         "[00:53:31] Aviso: a bolsa já está vazia",
-        "[00:55:34] Aviso: a bolsa já está vazia"
+        "[00:55:34] Aviso: a bolsa já está vazia",
+        "[00:57:37] Aviso: a bolsa já está vazia"
       ],
-      "mana": 1796,
-      "maxHp": 445,
-      "maxMana": 1805,
+      "mana": 1835,
+      "maxHp": 450,
+      "maxMana": 1835,
       "name": "Personagem #3",
       "status": "hunting",
-      "updatedAt": 1792371373008,
+      "updatedAt": 1792371493391,
       "vocation": "sorcerer"
     },
     {
-      "currentArea": "",
-      "durationSec": 653,
-      "expPerHour": 1874412.973258066,
-      "gold": 17861,
-      "hp": 620,
+      "currentArea": "mistrock-cyclops",
+      "durationSec": 773,
+      "expPerHour": 1822335.6494748998,
+      "gold": 18315,
+      "hp": 630,
       "id": "acc-4",
-      "kills": 29,
-      "level": 48,
+      "kills": 34,
+      "level": 49,
       "logs": [
         "Entrou no jogo como secondpally (Level 45 paladin)",
         "[00:45:28] Iniciando caçada em 'mistrock-cyclops'",
@@ -115,17 +117,17 @@
         "[00:53:34] Aviso: a bolsa já está vazia",
         "[00:55:34] Aviso: a bolsa já está vazia"
       ],
-      "mana": 740,
-      "maxHp": 620,
-      "maxMana": 740,
+      "mana": 755,
+      "maxHp": 630,
+      "maxMana": 755,
       "name": "Personagem #4",
       "status": "hunting",
-      "updatedAt": 1792371372990,
+      "updatedAt": 1792371493400,
       "vocation": "paladin"
     },
     {
       "currentArea": "port-hope-corym-dungeons",
-      "durationSec": 653,
+      "durationSec": 774,
       "expPerHour": 0,
       "gold": 14267,
       "hp": 696,
@@ -144,19 +146,20 @@
         "[00:49:31] Aviso: a bolsa já está vazia",
         "[00:51:31] Aviso: a bolsa já está vazia",
         "[00:53:34] Aviso: a bolsa já está vazia",
-        "[00:55:37] Aviso: a bolsa já está vazia"
+        "[00:55:37] Aviso: a bolsa já está vazia",
+        "[00:57:37] Aviso: a bolsa já está vazia"
       ],
       "mana": 455,
       "maxHp": 696,
       "maxMana": 455,
       "name": "Personagem #5",
       "status": "hunting",
-      "updatedAt": 1792371373013,
+      "updatedAt": 1792371493430,
       "vocation": "monk"
     }
   ],
   "goroutines": 16,
-  "ramAllocMB": 3.5386123657226562,
+  "ramAllocMB": 3.6738204956054688,
   "ramSysMB": 65.1662826538086,
-  "uptime": "10m54s"
+  "uptime": "12m55s"
 }
