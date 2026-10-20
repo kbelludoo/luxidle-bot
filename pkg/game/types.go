@@ -1,5 +1,7 @@
 package game
 
+import "fmt"
+
 // AccountConfig modelo de configuração do bot lido do accounts.json
 type AccountConfig struct {
 	ID          string          `json:"id"`
@@ -88,19 +90,26 @@ type CharacterState struct {
 	ArvorePontos  *ArvorePontos        `json:"arvorePontos,omitempty"`
 	CharmPoints   int                  `json:"charmPoints,omitempty"`
 	Mount         int                  `json:"mount,omitempty"`
-	Mounts        *MountsState         `json:"mounts,omitempty"`
+	Mounts        any                  `json:"mounts,omitempty"`
 	Inventory     []ItemState          `json:"inventory,omitempty"`
 	Equipment     map[string]ItemState `json:"equipment,omitempty"`
 }
 
 type ItemState struct {
-	ID     string `json:"id"`
-	Name   string `json:"name"`
-	Count  int    `json:"count"`
+	ID     any    `json:"id"`
+	Name   string `json:"name,omitempty"`
+	Count  int    `json:"count,omitempty"`
 	Slot   string `json:"slot,omitempty"`
 	Usavel bool   `json:"usavel,omitempty"`
 	Ammo   bool   `json:"ammo,omitempty"`
 	Tipo   string `json:"tipo,omitempty"`
+}
+
+func (i ItemState) GetID() string {
+	if i.ID == nil {
+		return ""
+	}
+	return fmt.Sprintf("%v", i.ID)
 }
 
 type ArvorePontos struct {

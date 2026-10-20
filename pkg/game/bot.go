@@ -237,13 +237,17 @@ func (b *Bot) handleMessage(data []byte) {
 
 	case "welcome":
 		var p InboundPacket
-		if err := json.Unmarshal(data, &p); err == nil {
+		if err := json.Unmarshal(data, &p); err != nil {
+			log.Printf("[%s] ❌ Erro ao decodificar 'welcome': %v", b.ID(), err)
+		} else {
 			b.handleWelcomeReceived(p)
 		}
 
 	case "state":
 		var p InboundPacket
-		if err := json.Unmarshal(data, &p); err == nil {
+		if err := json.Unmarshal(data, &p); err != nil {
+			log.Printf("[%s] ❌ Erro ao decodificar 'state': %v", b.ID(), err)
+		} else {
 			b.handleStateReceived(p)
 		}
 
@@ -471,6 +475,7 @@ func (b *Bot) handleStateReceived(p InboundPacket) {
 			}
 		}
 
+		b.status.Name = b.character.Name
 		b.status.Level = b.character.Level
 		b.status.Vocation = b.character.Vocation
 		b.status.HP = b.character.HP
@@ -522,7 +527,7 @@ func (b *Bot) handleStateReceived(p InboundPacket) {
 	} else if !p.HuntDelta && p.Character != nil {
 		// Se não veio hunt e não é delta de hunt, estamos na cidade/parados
 		b.hunt = nil
-		if b.status.Status == "hunting" {
+		if b.status.Status == "Autenticando..." || b.status.Status == "hunting" || b.status.Status == "" {
 			b.status.Status = "idle (cidade)"
 		}
 	}
@@ -572,11 +577,23 @@ func (b *Bot) performAutomationTick() {
 	cfg := b.config.Settings
 	b.mu.RUnlock()
 
+	now := time.Now()
+
 	if char == nil || char.Name == "" {
+		if time.Since(b.connectedAt) > 15*time.Second && b.activeChar != "" {
+			if now.Sub(b.lastActionAt) > 15*time.Second {
+				b.lastActionAt = now
+				log.Printf("[%s] Aguardando confirmação do servidor... reenviando 'play' para '%s'", b.ID(), b.activeChar)
+				_ = b.socket.SendJSON(map[string]any{
+					"t":     "play",
+					"name":  b.activeChar,
+					"visto": time.Now().UnixMilli(),
+				})
+			}
+		}
 		return // Aguardando welcome/state do servidor
 	}
 
-	now := time.Now()
 
 	// 2. Proteção de Vida Crítica (Emergency Retreat)
 	if hunt != nil && char.HP > 0 && char.Derived != nil && char.Derived.MaxHP > 0 {
@@ -810,7 +827,8 @@ func (b *Bot) checkAndHandleBoxesAndQuiver() {
 			strings.Contains(strings.ToLower(item.Name), "box") ||
 			strings.Contains(strings.ToLower(item.Name), "bolsa") ||
 			strings.Contains(strings.ToLower(item.Name), "presente")
-		if isBox && item.ID != "" {
+		itemID := item.GetID()
+		if isBox && itemID != "" && itemID != "0" {
 			_ = b.socket.SendJSON(map[string]any{
 				"t":  "abrirTodas",
 				"id": item.ID,
@@ -822,7 +840,7 @@ func (b *Bot) checkAndHandleBoxesAndQuiver() {
 			isAmmo := item.Slot == "ammo" || item.Ammo ||
 				strings.Contains(strings.ToLower(item.Name), "arrow") ||
 				strings.Contains(strings.ToLower(item.Name), "bolt")
-			if isAmmo && item.ID != "" {
+			if isAmmo && itemID != "" && itemID != "0" {
 				_ = b.socket.SendJSON(map[string]any{
 					"t":       "aljavaGuardar",
 					"id":      item.ID,
