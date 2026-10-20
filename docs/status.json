@@ -2,7 +2,7 @@
   "accounts": [
     {
       "currentArea": "auto",
-      "durationSec": 3701,
+      "durationSec": 3830,
       "expPerHour": 0,
       "gold": 0,
       "hp": 0,
@@ -15,16 +15,16 @@
       "maxMana": 0,
       "name": "Personagem #1",
       "status": "Autenticando...",
-      "updatedAt": 1792491722652
+      "updatedAt": 1792491851482
     },
     {
       "currentArea": "",
-      "durationSec": 4071,
-      "expPerHour": 9862786.479334073,
-      "gold": 602060,
-      "hp": 1030,
+      "durationSec": 4193,
+      "expPerHour": 9604233.659533955,
+      "gold": 602636,
+      "hp": 975,
       "id": "acc-2",
-      "kills": 2055,
+      "kills": 2063,
       "level": 177,
       "logs": [],
       "mana": 5315,
@@ -32,11 +32,11 @@
       "maxMana": 5315,
       "name": "Personagem #2",
       "status": "hunting",
-      "updatedAt": 1792491732276
+      "updatedAt": 1792491853702
     },
     {
       "currentArea": "mistrock-cyclops",
-      "durationSec": 4112,
+      "durationSec": 4235,
       "expPerHour": 0,
       "gold": 0,
       "hp": 0,
@@ -49,11 +49,11 @@
       "maxMana": 0,
       "name": "Personagem #3",
       "status": "Autenticando...",
-      "updatedAt": 1792491727422
+      "updatedAt": 1792491850796
     },
     {
       "currentArea": "mistrock-cyclops",
-      "durationSec": 514,
+      "durationSec": 642,
       "expPerHour": 0,
       "gold": 0,
       "hp": 0,
@@ -66,11 +66,11 @@
       "maxMana": 0,
       "name": "Personagem #4",
       "status": "Autenticando...",
-      "updatedAt": 1792491722677
+      "updatedAt": 1792491850796
     },
     {
       "currentArea": "mistrock-cyclops",
-      "durationSec": 733,
+      "durationSec": 862,
       "expPerHour": 0,
       "gold": 0,
       "hp": 0,
@@ -83,11 +83,11 @@
       "maxMana": 0,
       "name": "Personagem #5",
       "status": "Autenticando...",
-      "updatedAt": 1792491722675
+      "updatedAt": 1792491850794
     }
   ],
   "goroutines": 16,
-  "ramAllocMB": 2.9493484497070312,
+  "ramAllocMB": 2.9252777099609375,
   "ramSysMB": 81.4162826538086,
-  "uptime": "10h40m10s"
+  "uptime": "10h42m12s"
 }
