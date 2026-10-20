@@ -2,7 +2,7 @@
   "accounts": [
     {
       "currentArea": "auto",
-      "durationSec": 4106,
+      "durationSec": 4226,
       "expPerHour": 0,
       "gold": 0,
       "hp": 0,
@@ -15,11 +15,11 @@
       "maxMana": 0,
       "name": "Personagem #1",
       "status": "Autenticando...",
-      "updatedAt": 1792460410666
+      "updatedAt": 1792460530678
     },
     {
       "currentArea": "",
-      "durationSec": 1741,
+      "durationSec": 1859,
       "expPerHour": 0,
       "gold": 420919,
       "hp": 0,
@@ -32,11 +32,11 @@
       "maxMana": 0,
       "name": "Personagem #2",
       "status": "hunting",
-      "updatedAt": 1792460413441
+      "updatedAt": 1792460531489
     },
     {
       "currentArea": "mistrock-cyclops",
-      "durationSec": 3982,
+      "durationSec": 4100,
       "expPerHour": 0,
       "gold": 0,
       "hp": 0,
@@ -49,11 +49,11 @@
       "maxMana": 0,
       "name": "Personagem #3",
       "status": "Autenticando...",
-      "updatedAt": 1792460413252
+      "updatedAt": 1792460531184
     },
     {
       "currentArea": "mistrock-cyclops",
-      "durationSec": 266,
+      "durationSec": 384,
       "expPerHour": 0,
       "gold": 0,
       "hp": 0,
@@ -66,11 +66,11 @@
       "maxMana": 0,
       "name": "Personagem #4",
       "status": "Autenticando...",
-      "updatedAt": 1792460413258
+      "updatedAt": 1792460531194
     },
     {
       "currentArea": "mistrock-cyclops",
-      "durationSec": 1420,
+      "durationSec": 1538,
       "expPerHour": 0,
       "gold": 0,
       "hp": 0,
@@ -83,11 +83,11 @@
       "maxMana": 0,
       "name": "Personagem #5",
       "status": "Autenticando...",
-      "updatedAt": 1792460413374
+      "updatedAt": 1792460531183
     }
   ],
   "goroutines": 16,
-  "ramAllocMB": 2.9533843994140625,
+  "ramAllocMB": 2.9011993408203125,
   "ramSysMB": 81.4162826538086,
-  "uptime": "1h58m11s"
+  "uptime": "2h0m9s"
 }
