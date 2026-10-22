@@ -662,7 +662,21 @@ func (b *Bot) performAutomationTick() {
 			// Não está caçando. Inicia caçada no melhor mapa!
 			b.startSafeHunt()
 		} else {
-			// Já está caçando. Garante configurações de assistência e combate
+			// Já está caçando. Verifica se o mapa atual ficou para trás (Level Up / Migração Dinâmica)
+			if now.Sub(b.lastActionAt) > 30*time.Second {
+				bestMap := b.resolveBestHunt(char.Level)
+				if bestMap != "" && hunt.HuntID != "" && hunt.HuntID != bestMap {
+					log.Printf("[%s] 🚀 Level UP ou mapa desatualizado! Migrando de '%s' para '%s' (melhor mapa disponível)...", b.ID(), hunt.HuntID, bestMap)
+					b.addLog(fmt.Sprintf("Migrando caçada de '%s' para '%s'", hunt.HuntID, bestMap))
+					b.lastActionAt = now
+					_ = b.socket.SendJSON(map[string]any{"t": "stopHunt"})
+					time.Sleep(500 * time.Millisecond)
+					b.startSafeHunt()
+					return
+				}
+			}
+
+			// Garante configurações de assistência e combate
 			if cfg.AutoAssist {
 				_ = b.socket.SendJSON(map[string]any{"t": "huntAssist", "tipo": "ataque", "on": true})
 				_ = b.socket.SendJSON(map[string]any{"t": "huntAssist", "tipo": "barra", "on": true})
@@ -1228,8 +1242,21 @@ func (b *Bot) resolveBestHunt(level int) string {
 		statuses := b.manager.GetAllStatuses()
 		if isLeader {
 			for _, st := range statuses {
-				if st.ID == b.ID() || st.Level >= 200 { // ignora Knight em treino
+				if st.ID == b.ID() || st.Status == "training (dummies)" {
 					continue
+				}
+				// Se o líder tem lista explícita de membros da party, só considera eles
+				if len(b.config.Settings.PartyMembers) > 0 {
+					isMember := false
+					for _, m := range b.config.Settings.PartyMembers {
+						if strings.EqualFold(st.Name, m) {
+							isMember = true
+							break
+						}
+					}
+					if !isMember {
+						continue
+					}
 				}
 				if st.Level > 0 && st.Level < effectiveLevel {
 					effectiveLevel = st.Level
