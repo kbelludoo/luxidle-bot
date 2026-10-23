@@ -36,8 +36,8 @@
       "maxHp": 6418,
       "maxMana": 2095,
       "name": "Personagem #1",
-      "status": "SEGURANÇA (Circuit Breaker Ativo)",
-      "updatedAt": 1792775741908,
+      "status": "Conectando ao Lux Idle...",
+      "updatedAt": 1792778650326,
       "vocation": "knight"
     },
     {
@@ -76,8 +76,8 @@
       "maxHp": 1135,
       "maxMana": 5945,
       "name": "Personagem #2",
-      "status": "SEGURANÇA (Circuit Breaker Ativo)",
-      "updatedAt": 1792775741879,
+      "status": "Conectando ao Lux Idle...",
+      "updatedAt": 1792778650326,
       "vocation": "druid"
     },
     {
@@ -116,8 +116,8 @@
       "maxHp": 1185,
       "maxMana": 6245,
       "name": "Personagem #3",
-      "status": "SEGURANÇA (Circuit Breaker Ativo)",
-      "updatedAt": 1792775741891,
+      "status": "Conectando ao Lux Idle...",
+      "updatedAt": 1792778650330,
       "vocation": "sorcerer"
     },
     {
@@ -156,8 +156,8 @@
       "maxHp": 2510,
       "maxMana": 3575,
       "name": "Personagem #4",
-      "status": "SEGURANÇA (Circuit Breaker Ativo)",
-      "updatedAt": 1792775741861,
+      "status": "Conectando ao Lux Idle...",
+      "updatedAt": 1792778650324,
       "vocation": "paladin"
     },
     {
@@ -196,13 +196,13 @@
       "maxHp": 3244,
       "maxMana": 2415,
       "name": "Personagem #5",
-      "status": "SEGURANÇA (Circuit Breaker Ativo)",
-      "updatedAt": 1792776854878,
+      "status": "Conectando ao Lux Idle...",
+      "updatedAt": 1792778650324,
       "vocation": "monk"
     }
   ],
-  "goroutines": 16,
-  "ramAllocMB": 2.2636489868164062,
+  "goroutines": 11,
+  "ramAllocMB": 2.4441680908203125,
   "ramSysMB": 89.73270416259766,
-  "uptime": "18h34m6s"
+  "uptime": "18h36m4s"
 }
