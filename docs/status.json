@@ -10,8 +10,6 @@
       "kills": 0,
       "level": 413,
       "logs": [
-        "[21:48:54] Aviso: entre com um personagem primeiro",
-        "[21:49:42] Aviso: entre com um personagem primeiro",
         "[21:49:45] Aviso: entre com um personagem primeiro",
         "[21:49:45] Aviso: entre com um personagem primeiro",
         "[21:49:51] Aviso: entre com um personagem primeiro",
@@ -30,14 +28,16 @@
         "[21:51:51] Aviso: entre com um personagem primeiro",
         "[21:52:00] Aviso: entre com um personagem primeiro",
         "Anti-Cheat ativado (authError: O Luxidle está sendo preparado para o lançamento. Volte na hora marcada!). Em repouso preventivo.",
-        "[21:53:00] Aviso: entre com um personagem primeiro"
+        "[21:53:00] Aviso: entre com um personagem primeiro",
+        "Anti-Cheat ativado (authError: O Luxidle está sendo preparado para o lançamento. Volte na hora marcada!). Em repouso preventivo.",
+        "[21:58:42] Aviso: entre com um personagem primeiro"
       ],
       "mana": 1583,
       "maxHp": 6418,
       "maxMana": 2095,
       "name": "Personagem #1",
       "status": "SEGURANÇA (Circuit Breaker Ativo)",
-      "updatedAt": 1792792380559,
+      "updatedAt": 1792792722397,
       "vocation": "knight"
     },
     {
@@ -50,8 +50,6 @@
       "kills": 0,
       "level": 198,
       "logs": [
-        "[21:49:30] Aviso: entre com um personagem primeiro",
-        "[21:50:27] Aviso: entre com um personagem primeiro",
         "[21:50:27] Aviso: entre com um personagem primeiro",
         "[21:50:27] Aviso: entre com um personagem primeiro",
         "[21:50:27] Aviso: entre com um personagem primeiro",
@@ -70,14 +68,16 @@
         "[21:52:27] Aviso: entre com um personagem primeiro",
         "[21:52:33] Aviso: entre com um personagem primeiro",
         "Anti-Cheat ativado (authError: O Luxidle está sendo preparado para o lançamento. Volte na hora marcada!). Em repouso preventivo.",
-        "[21:53:00] Aviso: entre com um personagem primeiro"
+        "[21:53:00] Aviso: entre com um personagem primeiro",
+        "Anti-Cheat ativado (authError: O Luxidle está sendo preparado para o lançamento. Volte na hora marcada!). Em repouso preventivo.",
+        "[21:58:42] Aviso: entre com um personagem primeiro"
       ],
       "mana": 5943,
       "maxHp": 1135,
       "maxMana": 5945,
       "name": "Personagem #2",
       "status": "SEGURANÇA (Circuit Breaker Ativo)",
-      "updatedAt": 1792792380628,
+      "updatedAt": 1792792722394,
       "vocation": "druid"
     },
     {
@@ -90,8 +90,6 @@
       "kills": 0,
       "level": 208,
       "logs": [
-        "[21:51:41] Aviso: entre com um personagem primeiro",
-        "[21:51:41] Aviso: entre com um personagem primeiro",
         "[21:51:41] Aviso: entre com um personagem primeiro",
         "[21:51:41] Aviso: entre com um personagem primeiro",
         "[21:51:41] Aviso: entre com um personagem primeiro",
@@ -110,14 +108,16 @@
         "[21:52:50] Aviso: entre com um personagem primeiro",
         "[21:52:50] Aviso: entre com um personagem primeiro",
         "Anti-Cheat ativado (authError: O Luxidle está sendo preparado para o lançamento. Volte na hora marcada!). Em repouso preventivo.",
-        "[21:53:00] Aviso: entre com um personagem primeiro"
+        "[21:53:00] Aviso: entre com um personagem primeiro",
+        "Anti-Cheat ativado (authError: O Luxidle está sendo preparado para o lançamento. Volte na hora marcada!). Em repouso preventivo.",
+        "[21:58:42] Aviso: entre com um personagem primeiro"
       ],
       "mana": 6245,
       "maxHp": 1185,
       "maxMana": 6245,
       "name": "Personagem #3",
       "status": "SEGURANÇA (Circuit Breaker Ativo)",
-      "updatedAt": 1792792380600,
+      "updatedAt": 1792792722413,
       "vocation": "sorcerer"
     },
     {
@@ -130,8 +130,6 @@
       "kills": 0,
       "level": 237,
       "logs": [
-        "[20:58:45] Aviso: entre com um personagem primeiro",
-        "[20:59:00] Aviso: entre com um personagem primeiro",
         "[20:59:33] Aviso: entre com um personagem primeiro",
         "[20:59:33] Aviso: entre com um personagem primeiro",
         "[20:59:33] Aviso: entre com um personagem primeiro",
@@ -150,14 +148,16 @@
         "Anti-Cheat ativado (authError: O Luxidle está sendo preparado para o lançamento. Volte na hora marcada!). Em repouso preventivo.",
         "[21:45:59] Aviso: entre com um personagem primeiro",
         "Anti-Cheat ativado (authError: O Luxidle está sendo preparado para o lançamento. Volte na hora marcada!). Em repouso preventivo.",
-        "[21:53:00] Aviso: entre com um personagem primeiro"
+        "[21:53:00] Aviso: entre com um personagem primeiro",
+        "Anti-Cheat ativado (authError: O Luxidle está sendo preparado para o lançamento. Volte na hora marcada!). Em repouso preventivo.",
+        "[21:58:42] Aviso: entre com um personagem primeiro"
       ],
       "mana": 3569,
       "maxHp": 2510,
       "maxMana": 3575,
       "name": "Personagem #4",
       "status": "SEGURANÇA (Circuit Breaker Ativo)",
-      "updatedAt": 1792792380588,
+      "updatedAt": 1792792722396,
       "vocation": "paladin"
     },
     {
@@ -170,8 +170,6 @@
       "kills": 0,
       "level": 239,
       "logs": [
-        "[21:45:24] Aviso: entre com um personagem primeiro",
-        "[21:46:27] Aviso: entre com um personagem primeiro",
         "[21:47:27] Aviso: entre com um personagem primeiro",
         "[21:47:27] Aviso: entre com um personagem primeiro",
         "[21:47:27] Aviso: entre com um personagem primeiro",
@@ -190,19 +188,21 @@
         "Anti-Cheat ativado (authError: O Luxidle está sendo preparado para o lançamento. Volte na hora marcada!). Em repouso preventivo.",
         "[21:49:56] Aviso: entre com um personagem primeiro",
         "Anti-Cheat ativado (authError: O Luxidle está sendo preparado para o lançamento. Volte na hora marcada!). Em repouso preventivo.",
-        "[21:53:00] Aviso: entre com um personagem primeiro"
+        "[21:53:00] Aviso: entre com um personagem primeiro",
+        "Anti-Cheat ativado (authError: O Luxidle está sendo preparado para o lançamento. Volte na hora marcada!). Em repouso preventivo.",
+        "[21:58:42] Aviso: entre com um personagem primeiro"
       ],
       "mana": 2415,
       "maxHp": 3244,
       "maxMana": 2415,
       "name": "Personagem #5",
       "status": "SEGURANÇA (Circuit Breaker Ativo)",
-      "updatedAt": 1792792380657,
+      "updatedAt": 1792792722401,
       "vocation": "monk"
     }
   ],
   "goroutines": 16,
-  "ramAllocMB": 2.2314071655273438,
+  "ramAllocMB": 2.2190475463867188,
   "ramSysMB": 89.73270416259766,
-  "uptime": "22h30m5s"
+  "uptime": "22h32m5s"
 }
