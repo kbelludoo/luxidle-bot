@@ -170,8 +170,6 @@
       "kills": 0,
       "level": 239,
       "logs": [
-        "[17:11:07] Aviso: entre com um personagem primeiro",
-        "[17:11:07] Aviso: entre com um personagem primeiro",
         "[17:11:22] Aviso: entre com um personagem primeiro",
         "[17:12:25] Aviso: entre com um personagem primeiro",
         "[17:13:10] Aviso: entre com um personagem primeiro",
@@ -190,19 +188,21 @@
         "[17:15:13] Aviso: entre com um personagem primeiro",
         "[17:15:31] Aviso: entre com um personagem primeiro",
         "Anti-Cheat ativado (authError: O Luxidle está sendo preparado para o lançamento. Volte na hora marcada!). Em repouso preventivo.",
-        "[17:15:42] Aviso: entre com um personagem primeiro"
+        "[17:15:42] Aviso: entre com um personagem primeiro",
+        "Anti-Cheat ativado (authError: O Luxidle está sendo preparado para o lançamento. Volte na hora marcada!). Em repouso preventivo.",
+        "[17:34:15] Aviso: entre com um personagem primeiro"
       ],
       "mana": 2415,
       "maxHp": 3244,
       "maxMana": 2415,
       "name": "Personagem #5",
-      "status": "Autenticando...",
-      "updatedAt": 1792776854749,
+      "status": "SEGURANÇA (Circuit Breaker Ativo)",
+      "updatedAt": 1792776854878,
       "vocation": "monk"
     }
   ],
   "goroutines": 16,
-  "ramAllocMB": 2.3979034423828125,
+  "ramAllocMB": 2.2612228393554688,
   "ramSysMB": 89.73270416259766,
-  "uptime": "18h6m5s"
+  "uptime": "18h8m4s"
 }
