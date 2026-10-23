@@ -130,13 +130,6 @@
       "kills": 0,
       "level": 237,
       "logs": [
-        "[14:12:21] Aviso: entre com um personagem primeiro",
-        "[14:12:21] Aviso: entre com um personagem primeiro",
-        "[14:12:36] Aviso: entre com um personagem primeiro",
-        "Anti-Cheat ativado (authError: O Luxidle abre hoje às 19h. A recarga de Lux Coins já está aberta!). Em repouso preventivo.",
-        "[14:12:42] Aviso: entre com um personagem primeiro",
-        "Anti-Cheat ativado (authError: O Luxidle abre hoje às 19h. A recarga de Lux Coins já está aberta!). Em repouso preventivo.",
-        "[14:19:40] Aviso: entre com um personagem primeiro",
         "[15:19:42] Aviso: entre com um personagem primeiro",
         "[15:19:42] Aviso: entre com um personagem primeiro",
         "[15:19:42] Aviso: entre com um personagem primeiro",
@@ -150,7 +143,14 @@
         "[15:19:42] Aviso: entre com um personagem primeiro",
         "[15:19:42] Aviso: entre com um personagem primeiro",
         "[15:19:42] Aviso: entre com um personagem primeiro",
-        "[15:19:42] Aviso: entre com um personagem primeiro"
+        "[15:19:42] Aviso: entre com um personagem primeiro",
+        "[15:20:45] Aviso: entre com um personagem primeiro",
+        "[15:21:45] Aviso: entre com um personagem primeiro",
+        "[15:21:45] Aviso: entre com um personagem primeiro",
+        "[15:21:45] Aviso: entre com um personagem primeiro",
+        "[15:21:45] Aviso: entre com um personagem primeiro",
+        "[15:21:45] Aviso: entre com um personagem primeiro",
+        "[15:21:48] Aviso: entre com um personagem primeiro"
       ],
       "mana": 3569,
       "maxHp": 2510,
@@ -202,7 +202,7 @@
     }
   ],
   "goroutines": 16,
-  "ramAllocMB": 2.2343063354492188,
+  "ramAllocMB": 2.2286834716796875,
   "ramSysMB": 89.73270416259766,
-  "uptime": "15h52m7s"
+  "uptime": "15h54m5s"
 }
