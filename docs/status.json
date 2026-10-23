@@ -170,15 +170,6 @@
       "kills": 0,
       "level": 239,
       "logs": [
-        "[10:21:41] Aviso: entre com um personagem primeiro",
-        "[10:21:41] Aviso: entre com um personagem primeiro",
-        "[10:21:56] Aviso: entre com um personagem primeiro",
-        "[10:22:56] Aviso: entre com um personagem primeiro",
-        "[10:23:38] Aviso: entre com um personagem primeiro",
-        "[10:23:38] Aviso: entre com um personagem primeiro",
-        "[10:23:44] Aviso: entre com um personagem primeiro",
-        "[10:23:44] Aviso: entre com um personagem primeiro",
-        "[10:23:44] Aviso: entre com um personagem primeiro",
         "[10:23:44] Aviso: entre com um personagem primeiro",
         "[10:23:44] Aviso: entre com um personagem primeiro",
         "[10:23:59] Aviso: entre com um personagem primeiro",
@@ -190,7 +181,16 @@
         "[10:25:44] Aviso: entre com um personagem primeiro",
         "[10:25:44] Aviso: entre com um personagem primeiro",
         "[10:25:44] Aviso: entre com um personagem primeiro",
-        "[10:26:05] Aviso: entre com um personagem primeiro"
+        "[10:26:05] Aviso: entre com um personagem primeiro",
+        "[10:26:38] Aviso: entre com um personagem primeiro",
+        "[10:26:38] Aviso: entre com um personagem primeiro",
+        "[10:27:08] Aviso: entre com um personagem primeiro",
+        "[10:27:47] Aviso: entre com um personagem primeiro",
+        "[10:27:47] Aviso: entre com um personagem primeiro",
+        "[10:27:47] Aviso: entre com um personagem primeiro",
+        "[10:27:47] Aviso: entre com um personagem primeiro",
+        "[10:27:47] Aviso: entre com um personagem primeiro",
+        "[10:28:11] Aviso: entre com um personagem primeiro"
       ],
       "mana": 2415,
       "maxHp": 3244,
@@ -202,7 +202,7 @@
     }
   ],
   "goroutines": 16,
-  "ramAllocMB": 2.2184677124023438,
+  "ramAllocMB": 2.19281005859375,
   "ramSysMB": 89.73270416259766,
-  "uptime": "10h58m7s"
+  "uptime": "11h0m10s"
 }
