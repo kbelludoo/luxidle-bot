@@ -172,15 +172,6 @@
       "logs": [
         "[04:40:57] Aviso: entre com um personagem primeiro",
         "[04:40:57] Aviso: entre com um personagem primeiro",
-        "[04:40:57] Aviso: entre com um personagem primeiro",
-        "[04:40:57] Aviso: entre com um personagem primeiro",
-        "[04:40:57] Aviso: entre com um personagem primeiro",
-        "[04:40:57] Aviso: entre com um personagem primeiro",
-        "[04:40:57] Aviso: entre com um personagem primeiro",
-        "[04:40:57] Aviso: entre com um personagem primeiro",
-        "[04:40:57] Aviso: entre com um personagem primeiro",
-        "[04:40:57] Aviso: entre com um personagem primeiro",
-        "[04:40:57] Aviso: entre com um personagem primeiro",
         "[04:41:57] Aviso: entre com um personagem primeiro",
         "[04:42:57] Aviso: entre com um personagem primeiro",
         "[04:42:57] Aviso: entre com um personagem primeiro",
@@ -190,7 +181,16 @@
         "[04:43:00] Aviso: entre com um personagem primeiro",
         "[04:43:57] Aviso: entre com um personagem primeiro",
         "[04:43:57] Aviso: entre com um personagem primeiro",
-        "[04:44:03] Aviso: entre com um personagem primeiro"
+        "[04:44:03] Aviso: entre com um personagem primeiro",
+        "[04:44:57] Aviso: entre com um personagem primeiro",
+        "[04:44:57] Aviso: entre com um personagem primeiro",
+        "[04:44:57] Aviso: entre com um personagem primeiro",
+        "[04:44:57] Aviso: entre com um personagem primeiro",
+        "[04:44:57] Aviso: entre com um personagem primeiro",
+        "[04:45:06] Aviso: entre com um personagem primeiro",
+        "[04:46:00] Aviso: entre com um personagem primeiro",
+        "[04:46:00] Aviso: entre com um personagem primeiro",
+        "[04:46:06] Aviso: entre com um personagem primeiro"
       ],
       "mana": 2415,
       "maxHp": 3244,
@@ -202,7 +202,7 @@
     }
   ],
   "goroutines": 16,
-  "ramAllocMB": 2.0430374145507812,
+  "ramAllocMB": 2.0439987182617188,
   "ramSysMB": 89.73270416259766,
-  "uptime": "5h16m4s"
+  "uptime": "5h18m4s"
 }
