@@ -37,7 +37,7 @@
       "maxMana": 2095,
       "name": "Personagem #1",
       "status": "Conectando ao Lux Idle...",
-      "updatedAt": 1792779244499,
+      "updatedAt": 1792779370511,
       "vocation": "knight"
     },
     {
@@ -77,7 +77,7 @@
       "maxMana": 5945,
       "name": "Personagem #2",
       "status": "Conectando ao Lux Idle...",
-      "updatedAt": 1792779244499,
+      "updatedAt": 1792779370511,
       "vocation": "druid"
     },
     {
@@ -117,7 +117,7 @@
       "maxMana": 6245,
       "name": "Personagem #3",
       "status": "Conectando ao Lux Idle...",
-      "updatedAt": 1792779244499,
+      "updatedAt": 1792779370512,
       "vocation": "sorcerer"
     },
     {
@@ -157,7 +157,7 @@
       "maxMana": 3575,
       "name": "Personagem #4",
       "status": "Conectando ao Lux Idle...",
-      "updatedAt": 1792779244499,
+      "updatedAt": 1792779370511,
       "vocation": "paladin"
     },
     {
@@ -197,12 +197,12 @@
       "maxMana": 2415,
       "name": "Personagem #5",
       "status": "Conectando ao Lux Idle...",
-      "updatedAt": 1792779244499,
+      "updatedAt": 1792779370511,
       "vocation": "monk"
     }
   ],
   "goroutines": 11,
-  "ramAllocMB": 3.208038330078125,
+  "ramAllocMB": 2.3091278076171875,
   "ramSysMB": 89.73270416259766,
-  "uptime": "18h46m5s"
+  "uptime": "18h48m4s"
 }
