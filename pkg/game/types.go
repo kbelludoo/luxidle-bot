@@ -1,6 +1,9 @@
 package game
 
-import "fmt"
+import (
+	"encoding/json"
+	"fmt"
+)
 
 // AccountConfig modelo de configuração do bot lido do accounts.json
 type AccountConfig struct {
@@ -79,6 +82,8 @@ type CharacterState struct {
 	Progress      *ProgressStats       `json:"progress,omitempty"`
 	PouchValue    *PouchValue          `json:"pouchValue,omitempty"`
 	Party         *PartyState          `json:"party,omitempty"`
+	Lobby         *LobbyState          `json:"lobby,omitempty"`
+	AutoPronto    bool                 `json:"autoPronto,omitempty"`
 	AutoBoss      *AutoBossState       `json:"autoBoss,omitempty"`
 	BossCooldowns map[string]int64     `json:"bossCooldowns,omitempty"`
 	BossTasks     []BossTask           `json:"bossTasks,omitempty"`
@@ -180,6 +185,74 @@ type PartyMember struct {
 	Estado   string `json:"estado,omitempty"`
 }
 
+func (m *PartyMember) UnmarshalJSON(data []byte) error {
+	var str string
+	if err := json.Unmarshal(data, &str); err == nil {
+		m.Name = str
+		return nil
+	}
+	type Alias PartyMember
+	var alias Alias
+	if err := json.Unmarshal(data, &alias); err != nil {
+		var fallback struct {
+			Nome     string `json:"nome"`
+			Name     string `json:"name"`
+			Level    int    `json:"level"`
+			Vocation string `json:"vocation"`
+			Online   bool   `json:"online"`
+			Lider    bool   `json:"lider"`
+			Estado   string `json:"estado"`
+		}
+		if err2 := json.Unmarshal(data, &fallback); err2 == nil {
+			m.Name = fallback.Name
+			if m.Name == "" {
+				m.Name = fallback.Nome
+			}
+			m.Level = fallback.Level
+			m.Vocation = fallback.Vocation
+			m.Online = fallback.Online
+			m.Lider = fallback.Lider
+			m.Estado = fallback.Estado
+			return nil
+		}
+		return err
+	}
+	*m = PartyMember(alias)
+	if m.Name == "" {
+		var fallback struct {
+			Nome string `json:"nome"`
+		}
+		_ = json.Unmarshal(data, &fallback)
+		m.Name = fallback.Nome
+	}
+	return nil
+}
+
+type LobbyState struct {
+	PodeComecar bool          `json:"podeComecar"`
+	SouLider    bool          `json:"souLider"`
+	Total       int           `json:"total"`
+	Prontos     int           `json:"prontos"`
+	Hunt        string        `json:"hunt"`
+	Modo        string        `json:"modo"`
+	Tipo        string        `json:"tipo"`
+	Lider       string        `json:"lider"`
+	Frente      string        `json:"frente"`
+	Membros     []LobbyMember `json:"membros"`
+}
+
+type LobbyMember struct {
+	Nome      string `json:"nome"`
+	Name      string `json:"name"`
+	Vocation  string `json:"vocation"`
+	Level     int    `json:"level"`
+	Pronto    bool   `json:"pronto"`
+	Convocado bool   `json:"convocado"`
+	Lider     bool   `json:"lider"`
+	Eu        bool   `json:"eu"`
+	Auto      bool   `json:"auto"`
+}
+
 func (p *PartyState) GetLeader() string {
 	if p == nil {
 		return ""
@@ -211,6 +284,8 @@ type HuntState struct {
 	Manual      bool         `json:"manual"`
 	Assistencia bool         `json:"assistencia"`
 	AutoBarra   bool         `json:"autoBarra"`
+	Party       *PartyState  `json:"party,omitempty"`
+	Aliados     []any        `json:"aliados,omitempty"`
 	Monsters    []any        `json:"monsters,omitempty"`
 	Session     *HuntSession `json:"session,omitempty"`
 }

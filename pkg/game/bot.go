@@ -51,6 +51,10 @@ type Bot struct {
 	lastCharmsAt time.Time
 	lastMarketAt time.Time
 
+	// Estado cooperativo de party
+	huntPartyFull bool
+	knownInParty  map[string]bool
+
 	// Canais de sinalização
 	accountReady chan struct{}
 	ticketChan   chan string
@@ -68,6 +72,7 @@ func NewBot(cfg AccountConfig) *Bot {
 		config:       cfg,
 		status:       st,
 		catalog:      &CatalogData{},
+		knownInParty: make(map[string]bool),
 		accountReady: make(chan struct{}, 1),
 		ticketChan:   make(chan string, 1),
 		discChan:     make(chan error, 1),
@@ -293,6 +298,22 @@ func (b *Bot) handleMessage(data []byte) {
 			})
 		}
 
+	case "pedidoDeEntrada":
+		log.Printf("[%s] 👥 Pedido de entrada na caçada recebido. Aceitando...", b.ID())
+		_ = b.socket.SendJSON(map[string]any{
+			"t":      "party",
+			"action": "aceitarPedido",
+		})
+
+	case "bloqueio":
+		var p struct {
+			Texto string `json:"texto"`
+			Abre  int64  `json:"abre"`
+		}
+		_ = json.Unmarshal(data, &p)
+		log.Printf("[%s] 🔒 Servidor em modo bloqueio / lançamento: %s", b.ID(), p.Texto)
+		b.cb.Trip(fmt.Sprintf("servidor em bloqueio: %s", p.Texto))
+
 	case "authError":
 		var p InboundPacket
 		_ = json.Unmarshal(data, &p)
@@ -309,8 +330,21 @@ func (b *Bot) handleMessage(data []byte) {
 	case "error":
 		var p InboundPacket
 		_ = json.Unmarshal(data, &p)
-		log.Printf("[%s] Aviso do jogo: %s", b.ID(), p.Message)
-		b.addLog(fmt.Sprintf("Aviso: %s", p.Message))
+		msg := p.Message
+		log.Printf("[%s] Aviso do jogo: %s", b.ID(), msg)
+		b.addLog(fmt.Sprintf("Aviso: %s", msg))
+
+		b.mu.Lock()
+		if strings.Contains(msg, "já está numa party") {
+			parts := strings.Split(msg, " ")
+			if len(parts) > 0 {
+				b.knownInParty[strings.ToLower(parts[0])] = true
+			}
+		}
+		if strings.Contains(msg, "já tem 5 pessoas") || strings.Contains(msg, "cheia") {
+			b.huntPartyFull = true
+		}
+		b.mu.Unlock()
 	}
 }
 
@@ -434,6 +468,10 @@ func (b *Bot) handleWelcomeReceived(p InboundPacket) {
 
 	b.status.Logs = append(b.status.Logs, fmt.Sprintf("Entrou no jogo como %s (Level %d %s)", b.status.Name, b.status.Level, b.status.Vocation))
 	log.Printf("[%s] Bem-vindo ao mundo! %s (Level %d %s) pronto para a ação.", b.ID(), b.status.Name, b.status.Level, b.status.Vocation)
+
+	// Configurações de inicialização do cliente oficial
+	_ = b.socket.SendJSON(map[string]any{"t": "fuso", "tz": "America/Sao_Paulo"})
+	_ = b.socket.SendJSON(map[string]any{"t": "settings", "autoPronto": true})
 }
 
 func (b *Bot) handleStateReceived(p InboundPacket) {
@@ -474,6 +512,9 @@ func (b *Bot) handleStateReceived(p InboundPacket) {
 			}
 			if p.Character.Party != nil {
 				b.character.Party = p.Character.Party
+			}
+			if p.Character.Lobby != nil {
+				b.character.Lobby = p.Character.Lobby
 			}
 			if p.Character.BossCooldowns != nil {
 				b.character.BossCooldowns = p.Character.BossCooldowns
@@ -559,6 +600,7 @@ func (b *Bot) handleStateReceived(p InboundPacket) {
 	} else if !p.HuntDelta && p.Character != nil {
 		// Se não veio hunt e não é delta de hunt, estamos na cidade/parados
 		b.hunt = nil
+		b.huntPartyFull = false
 		if b.status.Status == "Autenticando..." || b.status.Status == "hunting" || b.status.Status == "" {
 			b.status.Status = "idle (cidade)"
 		}
@@ -801,10 +843,23 @@ func (b *Bot) performAutomationTick() {
 			b.lastPartyAt = now
 
 			inParty := make(map[string]bool)
+			for k, v := range b.knownInParty {
+				if v {
+					inParty[k] = true
+				}
+			}
 			if char.Party != nil {
 				for _, m := range char.Party.Membros {
-					inParty[strings.ToLower(m.Name)] = true
+					if m.Name != "" {
+						inParty[strings.ToLower(m.Name)] = true
+					}
 				}
+			}
+
+			// Se a caçada atual já estiver com 5 membros, evita spam de invite
+			huntFull := b.huntPartyFull
+			if hunt != nil && hunt.Party != nil && len(hunt.Party.Membros) >= 5 {
+				huntFull = true
 			}
 
 			for _, memberName := range cfg.PartyMembers {
@@ -818,12 +873,47 @@ func (b *Bot) performAutomationTick() {
 						"action": "convidar",
 						"name":   memberName,
 					})
-				} else if hunt != nil {
+				} else if hunt != nil && !huntFull {
 					// Se o membro já está na party e o líder está caçando, convida para a mesma caçada
 					_ = b.socket.SendJSON(map[string]any{
 						"t":      "party",
 						"action": "invite",
 						"name":   memberName,
+					})
+				}
+			}
+		}
+
+		// Automação cooperativa de Lobby oficial
+		if char.Lobby != nil {
+			if char.Lobby.SouLider {
+				if char.Lobby.Frente == "" {
+					_ = b.socket.SendJSON(map[string]any{
+						"t":      "lobby",
+						"action": "frente",
+						"name":   "kbelludoo",
+					})
+				}
+				if char.Lobby.PodeComecar {
+					log.Printf("[%s] 🏰 Time pronto no lobby! Iniciando caçada...", b.ID())
+					_ = b.socket.SendJSON(map[string]any{
+						"t":       "lobby",
+						"action":  "comecar",
+						"limites": map[string]any{},
+					})
+				}
+			} else {
+				isReady := false
+				for _, m := range char.Lobby.Membros {
+					if m.Eu && m.Pronto {
+						isReady = true
+						break
+					}
+				}
+				if !isReady {
+					_ = b.socket.SendJSON(map[string]any{
+						"t":      "lobby",
+						"action": "pronto",
 					})
 				}
 			}
