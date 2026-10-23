@@ -90,7 +90,6 @@
       "kills": 0,
       "level": 208,
       "logs": [
-        "[19:43:08] Aviso: entre com um personagem primeiro",
         "[19:43:26] Aviso: entre com um personagem primeiro",
         "[19:43:26] Aviso: entre com um personagem primeiro",
         "[19:43:26] Aviso: entre com um personagem primeiro",
@@ -110,14 +109,15 @@
         "[19:44:20] Aviso: entre com um personagem primeiro",
         "[19:44:20] Aviso: entre com um personagem primeiro",
         "Anti-Cheat ativado (authError: O Luxidle está sendo preparado para o lançamento. Volte na hora marcada!). Em repouso preventivo.",
-        "[19:44:30] Aviso: entre com um personagem primeiro"
+        "[19:44:30] Aviso: entre com um personagem primeiro",
+        "Anti-Cheat ativado (authError: O Luxidle está sendo preparado para o lançamento. Volte na hora marcada!). Em repouso preventivo."
       ],
       "mana": 6245,
       "maxHp": 1185,
       "maxMana": 6245,
       "name": "Personagem #3",
       "status": "SEGURANÇA (Circuit Breaker Ativo)",
-      "updatedAt": 1792784670291,
+      "updatedAt": 1792785973862,
       "vocation": "sorcerer"
     },
     {
@@ -202,7 +202,7 @@
     }
   ],
   "goroutines": 16,
-  "ramAllocMB": 2.2875900268554688,
+  "ramAllocMB": 2.3985519409179688,
   "ramSysMB": 89.73270416259766,
-  "uptime": "20h36m6s"
+  "uptime": "20h38m4s"
 }
