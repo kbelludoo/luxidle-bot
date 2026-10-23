@@ -130,15 +130,6 @@
       "kills": 0,
       "level": 237,
       "logs": [
-        "[20:47:36] Aviso: entre com um personagem primeiro",
-        "[20:47:36] Aviso: entre com um personagem primeiro",
-        "[20:47:39] Aviso: entre com um personagem primeiro",
-        "[20:48:39] Aviso: entre com um personagem primeiro",
-        "[20:48:39] Aviso: entre com um personagem primeiro",
-        "[20:48:39] Aviso: entre com um personagem primeiro",
-        "[20:48:39] Aviso: entre com um personagem primeiro",
-        "[20:48:39] Aviso: entre com um personagem primeiro",
-        "[20:48:39] Aviso: entre com um personagem primeiro",
         "[20:49:33] Aviso: entre com um personagem primeiro",
         "[20:49:33] Aviso: entre com um personagem primeiro",
         "[20:49:42] Aviso: entre com um personagem primeiro",
@@ -150,7 +141,16 @@
         "[20:50:39] Aviso: entre com um personagem primeiro",
         "[20:50:39] Aviso: entre com um personagem primeiro",
         "[20:50:42] Aviso: entre com um personagem primeiro",
-        "[20:51:45] Aviso: entre com um personagem primeiro"
+        "[20:51:45] Aviso: entre com um personagem primeiro",
+        "[20:52:42] Aviso: entre com um personagem primeiro",
+        "[20:52:42] Aviso: entre com um personagem primeiro",
+        "[20:52:42] Aviso: entre com um personagem primeiro",
+        "[20:52:42] Aviso: entre com um personagem primeiro",
+        "[20:52:42] Aviso: entre com um personagem primeiro",
+        "[20:52:45] Aviso: entre com um personagem primeiro",
+        "[20:53:42] Aviso: entre com um personagem primeiro",
+        "[20:53:42] Aviso: entre com um personagem primeiro",
+        "[20:53:48] Aviso: entre com um personagem primeiro"
       ],
       "mana": 3569,
       "maxHp": 2510,
@@ -170,15 +170,6 @@
       "kills": 0,
       "level": 239,
       "logs": [
-        "[20:47:36] Aviso: entre com um personagem primeiro",
-        "[20:47:36] Aviso: entre com um personagem primeiro",
-        "[20:47:42] Aviso: entre com um personagem primeiro",
-        "[20:48:36] Aviso: entre com um personagem primeiro",
-        "[20:48:36] Aviso: entre com um personagem primeiro",
-        "[20:48:36] Aviso: entre com um personagem primeiro",
-        "[20:48:36] Aviso: entre com um personagem primeiro",
-        "[20:48:36] Aviso: entre com um personagem primeiro",
-        "[20:48:45] Aviso: entre com um personagem primeiro",
         "[20:49:36] Aviso: entre com um personagem primeiro",
         "[20:49:36] Aviso: entre com um personagem primeiro",
         "[20:49:48] Aviso: entre com um personagem primeiro",
@@ -190,7 +181,16 @@
         "[20:50:39] Aviso: entre com um personagem primeiro",
         "[20:50:39] Aviso: entre com um personagem primeiro",
         "[20:50:48] Aviso: entre com um personagem primeiro",
-        "[20:51:51] Aviso: entre com um personagem primeiro"
+        "[20:51:51] Aviso: entre com um personagem primeiro",
+        "[20:52:39] Aviso: entre com um personagem primeiro",
+        "[20:52:39] Aviso: entre com um personagem primeiro",
+        "[20:52:39] Aviso: entre com um personagem primeiro",
+        "[20:52:39] Aviso: entre com um personagem primeiro",
+        "[20:52:39] Aviso: entre com um personagem primeiro",
+        "[20:52:54] Aviso: entre com um personagem primeiro",
+        "[20:53:39] Aviso: entre com um personagem primeiro",
+        "[20:53:39] Aviso: entre com um personagem primeiro",
+        "[20:53:57] Aviso: entre com um personagem primeiro"
       ],
       "mana": 2415,
       "maxHp": 3244,
@@ -202,7 +202,7 @@
     }
   ],
   "goroutines": 16,
-  "ramAllocMB": 2.4086380004882812,
+  "ramAllocMB": 2.2430496215820312,
   "ramSysMB": 89.73270416259766,
-  "uptime": "21h24m5s"
+  "uptime": "21h26m6s"
 }
