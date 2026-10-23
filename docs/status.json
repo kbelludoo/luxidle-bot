@@ -196,13 +196,13 @@
       "maxHp": 3244,
       "maxMana": 2415,
       "name": "Personagem #5",
-      "status": "SEGURANÇA (Circuit Breaker Ativo)",
-      "updatedAt": 1792775741941,
+      "status": "Autenticando...",
+      "updatedAt": 1792776854749,
       "vocation": "monk"
     }
   ],
   "goroutines": 16,
-  "ramAllocMB": 2.2282562255859375,
+  "ramAllocMB": 2.3979034423828125,
   "ramSysMB": 89.73270416259766,
-  "uptime": "18h4m5s"
+  "uptime": "18h6m5s"
 }
