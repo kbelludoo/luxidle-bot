@@ -12,8 +12,6 @@
       "logs": [
         "[16:42:38] Aviso: entre com um personagem primeiro",
         "[16:42:38] Aviso: entre com um personagem primeiro",
-        "[16:42:38] Aviso: entre com um personagem primeiro",
-        "[16:42:38] Aviso: entre com um personagem primeiro",
         "[16:43:35] Aviso: entre com um personagem primeiro",
         "[16:43:35] Aviso: entre com um personagem primeiro",
         "[16:43:38] Aviso: entre com um personagem primeiro",
@@ -30,14 +28,16 @@
         "Anti-Cheat ativado (authError: O Luxidle está sendo preparado para o lançamento. Volte na hora marcada!). Em repouso preventivo.",
         "[19:44:30] Aviso: entre com um personagem primeiro",
         "Anti-Cheat ativado (authError: O Luxidle está sendo preparado para o lançamento. Volte na hora marcada!). Em repouso preventivo.",
-        "[20:17:33] Aviso: entre com um personagem primeiro"
+        "[20:17:33] Aviso: entre com um personagem primeiro",
+        "Anti-Cheat ativado (authError: O Luxidle está sendo preparado para o lançamento. Volte na hora marcada!). Em repouso preventivo.",
+        "[20:39:36] Aviso: entre com um personagem primeiro"
       ],
       "mana": 1583,
       "maxHp": 6418,
       "maxMana": 2095,
       "name": "Personagem #1",
       "status": "SEGURANÇA (Circuit Breaker Ativo)",
-      "updatedAt": 1792786653697,
+      "updatedAt": 1792787976047,
       "vocation": "knight"
     },
     {
@@ -202,7 +202,7 @@
     }
   ],
   "goroutines": 16,
-  "ramAllocMB": 2.2967681884765625,
+  "ramAllocMB": 2.4072113037109375,
   "ramSysMB": 89.73270416259766,
-  "uptime": "21h10m4s"
+  "uptime": "21h12m6s"
 }
