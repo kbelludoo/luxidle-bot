@@ -36,8 +36,8 @@
       "maxHp": 6418,
       "maxMana": 2095,
       "name": "Personagem #1",
-      "status": "SEGURANÇA (Circuit Breaker Ativo)",
-      "updatedAt": 1792760426835,
+      "status": "Desconectado. Reconectando...",
+      "updatedAt": 1792760652058,
       "vocation": "knight"
     },
     {
@@ -76,8 +76,8 @@
       "maxHp": 1135,
       "maxMana": 5945,
       "name": "Personagem #2",
-      "status": "SEGURANÇA (Circuit Breaker Ativo)",
-      "updatedAt": 1792760426775,
+      "status": "Desconectado. Reconectando...",
+      "updatedAt": 1792760652060,
       "vocation": "druid"
     },
     {
@@ -116,8 +116,8 @@
       "maxHp": 1185,
       "maxMana": 6245,
       "name": "Personagem #3",
-      "status": "SEGURANÇA (Circuit Breaker Ativo)",
-      "updatedAt": 1792760426741,
+      "status": "Desconectado. Reconectando...",
+      "updatedAt": 1792760652049,
       "vocation": "sorcerer"
     },
     {
@@ -156,8 +156,8 @@
       "maxHp": 2510,
       "maxMana": 3575,
       "name": "Personagem #4",
-      "status": "SEGURANÇA (Circuit Breaker Ativo)",
-      "updatedAt": 1792760426917,
+      "status": "Desconectado. Reconectando...",
+      "updatedAt": 1792760652058,
       "vocation": "paladin"
     },
     {
@@ -196,13 +196,13 @@
       "maxHp": 3244,
       "maxMana": 2415,
       "name": "Personagem #5",
-      "status": "SEGURANÇA (Circuit Breaker Ativo)",
-      "updatedAt": 1792760426872,
+      "status": "Desconectado. Reconectando...",
+      "updatedAt": 1792760652049,
       "vocation": "monk"
     }
   ],
-  "goroutines": 16,
-  "ramAllocMB": 3.1700592041015625,
+  "goroutines": 11,
+  "ramAllocMB": 2.2918624877929688,
   "ramSysMB": 89.73270416259766,
-  "uptime": "13h34m6s"
+  "uptime": "13h36m4s"
 }
