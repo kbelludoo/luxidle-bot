@@ -170,18 +170,6 @@
       "kills": 0,
       "level": 239,
       "logs": [
-        "[10:03:26] Aviso: entre com um personagem primeiro",
-        "[10:03:26] Aviso: entre com um personagem primeiro",
-        "[10:03:29] Aviso: entre com um personagem primeiro",
-        "[10:04:26] Aviso: entre com um personagem primeiro",
-        "[10:04:26] Aviso: entre com um personagem primeiro",
-        "[10:04:29] Aviso: entre com um personagem primeiro",
-        "[10:05:29] Aviso: entre com um personagem primeiro",
-        "[10:05:29] Aviso: entre com um personagem primeiro",
-        "[10:05:29] Aviso: entre com um personagem primeiro",
-        "[10:05:29] Aviso: entre com um personagem primeiro",
-        "[10:05:29] Aviso: entre com um personagem primeiro",
-        "[10:05:29] Aviso: entre com um personagem primeiro",
         "[10:05:29] Aviso: entre com um personagem primeiro",
         "[10:05:32] Aviso: entre com um personagem primeiro",
         "[10:06:32] Aviso: entre com um personagem primeiro",
@@ -190,7 +178,19 @@
         "[10:07:29] Aviso: entre com um personagem primeiro",
         "[10:07:29] Aviso: entre com um personagem primeiro",
         "[10:07:29] Aviso: entre com um personagem primeiro",
-        "[10:07:32] Aviso: entre com um personagem primeiro"
+        "[10:07:32] Aviso: entre com um personagem primeiro",
+        "[10:08:29] Aviso: entre com um personagem primeiro",
+        "[10:08:29] Aviso: entre com um personagem primeiro",
+        "[10:08:35] Aviso: entre com um personagem primeiro",
+        "[10:09:26] Aviso: entre com um personagem primeiro",
+        "[10:09:29] Aviso: entre com um personagem primeiro",
+        "[10:09:29] Aviso: entre com um personagem primeiro",
+        "[10:09:32] Aviso: entre com um personagem primeiro",
+        "[10:09:32] Aviso: entre com um personagem primeiro",
+        "[10:09:32] Aviso: entre com um personagem primeiro",
+        "[10:09:32] Aviso: entre com um personagem primeiro",
+        "[10:09:32] Aviso: entre com um personagem primeiro",
+        "[10:09:35] Aviso: entre com um personagem primeiro"
       ],
       "mana": 2415,
       "maxHp": 3244,
@@ -202,7 +202,7 @@
     }
   ],
   "goroutines": 16,
-  "ramAllocMB": 2.2361984252929688,
+  "ramAllocMB": 2.2488021850585938,
   "ramSysMB": 89.73270416259766,
-  "uptime": "10h40m6s"
+  "uptime": "10h42m5s"
 }
