@@ -10,8 +10,6 @@
       "kills": 0,
       "level": 413,
       "logs": [
-        "[04:20:56] Aviso: entre com um personagem primeiro",
-        "[04:21:38] Aviso: entre com um personagem primeiro",
         "[04:22:08] Aviso: entre com um personagem primeiro",
         "[04:22:08] Aviso: entre com um personagem primeiro",
         "[04:22:08] Aviso: entre com um personagem primeiro",
@@ -30,14 +28,16 @@
         "[04:24:08] Aviso: entre com um personagem primeiro",
         "[04:24:47] Aviso: entre com um personagem primeiro",
         "Anti-Cheat ativado (authError: O Luxidle está sendo preparado para o lançamento. Volte na hora marcada!). Em repouso preventivo.",
-        "[04:25:54] Aviso: entre com um personagem primeiro"
+        "[04:25:54] Aviso: entre com um personagem primeiro",
+        "Anti-Cheat ativado (authError: O Luxidle está sendo preparado para o lançamento. Volte na hora marcada!). Em repouso preventivo.",
+        "[04:46:27] Aviso: entre com um personagem primeiro"
       ],
       "mana": 1583,
       "maxHp": 6418,
       "maxMana": 2095,
       "name": "Personagem #1",
       "status": "SEGURANÇA (Circuit Breaker Ativo)",
-      "updatedAt": 1792729553962,
+      "updatedAt": 1792730787218,
       "vocation": "knight"
     },
     {
@@ -170,15 +170,6 @@
       "kills": 0,
       "level": 239,
       "logs": [
-        "[04:40:57] Aviso: entre com um personagem primeiro",
-        "[04:40:57] Aviso: entre com um personagem primeiro",
-        "[04:41:57] Aviso: entre com um personagem primeiro",
-        "[04:42:57] Aviso: entre com um personagem primeiro",
-        "[04:42:57] Aviso: entre com um personagem primeiro",
-        "[04:42:57] Aviso: entre com um personagem primeiro",
-        "[04:42:57] Aviso: entre com um personagem primeiro",
-        "[04:42:57] Aviso: entre com um personagem primeiro",
-        "[04:43:00] Aviso: entre com um personagem primeiro",
         "[04:43:57] Aviso: entre com um personagem primeiro",
         "[04:43:57] Aviso: entre com um personagem primeiro",
         "[04:44:03] Aviso: entre com um personagem primeiro",
@@ -190,7 +181,16 @@
         "[04:45:06] Aviso: entre com um personagem primeiro",
         "[04:46:00] Aviso: entre com um personagem primeiro",
         "[04:46:00] Aviso: entre com um personagem primeiro",
-        "[04:46:06] Aviso: entre com um personagem primeiro"
+        "[04:46:06] Aviso: entre com um personagem primeiro",
+        "[04:46:57] Aviso: entre com um personagem primeiro",
+        "[04:46:57] Aviso: entre com um personagem primeiro",
+        "[04:46:57] Aviso: entre com um personagem primeiro",
+        "[04:46:57] Aviso: entre com um personagem primeiro",
+        "[04:46:57] Aviso: entre com um personagem primeiro",
+        "[04:47:00] Aviso: entre com um personagem primeiro",
+        "[04:47:00] Aviso: entre com um personagem primeiro",
+        "[04:47:06] Aviso: entre com um personagem primeiro",
+        "[04:48:09] Aviso: entre com um personagem primeiro"
       ],
       "mana": 2415,
       "maxHp": 3244,
@@ -202,7 +202,7 @@
     }
   ],
   "goroutines": 16,
-  "ramAllocMB": 2.0439987182617188,
+  "ramAllocMB": 2.0521011352539062,
   "ramSysMB": 89.73270416259766,
-  "uptime": "5h18m4s"
+  "uptime": "5h20m4s"
 }
