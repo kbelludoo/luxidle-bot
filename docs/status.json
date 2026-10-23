@@ -170,17 +170,6 @@
       "kills": 0,
       "level": 239,
       "logs": [
-        "[16:58:58] Aviso: entre com um personagem primeiro",
-        "[17:00:02] Aviso: entre com um personagem primeiro",
-        "[17:00:37] Aviso: entre com um personagem primeiro",
-        "[17:00:40] Aviso: entre com um personagem primeiro",
-        "[17:00:40] Aviso: entre com um personagem primeiro",
-        "[17:00:55] Aviso: entre com um personagem primeiro",
-        "[17:00:55] Aviso: entre com um personagem primeiro",
-        "[17:00:55] Aviso: entre com um personagem primeiro",
-        "[17:00:55] Aviso: entre com um personagem primeiro",
-        "[17:00:55] Aviso: entre com um personagem primeiro",
-        "[17:01:04] Aviso: entre com um personagem primeiro",
         "[17:01:46] Aviso: entre com um personagem primeiro",
         "[17:01:46] Aviso: entre com um personagem primeiro",
         "[17:02:04] Aviso: entre com um personagem primeiro",
@@ -190,7 +179,18 @@
         "[17:02:58] Aviso: entre com um personagem primeiro",
         "[17:02:58] Aviso: entre com um personagem primeiro",
         "[17:03:07] Aviso: entre com um personagem primeiro",
-        "[17:04:10] Aviso: entre com um personagem primeiro"
+        "[17:04:10] Aviso: entre com um personagem primeiro",
+        "[17:04:49] Aviso: entre com um personagem primeiro",
+        "[17:04:49] Aviso: entre com um personagem primeiro",
+        "[17:05:01] Aviso: entre com um personagem primeiro",
+        "[17:05:02] Aviso: entre com um personagem primeiro",
+        "[17:05:02] Aviso: entre com um personagem primeiro",
+        "[17:05:02] Aviso: entre com um personagem primeiro",
+        "[17:05:02] Aviso: entre com um personagem primeiro",
+        "[17:05:10] Aviso: entre com um personagem primeiro",
+        "[17:05:43] Aviso: entre com um personagem primeiro",
+        "[17:05:43] Aviso: entre com um personagem primeiro",
+        "[17:06:11] Aviso: entre com um personagem primeiro"
       ],
       "mana": 2415,
       "maxHp": 3244,
@@ -202,7 +202,7 @@
     }
   ],
   "goroutines": 16,
-  "ramAllocMB": 2.2425537109375,
+  "ramAllocMB": 2.2352676391601562,
   "ramSysMB": 89.73270416259766,
-  "uptime": "17h36m5s"
+  "uptime": "17h38m4s"
 }
