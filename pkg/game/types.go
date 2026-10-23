@@ -16,6 +16,7 @@ type GameCredentials struct {
 	Email         string `json:"email"`
 	Password      string `json:"password"`
 	CharacterName string `json:"characterName,omitempty"` // Se vazio, seleciona o primeiro personagem da conta
+	Vocation      string `json:"vocation,omitempty"`
 	SessionToken  string `json:"token,omitempty"`
 }
 

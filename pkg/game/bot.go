@@ -329,6 +329,25 @@ func (b *Bot) handleDisconnect(err error) {
 // Lógica de Autenticação e Entrada no Jogo
 // -------------------------------------------------------------
 
+func (b *Bot) resolveVocation() string {
+	if b.config.Credentials.Vocation != "" {
+		return strings.ToLower(b.config.Credentials.Vocation)
+	}
+	nameLower := strings.ToLower(b.config.Name)
+	if strings.Contains(nameLower, "knight") {
+		return "knight"
+	} else if strings.Contains(nameLower, "druid") {
+		return "druid"
+	} else if strings.Contains(nameLower, "sorcerer") {
+		return "sorcerer"
+	} else if strings.Contains(nameLower, "paladin") || strings.Contains(nameLower, "pally") {
+		return "paladin"
+	} else if strings.Contains(nameLower, "monk") {
+		return "monk"
+	}
+	return "knight"
+}
+
 func (b *Bot) handleAccountReceived(p InboundPacket) {
 	b.mu.Lock()
 	defer b.mu.Unlock()
@@ -339,6 +358,19 @@ func (b *Bot) handleAccountReceived(p InboundPacket) {
 	}
 
 	if p.Account == nil || len(p.Account.Characters) == 0 {
+		targetChar := b.config.Credentials.CharacterName
+		if targetChar != "" {
+			voc := b.resolveVocation()
+			log.Printf("[%s] 👶 Conta sem personagens após lançamento oficial! Criando automaticamente '%s' (%s)...", b.ID(), targetChar, voc)
+			b.status.Status = fmt.Sprintf("Criando '%s' (%s)...", targetChar, voc)
+			_ = b.socket.SendJSON(map[string]any{
+				"t":        "createCharacter",
+				"name":     targetChar,
+				"vocation": voc,
+				"sex":      "male",
+			})
+			return
+		}
 		log.Printf("[%s] ⚠️ Nenhum personagem encontrado nesta conta!", b.ID())
 		b.status.Status = "Sem personagens na conta"
 		return
@@ -628,9 +660,10 @@ func (b *Bot) performAutomationTick() {
 	// 5. Recompensas Diárias e Quests (AutoDaily)
 	if cfg.AutoDaily && now.Sub(b.lastDailyAt) > 15*time.Minute {
 		b.lastDailyAt = now
-		log.Printf("[%s] Resgatando recompensas diárias...", b.ID())
+		log.Printf("[%s] Resgatando recompensas diárias e passe de elite...", b.ID())
 		_ = b.socket.SendJSON(map[string]any{"t": "reward", "action": "takeAll"})
 		_ = b.socket.SendJSON(map[string]any{"t": "diario"})
+		_ = b.socket.SendJSON(map[string]any{"t": "passe", "action": "resgatarTudo"})
 	}
 
 	// 6. Limpeza, Venda de Inventário, Abertura de Caixas de Boss e Aljava
