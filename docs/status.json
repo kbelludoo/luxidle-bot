@@ -170,16 +170,6 @@
       "kills": 0,
       "level": 239,
       "logs": [
-        "[10:14:26] Aviso: entre com um personagem primeiro",
-        "[10:14:29] Aviso: entre com um personagem primeiro",
-        "[10:14:29] Aviso: entre com um personagem primeiro",
-        "[10:14:32] Aviso: entre com um personagem primeiro",
-        "[10:14:32] Aviso: entre com um personagem primeiro",
-        "[10:14:47] Aviso: entre com um personagem primeiro",
-        "[10:15:38] Aviso: entre com um personagem primeiro",
-        "[10:15:38] Aviso: entre com um personagem primeiro",
-        "[10:15:38] Aviso: entre com um personagem primeiro",
-        "[10:15:38] Aviso: entre com um personagem primeiro",
         "[10:15:38] Aviso: entre com um personagem primeiro",
         "[10:15:47] Aviso: entre com um personagem primeiro",
         "[10:16:47] Aviso: entre com um personagem primeiro",
@@ -190,7 +180,17 @@
         "[10:17:41] Aviso: entre com um personagem primeiro",
         "[10:17:41] Aviso: entre com um personagem primeiro",
         "[10:17:41] Aviso: entre com um personagem primeiro",
-        "[10:17:50] Aviso: entre com um personagem primeiro"
+        "[10:17:50] Aviso: entre com um personagem primeiro",
+        "[10:18:53] Aviso: entre com um personagem primeiro",
+        "[10:19:26] Aviso: entre com um personagem primeiro",
+        "[10:19:29] Aviso: entre com um personagem primeiro",
+        "[10:19:29] Aviso: entre com um personagem primeiro",
+        "[10:19:41] Aviso: entre com um personagem primeiro",
+        "[10:19:41] Aviso: entre com um personagem primeiro",
+        "[10:19:41] Aviso: entre com um personagem primeiro",
+        "[10:19:41] Aviso: entre com um personagem primeiro",
+        "[10:19:41] Aviso: entre com um personagem primeiro",
+        "[10:19:53] Aviso: entre com um personagem primeiro"
       ],
       "mana": 2415,
       "maxHp": 3244,
@@ -202,7 +202,7 @@
     }
   ],
   "goroutines": 16,
-  "ramAllocMB": 2.2322769165039062,
+  "ramAllocMB": 2.201690673828125,
   "ramSysMB": 89.73270416259766,
-  "uptime": "10h50m6s"
+  "uptime": "10h52m6s"
 }
