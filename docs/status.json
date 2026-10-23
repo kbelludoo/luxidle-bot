@@ -50,8 +50,6 @@
       "kills": 0,
       "level": 198,
       "logs": [
-        "[14:07:18] Aviso: entre com um personagem primeiro",
-        "[14:07:24] Aviso: entre com um personagem primeiro",
         "[14:08:21] Aviso: entre com um personagem primeiro",
         "[14:08:21] Aviso: entre com um personagem primeiro",
         "[14:08:21] Aviso: entre com um personagem primeiro",
@@ -70,14 +68,16 @@
         "[14:10:24] Aviso: entre com um personagem primeiro",
         "[14:10:27] Aviso: entre com um personagem primeiro",
         "Anti-Cheat ativado (authError: O Luxidle abre hoje às 19h. A recarga de Lux Coins já está aberta!). Em repouso preventivo.",
-        "[14:11:16] Aviso: entre com um personagem primeiro"
+        "[14:11:16] Aviso: entre com um personagem primeiro",
+        "Anti-Cheat ativado (authError: O Luxidle abre hoje às 19h. A recarga de Lux Coins já está aberta!). Em repouso preventivo.",
+        "[14:57:59] Aviso: entre com um personagem primeiro"
       ],
       "mana": 5943,
       "maxHp": 1135,
       "maxMana": 5945,
       "name": "Personagem #2",
       "status": "SEGURANÇA (Circuit Breaker Ativo)",
-      "updatedAt": 1792764675955,
+      "updatedAt": 1792767479511,
       "vocation": "druid"
     },
     {
@@ -202,7 +202,7 @@
     }
   ],
   "goroutines": 16,
-  "ramAllocMB": 2.2158355712890625,
+  "ramAllocMB": 10.620880126953125,
   "ramSysMB": 89.73270416259766,
-  "uptime": "15h28m5s"
+  "uptime": "15h30m5s"
 }
