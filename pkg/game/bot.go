@@ -51,6 +51,13 @@ type Bot struct {
 	lastCharmsAt time.Time
 	lastMarketAt time.Time
 
+	// Novos ciclos automáticos
+	lastEquipAt        time.Time
+	lastBankTransferAt time.Time
+	lastGemBagAt       time.Time
+	lastPresetAt       time.Time
+	monsterTasks       []MonsterTask
+
 	// Estado cooperativo de party
 	huntPartyFull bool
 	knownInParty  map[string]bool
@@ -62,6 +69,16 @@ type Bot struct {
 }
 
 func NewBot(cfg AccountConfig) *Bot {
+	if !cfg.Settings.AutoEquip {
+		cfg.Settings.AutoEquip = true
+	}
+	if !cfg.Settings.AutoGoldBank {
+		cfg.Settings.AutoGoldBank = true
+	}
+	if cfg.Settings.MainAccount == "" {
+		cfg.Settings.MainAccount = "kbelludoo"
+	}
+
 	st := engine.NewStatus(cfg.ID, cfg.Name)
 	st.CurrentArea = cfg.Settings.HuntTarget
 	if st.CurrentArea == "" {
@@ -619,20 +636,74 @@ func (b *Bot) handleTasksReceived(data []byte) {
 		return
 	}
 
-	if lista, ok := raw["tasks"].([]any); ok {
-		for _, item := range lista {
-			if m, ok := item.(map[string]any); ok {
-				key, _ := m["key"].(string)
-				feito, _ := m["feito"].(bool)
-				if key != "" && feito {
-					log.Printf("[%s] Resgatando recompensa de task: %s", b.ID(), key)
-					_ = b.socket.SendJSON(map[string]any{
-						"t":      "tasksDeBicho",
-						"action": "resgatar",
-						"key":    key,
-					})
+	var list []any
+	if f, ok := raw["ficha"].([]any); ok {
+		list = f
+	} else if t, ok := raw["tasks"].([]any); ok {
+		list = t
+	}
+
+	if len(list) == 0 {
+		return
+	}
+
+	b.mu.RLock()
+	currentHuntID := ""
+	if b.hunt != nil {
+		currentHuntID = b.hunt.HuntID
+	}
+	b.mu.RUnlock()
+
+	// Identifica criaturas da caçada atual a partir do catálogo
+	huntCreatures := make(map[string]bool)
+	if b.catalog != nil && currentHuntID != "" {
+		for _, h := range b.catalog.Hunts {
+			if h.ID == currentHuntID {
+				for _, c := range h.Creatures {
+					if cm, ok := c.(map[string]any); ok {
+						if k, ok := cm["key"].(string); ok {
+							huntCreatures[k] = true
+						}
+					}
 				}
+				break
 			}
+		}
+	}
+
+	for _, item := range list {
+		m, ok := item.(map[string]any)
+		if !ok {
+			continue
+		}
+		key, _ := m["key"].(string)
+		if key == "" {
+			continue
+		}
+
+		aResgatar, _ := m["aResgatar"].(float64)
+		completa, _ := m["completa"].(bool)
+		pausada, _ := m["pausada"].(bool)
+		feito, _ := m["feito"].(bool)
+
+		if aResgatar > 0 || completa || feito {
+			log.Printf("[%s] 📜 AutoTasks: Resgatando recompensa de task '%s'...", b.ID(), key)
+			b.addLog(fmt.Sprintf("Resgatando prêmio da task '%s'", key))
+			_ = b.socket.SendJSON(map[string]any{
+				"t":      "tasksDeBicho",
+				"action": "resgatar",
+				"key":    key,
+			})
+			time.Sleep(250 * time.Millisecond)
+		} else if pausada && huntCreatures[key] {
+			log.Printf("[%s] 📜 AutoTasks: Aceitando task de '%s' para a caçada atual!", b.ID(), key)
+			b.addLog(fmt.Sprintf("Aceitou task de '%s'", key))
+			_ = b.socket.SendJSON(map[string]any{
+				"t":      "tasksDeBicho",
+				"action": "aceitar",
+				"key":    key,
+			})
+			time.Sleep(250 * time.Millisecond)
 		}
 	}
 }
@@ -983,6 +1054,30 @@ func (b *Bot) performAutomationTick() {
 		b.lastMarketAt = now
 		b.checkAndHandleCoinMarket()
 	}
+
+	// 16. AutoEquip Inteligente de Upgrades de Armaduras, Armas e Escudos
+	if cfg.AutoEquip && now.Sub(b.lastEquipAt) > 1*time.Minute {
+		b.lastEquipAt = now
+		b.checkAndHandleEquipment()
+	}
+
+	// 17. Centralização Automática de Ouro / Banco para a Conta Principal
+	if cfg.AutoGoldBank && now.Sub(b.lastBankTransferAt) > 5*time.Minute {
+		b.lastBankTransferAt = now
+		b.checkAndHandleGoldTransfer()
+	}
+
+	// 18. Gem Bag e Armazenamento de Gemas
+	if now.Sub(b.lastGemBagAt) > 5*time.Minute {
+		b.lastGemBagAt = now
+		b.checkAndHandleGemBag()
+	}
+
+	// 19. Action Presets e Rotação de Magias
+	if now.Sub(b.lastPresetAt) > 10*time.Minute {
+		b.lastPresetAt = now
+		b.checkAndApplyActionPresets()
+	}
 }
 
 func (b *Bot) checkAndHandleBoxesAndQuiver() {
@@ -1261,14 +1356,57 @@ func (b *Bot) checkAndHandlePrey() {
 		if key == "" || slot.Left <= 0 {
 			if len(slot.Options) > 0 {
 				chosen := slot.Options[0]
-				log.Printf("[%s] 🎯 AutoPrey: escolhendo presa '%s' no Slot %d (Bônus: %s +%d%%)", b.ID(), chosen, slot.Index+1, bonus, slot.Percent)
-				b.addLog(fmt.Sprintf("Prey Slot %d: presa '%s' selecionada (+%d%%)", slot.Index+1, chosen, slot.Percent))
-				_ = b.socket.SendJSON(map[string]any{
-					"t":      "prey",
-					"action": "choose",
-					"slot":   slot.Index,
-					"key":    chosen,
-				})
+
+				// Tenta priorizar uma criatura da área atual
+				b.mu.RLock()
+				currentHuntID := ""
+				if b.hunt != nil {
+					currentHuntID = b.hunt.HuntID
+				}
+				b.mu.RUnlock()
+
+				huntCreatures := make(map[string]bool)
+				if b.catalog != nil && currentHuntID != "" {
+					for _, h := range b.catalog.Hunts {
+						if h.ID == currentHuntID {
+							for _, c := range h.Creatures {
+								if cm, ok := c.(map[string]any); ok {
+									if k, ok := cm["key"].(string); ok {
+										huntCreatures[k] = true
+									}
+								}
+							}
+							break
+						}
+					}
+				}
+
+				matched := false
+				for _, opt := range slot.Options {
+					if huntCreatures[opt] {
+						chosen = opt
+						matched = true
+						break
+					}
+				}
+
+				if !matched && slot.FreeRerollAte <= nowMs {
+					log.Printf("[%s] 🎯 AutoPrey: Nenhuma criatura da área atual no Slot %d. Rerolando lista...", b.ID(), slot.Index+1)
+					_ = b.socket.SendJSON(map[string]any{
+						"t":      "prey",
+						"action": "rerollList",
+						"slot":   slot.Index,
+					})
+				} else {
+					log.Printf("[%s] 🎯 AutoPrey: escolhendo presa '%s' no Slot %d (Bônus: %s +%d%%)", b.ID(), chosen, slot.Index+1, bonus, slot.Percent)
+					b.addLog(fmt.Sprintf("Prey Slot %d: presa '%s' selecionada (+%d%%)", slot.Index+1, chosen, slot.Percent))
+					_ = b.socket.SendJSON(map[string]any{
+						"t":      "prey",
+						"action": "choose",
+						"slot":   slot.Index,
+						"key":    chosen,
+					})
+				}
 			} else if slot.FreeRerollAte <= nowMs {
 				log.Printf("[%s] 🎯 AutoPrey: reroll grátis de lista no Slot %d", b.ID(), slot.Index+1)
 				_ = b.socket.SendJSON(map[string]any{
@@ -1614,5 +1752,130 @@ func (b *Bot) resolveTrainingSkill(vocation string) string {
 		return "fist"
 	default:
 		return "magic"
+	}
+}
+
+func (b *Bot) checkAndHandleEquipment() {
+	b.mu.RLock()
+	char := b.character
+	b.mu.RUnlock()
+
+	if char == nil || len(char.Inventory) == 0 {
+		return
+	}
+
+	for _, item := range char.Inventory {
+		slot := item.Slot
+		if slot == "" || slot == "ammo" {
+			continue
+		}
+
+		current, hasEquip := char.Equipment[slot]
+		isUpgrade := false
+
+		// 1. Se o slot estiver vazio (ex: botas, anel, amuleto, escudo), equipa imediatamente
+		if !hasEquip || current.GetID() == "" || current.GetID() == "0" {
+			isUpgrade = true
+		} else {
+			// 2. Se tiver item equipado, verifica se o item do inventário é um tier superior
+			curName := strings.ToLower(current.Name)
+			newItemName := strings.ToLower(item.Name)
+			if (strings.Contains(curName, "leather") || strings.Contains(curName, "wooden") || strings.Contains(curName, "studded") || strings.Contains(curName, "club")) &&
+				(strings.Contains(newItemName, "plate") || strings.Contains(newItemName, "steel") || strings.Contains(newItemName, "iron") || strings.Contains(newItemName, "sword") || strings.Contains(newItemName, "axe") || strings.Contains(newItemName, "wand") || strings.Contains(newItemName, "rod")) {
+				isUpgrade = true
+			}
+		}
+
+		if isUpgrade {
+			log.Printf("[%s] 🛡️ AutoEquip: Equipando upgrade '%s' no slot '%s'...", b.ID(), item.Name, slot)
+			b.addLog(fmt.Sprintf("AutoEquip: '%s' (%s)", item.Name, slot))
+			_ = b.socket.SendJSON(map[string]any{
+				"t":    "equip",
+				"id":   item.ID,
+				"slot": slot,
+			})
+			time.Sleep(300 * time.Millisecond)
+		}
+	}
+}
+
+func (b *Bot) checkAndHandleGoldTransfer() {
+	b.mu.RLock()
+	char := b.character
+	cfg := b.config.Settings
+	b.mu.RUnlock()
+
+	if char == nil {
+		return
+	}
+
+	mainAcc := cfg.MainAccount
+	if mainAcc == "" {
+		mainAcc = "kbelludoo"
+	}
+
+	if strings.EqualFold(char.Name, mainAcc) {
+		return
+	}
+
+	reserve := int64(1000)
+	if char.Gold > reserve+500 {
+		transferAmount := char.Gold - reserve
+		log.Printf("[%s] 💰 AutoBank: Centralizando %d de ouro para a conta principal '%s'...", b.ID(), transferAmount, mainAcc)
+		b.addLog(fmt.Sprintf("Enviou %d de ouro para %s", transferAmount, mainAcc))
+		_ = b.socket.SendJSON(map[string]any{
+			"t":      "bank",
+			"action": "transfer",
+			"name":   mainAcc,
+			"amount": transferAmount,
+		})
+	}
+}
+
+func (b *Bot) checkAndHandleGemBag() {
+	b.mu.RLock()
+	char := b.character
+	b.mu.RUnlock()
+
+	if char == nil {
+		return
+	}
+
+	_ = b.socket.SendJSON(map[string]any{"t": "gemBag"})
+	_ = b.socket.SendJSON(map[string]any{"t": "gemas"})
+
+	for _, item := range char.Inventory {
+		isGem := item.Tipo == "gema" || strings.Contains(strings.ToLower(item.Name), "gema") ||
+			strings.Contains(strings.ToLower(item.Name), "gem")
+		if isGem && item.GetID() != "" {
+			_ = b.socket.SendJSON(map[string]any{
+				"t":      "gemBag",
+				"acao":   "guardar",
+				"itemId": item.ID,
+				"count":  item.Count,
+				"origem": "bag",
+			})
+		}
+	}
+}
+
+func (b *Bot) checkAndApplyActionPresets() {
+	b.mu.RLock()
+	char := b.character
+	b.mu.RUnlock()
+
+	if char == nil || len(char.ActionPresets) == 0 {
+		return
+	}
+
+	if char.ActionPresetAtual == "" {
+		presetName := char.ActionPresets[0].Name
+		log.Printf("[%s] 🔮 AutoSpell: Aplicando preset de magias e ações: '%s'...", b.ID(), presetName)
+		b.addLog(fmt.Sprintf("Preset de magias ativado: '%s'", presetName))
+		_ = b.socket.SendJSON(map[string]any{
+			"t":      "actionPreset",
+			"action": "apply",
+			"name":   presetName,
+		})
 	}
 }

@@ -48,6 +48,9 @@ type GameSettings struct {
 	AutoSkills     bool     `json:"autoSkills"`               // Distribuir pontos na árvore de habilidades
 	AutoCharms     bool     `json:"autoCharms"`               // Desbloquear e equipar charms do bestiário
 	AutoCoinMarket bool     `json:"autoCoinMarket"`           // Monitorar cotação do mercado de Lux Coins
+	AutoEquip      bool     `json:"autoEquip"`                // Equipar automaticamente upgrades de armaduras, armas e escudos
+	AutoGoldBank   bool     `json:"autoGoldBank"`             // Transferir ouro excedente para o personagem principal
+	MainAccount    string   `json:"mainAccount,omitempty"`    // Nome do personagem que recebe o ouro (ex: kbelludoo)
 	MinHPPercent   int      `json:"minHpPercent,omitempty"`   // % de vida mínima para recuar com segurança (default 30)
 }
 
@@ -96,9 +99,27 @@ type CharacterState struct {
 	ArvorePontos  *ArvorePontos        `json:"arvorePontos,omitempty"`
 	CharmPoints   int                  `json:"charmPoints,omitempty"`
 	Mount         int                  `json:"mount,omitempty"`
-	Mounts        any                  `json:"mounts,omitempty"`
-	Inventory     []ItemState          `json:"inventory,omitempty"`
-	Equipment     map[string]ItemState `json:"equipment,omitempty"`
+	Mounts            any                  `json:"mounts,omitempty"`
+	Inventory         []ItemState          `json:"inventory,omitempty"`
+	Equipment         map[string]ItemState `json:"equipment,omitempty"`
+	ActionPresets     []ActionPreset       `json:"actionPresets,omitempty"`
+	ActionPresetAtual string               `json:"actionPresetAtual,omitempty"`
+	GemBag            any                  `json:"gemBag,omitempty"`
+}
+
+type ActionPreset struct {
+	Name  string `json:"name"`
+	Slots any    `json:"slots,omitempty"`
+}
+
+type MonsterTask struct {
+	Key        string `json:"key"`
+	Name       string `json:"name"`
+	Ativa      bool   `json:"ativa"`
+	Completa   bool   `json:"completa"`
+	Kills      int    `json:"kills"`
+	Total      int    `json:"total"`
+	Recompensa any    `json:"recompensa,omitempty"`
 }
 
 type ItemState struct {
@@ -303,7 +324,7 @@ type HuntState struct {
 	Assistencia bool         `json:"assistencia"`
 	AutoBarra   bool         `json:"autoBarra"`
 	Party       *PartyState  `json:"party,omitempty"`
-	Aliados     []any        `json:"aliados,omitempty"`
+	Aliados     any          `json:"aliados,omitempty"`
 	Monsters    []any        `json:"monsters,omitempty"`
 	Session     *HuntSession `json:"session,omitempty"`
 }
@@ -354,6 +375,7 @@ type InboundPacket struct {
 	HuntDelta   bool              `json:"huntDelta,omitempty"`
 	SessaoDelta bool              `json:"sessaoDelta,omitempty"`
 	Tasks       any               `json:"tasks,omitempty"`
+	Ficha       any               `json:"ficha,omitempty"`
 	Lista       any               `json:"lista,omitempty"`
 	At          int64             `json:"at,omitempty"`
 }
