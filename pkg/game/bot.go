@@ -450,6 +450,7 @@ func (b *Bot) handleWelcomeReceived(p InboundPacket) {
 		b.status.Gold = p.Character.Gold
 		b.status.HP = p.Character.HP
 		b.status.Mana = p.Character.Mana
+		b.status.Stamina = p.Character.GetStaminaMinutes()
 
 		if p.Character.Derived != nil {
 			b.status.MaxHP = p.Character.Derived.MaxHP
@@ -554,6 +555,7 @@ func (b *Bot) handleStateReceived(p InboundPacket) {
 		b.status.HP = b.character.HP
 		b.status.Mana = b.character.Mana
 		b.status.Gold = b.character.Gold
+		b.status.Stamina = b.character.GetStaminaMinutes()
 
 		if b.character.Derived != nil {
 			b.status.MaxHP = b.character.Derived.MaxHP
@@ -731,7 +733,45 @@ func (b *Bot) performAutomationTick() {
 		b.checkAndTriggerBoss()
 	}
 
-	// 9. Caçada Automática (AutoHunt) vs Treino Online nos Dummies (AutoTraining)
+	// 9. Caçada Automática (AutoHunt) vs Treino nos Dummies / Regeneração de Stamina
+	staminaMin := char.GetStaminaMinutes()
+
+	// Se a stamina estiver zerada (0 min), para caçada e treina para regenerar até 12 horas
+	if staminaMin <= 0 && cfg.AutoHunt {
+		// 1. Tenta usar extensão de stamina caso disponível na mochila
+		_ = b.socket.SendJSON(map[string]any{
+			"t":    "autoStamina",
+			"acao": "usar",
+			"onde": "mochila",
+		})
+
+		// 2. Se estiver caçando, encerra a caçada para evitar 0 de XP
+		if hunt != nil {
+			log.Printf("[%s] ⏳ Stamina esgotada (0 min)! Parando caçada para regenerar...", b.ID())
+			b.addLog("Stamina zerada! Saindo da caçada para descansar e treinar.")
+			_ = b.socket.SendJSON(map[string]any{"t": "stopHunt"})
+			return
+		}
+
+		// 3. Na cidade: Inicia treino para evoluir perícias enquanto a stamina regenera
+		if now.Sub(b.lastTrainAt) > 2*time.Minute {
+			b.lastTrainAt = now
+			skill := b.resolveTrainingSkill(char.Vocation)
+			log.Printf("[%s] 🥋 Stamina zerada: Regenerando stamina enquanto treina '%s'...", b.ID(), skill)
+			b.addLog(fmt.Sprintf("Regenerando stamina enquanto treina (%s).", skill))
+			_ = b.socket.SendJSON(map[string]any{
+				"t":      "training",
+				"action": "start",
+				"mode":   "online",
+			})
+			b.updateStatus(func(s *engine.AccountStatus) {
+				s.Status = "treinando / regenerando stamina"
+				s.CurrentArea = "Pátio de Treino"
+			})
+		}
+		return
+	}
+
 	if cfg.AutoHunt {
 		if hunt == nil {
 			// Não está caçando. Inicia caçada no melhor mapa!
@@ -1559,4 +1599,20 @@ func generateActionToken(key string) string {
 		nowStr = nowStr[len(nowStr)-4:]
 	}
 	return randStr + nowStr
+}
+
+func (b *Bot) resolveTrainingSkill(vocation string) string {
+	voc := strings.ToLower(vocation)
+	switch {
+	case strings.Contains(voc, "knight"):
+		return "sword"
+	case strings.Contains(voc, "paladin"):
+		return "distance"
+	case strings.Contains(voc, "sorcerer"), strings.Contains(voc, "druid"):
+		return "magic"
+	case strings.Contains(voc, "monk"):
+		return "fist"
+	default:
+		return "magic"
+	}
 }

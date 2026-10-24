@@ -44,6 +44,7 @@ type AccountStatus struct {
 	MaxMana     int            `json:"maxMana"`
 	Gold        int64          `json:"gold"`
 	Kills       int            `json:"kills"`
+	Stamina     int            `json:"stamina"`     // Stamina restante em minutos
 	ExpPerHour  float64        `json:"expPerHour"`
 	Status      string         `json:"status"` // "hunting", "training", "idle", "reconnecting", "offline"
 	CurrentArea string         `json:"currentArea"`

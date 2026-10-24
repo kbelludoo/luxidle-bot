@@ -118,6 +118,24 @@ func (i ItemState) GetID() string {
 	return fmt.Sprintf("%v", i.ID)
 }
 
+func (c *CharacterState) GetStaminaMinutes() int {
+	if c == nil || c.Stamina == nil {
+		return 720
+	}
+	switch v := c.Stamina.(type) {
+	case float64:
+		return int(v)
+	case int:
+		return v
+	case string:
+		var n int
+		fmt.Sscanf(v, "%d", &n)
+		return n
+	default:
+		return 720
+	}
+}
+
 type ArvorePontos struct {
 	Livres int `json:"livres"`
 	Gastos int `json:"gastos"`
