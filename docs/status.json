@@ -2,7 +2,7 @@
   "accounts": [
     {
       "currentArea": "troll-cave",
-      "durationSec": 245,
+      "durationSec": 364,
       "expPerHour": 0,
       "gold": 519,
       "hp": 255,
@@ -14,20 +14,21 @@
         "[08:40:17] Aviso: você já pegou a recompensa de hoje",
         "[08:40:17] Aviso: nada para resgatar agora",
         "[08:40:17] Aviso: a bolsa já está vazia",
-        "[08:42:17] Aviso: a bolsa já está vazia"
+        "[08:42:17] Aviso: a bolsa já está vazia",
+        "[08:44:20] Aviso: a bolsa já está vazia"
       ],
       "mana": 70,
       "maxHp": 255,
       "maxMana": 70,
       "name": "Personagem #1",
-      "stamina": 175,
+      "stamina": 173,
       "status": "hunting",
-      "updatedAt": 1792831453548,
+      "updatedAt": 1792831573198,
       "vocation": "knight"
     },
     {
       "currentArea": "troll-cave",
-      "durationSec": 245,
+      "durationSec": 364,
       "expPerHour": 0,
       "gold": 997,
       "hp": 220,
@@ -43,20 +44,21 @@
         "[08:40:17] Aviso: Inverno sem fim não tem caminho até o começo",
         "[08:42:17] Aviso: a bolsa já está vazia",
         "[08:43:20] Árvore de Habilidades: +3 pontos distribuídos",
-        "[08:43:20] Aviso: Inverno sem fim não tem caminho até o começo"
+        "[08:43:20] Aviso: Inverno sem fim não tem caminho até o começo",
+        "[08:44:17] Aviso: a bolsa já está vazia"
       ],
       "mana": 455,
       "maxHp": 220,
       "maxMana": 455,
       "name": "Personagem #2",
-      "stamina": 175,
+      "stamina": 173,
       "status": "hunting",
-      "updatedAt": 1792831453452,
+      "updatedAt": 1792831573228,
       "vocation": "druid"
     },
     {
       "currentArea": "troll-cave",
-      "durationSec": 245,
+      "durationSec": 364,
       "expPerHour": 0,
       "gold": 623,
       "hp": 225,
@@ -76,20 +78,21 @@
         "[08:40:32] Aviso: Personagem #3 já está numa party",
         "[08:42:17] Aviso: a bolsa já está vazia",
         "[08:43:17] Árvore de Habilidades: +4 pontos distribuídos",
-        "[08:43:17] Aviso: Fim de tudo passa do máximo"
+        "[08:43:17] Aviso: Fim de tudo passa do máximo",
+        "[08:44:17] Aviso: a bolsa já está vazia"
       ],
       "mana": 485,
       "maxHp": 225,
       "maxMana": 485,
       "name": "Personagem #3",
-      "stamina": 175,
+      "stamina": 173,
       "status": "hunting",
-      "updatedAt": 1792831453550,
+      "updatedAt": 1792831573201,
       "vocation": "sorcerer"
     },
     {
       "currentArea": "troll-cave",
-      "durationSec": 245,
+      "durationSec": 364,
       "expPerHour": 0,
       "gold": 532,
       "hp": 270,
@@ -105,20 +108,21 @@
         "[08:40:15] Aviso: Julgamento não tem caminho até o começo",
         "[08:42:17] Aviso: a bolsa já está vazia",
         "[08:43:17] Árvore de Habilidades: +2 pontos distribuídos",
-        "[08:43:17] Aviso: Julgamento não tem caminho até o começo"
+        "[08:43:17] Aviso: Julgamento não tem caminho até o começo",
+        "[08:44:17] Aviso: a bolsa já está vazia"
       ],
       "mana": 215,
       "maxHp": 270,
       "maxMana": 215,
       "name": "Personagem #4",
-      "stamina": 175,
+      "stamina": 173,
       "status": "hunting",
-      "updatedAt": 1792831453453,
+      "updatedAt": 1792831573228,
       "vocation": "paladin"
     },
     {
       "currentArea": "troll-cave",
-      "durationSec": 245,
+      "durationSec": 364,
       "expPerHour": 0,
       "gold": 371,
       "hp": 280,
@@ -134,20 +138,21 @@
         "[08:40:15] Aviso: Mil mãos não tem caminho até o começo",
         "[08:42:17] Aviso: a bolsa já está vazia",
         "[08:43:17] Árvore de Habilidades: +1 pontos distribuídos",
-        "[08:43:17] Aviso: Mil mãos não tem caminho até o começo"
+        "[08:43:17] Aviso: Mil mãos não tem caminho até o começo",
+        "[08:44:17] Aviso: a bolsa já está vazia"
       ],
       "mana": 135,
       "maxHp": 280,
       "maxMana": 135,
       "name": "Personagem #5",
-      "stamina": 174,
+      "stamina": 172,
       "status": "hunting",
-      "updatedAt": 1792831453548,
+      "updatedAt": 1792831573199,
       "vocation": "monk"
     }
   ],
   "goroutines": 16,
-  "ramAllocMB": 3.4281234741210938,
+  "ramAllocMB": 2.8352432250976562,
   "ramSysMB": 57.09986114501953,
-  "uptime": "4m6s"
+  "uptime": "6m6s"
 }
