@@ -2,7 +2,7 @@
   "accounts": [
     {
       "currentArea": "troll-cave",
-      "durationSec": 24,
+      "durationSec": 146,
       "expPerHour": 0,
       "gold": 26396,
       "hp": 300,
@@ -14,20 +14,21 @@
         "[14:31:57] Entrando na caçada da party com 'Personagem #1' em 'Troll Cave'",
         "[14:31:59] Aviso: você já pegou a recompensa de hoje",
         "[14:31:59] Aviso: nada para resgatar agora",
-        "[14:31:59] Aviso: a bolsa já está vazia"
+        "[14:31:59] Aviso: a bolsa já está vazia",
+        "[14:33:59] Aviso: a bolsa já está vazia"
       ],
       "mana": 85,
       "maxHp": 300,
       "maxMana": 85,
       "name": "Personagem #1",
-      "stamina": 69,
+      "stamina": 67,
       "status": "hunting",
-      "updatedAt": 1792852335278,
+      "updatedAt": 1792852456880,
       "vocation": "knight"
     },
     {
       "currentArea": "troll-cave",
-      "durationSec": 24,
+      "durationSec": 146,
       "expPerHour": 0,
       "gold": 1387,
       "hp": 230,
@@ -39,20 +40,21 @@
         "[14:31:56] Entrando na caçada da party com 'Personagem #2' em 'Troll Cave'",
         "[14:31:56] Aviso: você já pegou a recompensa de hoje",
         "[14:31:56] Aviso: nada para resgatar agora",
-        "[14:31:56] Aviso: a bolsa já está vazia"
+        "[14:31:56] Aviso: a bolsa já está vazia",
+        "[14:33:59] Aviso: a bolsa já está vazia"
       ],
       "mana": 515,
       "maxHp": 230,
       "maxMana": 515,
       "name": "Personagem #2",
-      "stamina": 69,
+      "stamina": 67,
       "status": "hunting",
-      "updatedAt": 1792852335279,
+      "updatedAt": 1792852456880,
       "vocation": "druid"
     },
     {
       "currentArea": "troll-cave",
-      "durationSec": 24,
+      "durationSec": 146,
       "expPerHour": 0,
       "gold": 1377,
       "hp": 235,
@@ -69,20 +71,21 @@
         "[14:32:11] Aviso: Personagem #3 já está numa party",
         "[14:32:11] Aviso: Personagem #3 já está numa party",
         "[14:32:11] Aviso: Personagem #3 já está numa party",
-        "[14:32:11] Aviso: Personagem #3 já está numa party"
+        "[14:32:11] Aviso: Personagem #3 já está numa party",
+        "[14:33:56] Aviso: a bolsa já está vazia"
       ],
       "mana": 545,
       "maxHp": 235,
       "maxMana": 545,
       "name": "Personagem #3",
-      "stamina": 67,
+      "stamina": 65,
       "status": "hunting",
-      "updatedAt": 1792852335228,
+      "updatedAt": 1792852456880,
       "vocation": "sorcerer"
     },
     {
       "currentArea": "troll-cave",
-      "durationSec": 24,
+      "durationSec": 146,
       "expPerHour": 0,
       "gold": 1011,
       "hp": 280,
@@ -93,20 +96,21 @@
         "Entrou no jogo como Personagem #4 (Level 14 paladin)",
         "[14:31:56] Aviso: você já pegou a recompensa de hoje",
         "[14:31:56] Aviso: nada para resgatar agora",
-        "[14:31:56] Aviso: a bolsa já está vazia"
+        "[14:31:56] Aviso: a bolsa já está vazia",
+        "[14:33:59] Aviso: a bolsa já está vazia"
       ],
       "mana": 230,
       "maxHp": 280,
       "maxMana": 230,
       "name": "Personagem #4",
-      "stamina": 70,
+      "stamina": 68,
       "status": "hunting",
-      "updatedAt": 1792852335279,
+      "updatedAt": 1792852456880,
       "vocation": "paladin"
     },
     {
       "currentArea": "troll-cave",
-      "durationSec": 24,
+      "durationSec": 146,
       "expPerHour": 0,
       "gold": 1081,
       "hp": 280,
@@ -117,20 +121,21 @@
         "Entrou no jogo como Personagem #5 (Level 11 monk)",
         "[14:31:56] Aviso: você já pegou a recompensa de hoje",
         "[14:31:56] Aviso: nada para resgatar agora",
-        "[14:31:57] Aviso: a bolsa já está vazia"
+        "[14:31:57] Aviso: a bolsa já está vazia",
+        "[14:33:59] Aviso: a bolsa já está vazia"
       ],
       "mana": 135,
       "maxHp": 280,
       "maxMana": 135,
       "name": "Personagem #5",
-      "stamina": 67,
+      "stamina": 65,
       "status": "hunting",
-      "updatedAt": 1792852335279,
+      "updatedAt": 1792852456880,
       "vocation": "monk"
     }
   ],
   "goroutines": 16,
-  "ramAllocMB": 2.6952667236328125,
+  "ramAllocMB": 3.8935470581054688,
   "ramSysMB": 57.166282653808594,
-  "uptime": "25s"
+  "uptime": "2m27s"
 }
