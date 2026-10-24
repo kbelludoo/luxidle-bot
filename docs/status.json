@@ -2,7 +2,7 @@
   "accounts": [
     {
       "currentArea": "troll-cave",
-      "durationSec": 31,
+      "durationSec": 124,
       "expPerHour": 0,
       "gold": 519,
       "hp": 255,
@@ -19,14 +19,14 @@
       "maxHp": 255,
       "maxMana": 70,
       "name": "Personagem #1",
-      "stamina": 355,
+      "stamina": 353,
       "status": "hunting",
-      "updatedAt": 1792820682178,
+      "updatedAt": 1792820774675,
       "vocation": "knight"
     },
     {
       "currentArea": "troll-cave",
-      "durationSec": 31,
+      "durationSec": 124,
       "expPerHour": 0,
       "gold": 997,
       "hp": 220,
@@ -45,14 +45,14 @@
       "maxHp": 220,
       "maxMana": 455,
       "name": "Personagem #2",
-      "stamina": 354,
+      "stamina": 353,
       "status": "hunting",
-      "updatedAt": 1792820682179,
+      "updatedAt": 1792820774689,
       "vocation": "druid"
     },
     {
       "currentArea": "troll-cave",
-      "durationSec": 31,
+      "durationSec": 124,
       "expPerHour": 0,
       "gold": 623,
       "hp": 225,
@@ -75,14 +75,14 @@
       "maxHp": 225,
       "maxMana": 485,
       "name": "Personagem #3",
-      "stamina": 354,
+      "stamina": 353,
       "status": "hunting",
-      "updatedAt": 1792820682178,
+      "updatedAt": 1792820774678,
       "vocation": "sorcerer"
     },
     {
       "currentArea": "troll-cave",
-      "durationSec": 31,
+      "durationSec": 124,
       "expPerHour": 0,
       "gold": 472,
       "hp": 270,
@@ -101,14 +101,14 @@
       "maxHp": 270,
       "maxMana": 215,
       "name": "Personagem #4",
-      "stamina": 355,
+      "stamina": 353,
       "status": "hunting",
-      "updatedAt": 1792820682178,
+      "updatedAt": 1792820774690,
       "vocation": "paladin"
     },
     {
       "currentArea": "troll-cave",
-      "durationSec": 31,
+      "durationSec": 124,
       "expPerHour": 0,
       "gold": 371,
       "hp": 280,
@@ -128,14 +128,14 @@
       "maxHp": 280,
       "maxMana": 135,
       "name": "Personagem #5",
-      "stamina": 354,
+      "stamina": 352,
       "status": "hunting",
-      "updatedAt": 1792820682178,
+      "updatedAt": 1792820774676,
       "vocation": "monk"
     }
   ],
   "goroutines": 16,
-  "ramAllocMB": 3.3011093139648438,
+  "ramAllocMB": 3.840850830078125,
   "ramSysMB": 85.23270416259766,
-  "uptime": "33s"
+  "uptime": "2m6s"
 }
