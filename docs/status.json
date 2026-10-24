@@ -2,7 +2,7 @@
   "accounts": [
     {
       "currentArea": "troll-cave",
-      "durationSec": 606,
+      "durationSec": 727,
       "expPerHour": 0,
       "gold": 26396,
       "hp": 300,
@@ -10,7 +10,6 @@
       "kills": 0,
       "level": 11,
       "logs": [
-        "[13:38:09] Aviso: entre com um personagem primeiro",
         "Entrou no jogo como Personagem #1 (Level 11 knight)",
         "[13:38:27] Aviso: a bolsa já está vazia",
         "[13:40:26] Aviso: a bolsa já está vazia",
@@ -26,20 +25,21 @@
         "[13:46:26] Aviso: nada para resgatar agora",
         "[13:46:29] Aviso: a bolsa já está vazia",
         "[13:47:11] Árvore de Habilidades: +1 pontos distribuídos",
-        "[13:47:12] Aviso: Muralha viva não tem caminho até o começo"
+        "[13:47:12] Aviso: Muralha viva não tem caminho até o começo",
+        "[13:48:32] Aviso: a bolsa já está vazia"
       ],
       "mana": 85,
       "maxHp": 300,
       "maxMana": 85,
       "name": "Personagem #1",
-      "stamina": 112,
+      "stamina": 110,
       "status": "hunting",
-      "updatedAt": 1792849692588,
+      "updatedAt": 1792849813270,
       "vocation": "knight"
     },
     {
       "currentArea": "troll-cave",
-      "durationSec": 606,
+      "durationSec": 727,
       "expPerHour": 3262.180820641586,
       "gold": 1387,
       "hp": 230,
@@ -47,7 +47,6 @@
       "kills": 0,
       "level": 17,
       "logs": [
-        "[13:38:29] Aviso: a bolsa já está vazia",
         "[13:40:29] Aviso: a bolsa já está vazia",
         "[13:41:14] Árvore de Habilidades: +4 pontos distribuídos",
         "[13:41:14] Aviso: Inverno sem fim passa do máximo",
@@ -63,20 +62,21 @@
         "[13:46:20] Aviso: nada para resgatar agora",
         "[13:46:38] Aviso: a bolsa já está vazia",
         "[13:47:17] Árvore de Habilidades: +4 pontos distribuídos",
-        "[13:47:17] Aviso: Inverno sem fim passa do máximo"
+        "[13:47:17] Aviso: Inverno sem fim passa do máximo",
+        "[13:48:38] Aviso: a bolsa já está vazia"
       ],
       "mana": 515,
       "maxHp": 230,
       "maxMana": 515,
       "name": "Personagem #2",
-      "stamina": 113,
+      "stamina": 111,
       "status": "hunting",
-      "updatedAt": 1792849692583,
+      "updatedAt": 1792849813265,
       "vocation": "druid"
     },
     {
       "currentArea": "troll-cave",
-      "durationSec": 606,
+      "durationSec": 727,
       "expPerHour": 2729.174697063262,
       "gold": 1377,
       "hp": 235,
@@ -84,7 +84,6 @@
       "kills": 0,
       "level": 18,
       "logs": [
-        "[13:42:05] Prey Slot 1: presa 'lizard-high-guard' selecionada (+31%)",
         "[13:42:05] Prey Slot 2: presa 'demon-outcast' selecionada (+34%)",
         "[13:42:23] Aviso: Personagem #3 já está na sua caçada",
         "[13:42:23] Aviso: Personagem #3 já está na sua caçada",
@@ -100,20 +99,21 @@
         "[13:46:26] Aviso: nada para resgatar agora",
         "[13:46:53] Aviso: a bolsa já está vazia",
         "[13:47:23] Árvore de Habilidades: +5 pontos distribuídos",
-        "[13:47:24] Aviso: Fim de tudo passa do máximo"
+        "[13:47:24] Aviso: Fim de tudo passa do máximo",
+        "[13:48:56] Aviso: a bolsa já está vazia"
       ],
       "mana": 545,
       "maxHp": 235,
       "maxMana": 545,
       "name": "Personagem #3",
-      "stamina": 111,
+      "stamina": 109,
       "status": "hunting",
-      "updatedAt": 1792849692583,
+      "updatedAt": 1792849813265,
       "vocation": "sorcerer"
     },
     {
       "currentArea": "troll-cave",
-      "durationSec": 606,
+      "durationSec": 727,
       "expPerHour": 1952.4234107944715,
       "gold": 1011,
       "hp": 280,
@@ -121,7 +121,6 @@
       "kills": 0,
       "level": 14,
       "logs": [
-        "[13:40:29] Aviso: a bolsa já está vazia",
         "[13:41:14] Árvore de Habilidades: +3 pontos distribuídos",
         "[13:41:15] Aviso: Julgamento não tem caminho até o começo",
         "[13:42:08] Migrando caçada de 'troll-cave' para 'amazon-camp'",
@@ -137,20 +136,21 @@
         "[13:46:23] Aviso: nada para resgatar agora",
         "[13:46:35] Aviso: a bolsa já está vazia",
         "[13:47:17] Árvore de Habilidades: +3 pontos distribuídos",
-        "[13:47:18] Aviso: Julgamento não tem caminho até o começo"
+        "[13:47:18] Aviso: Julgamento não tem caminho até o começo",
+        "[13:48:35] Aviso: a bolsa já está vazia"
       ],
       "mana": 230,
       "maxHp": 280,
       "maxMana": 230,
       "name": "Personagem #4",
-      "stamina": 114,
+      "stamina": 112,
       "status": "hunting",
-      "updatedAt": 1792849692586,
+      "updatedAt": 1792849813268,
       "vocation": "paladin"
     },
     {
       "currentArea": "troll-cave",
-      "durationSec": 606,
+      "durationSec": 727,
       "expPerHour": 0,
       "gold": 1081,
       "hp": 280,
@@ -158,9 +158,6 @@
       "kills": 0,
       "level": 11,
       "logs": [
-        "[13:38:09] Aviso: entre com um personagem primeiro",
-        "Entrou no jogo como Personagem #5 (Level 11 monk)",
-        "[13:38:27] Aviso: a bolsa já está vazia",
         "[13:40:29] Aviso: a bolsa já está vazia",
         "[13:40:56] Árvore de Habilidades: +1 pontos distribuídos",
         "[13:40:57] Aviso: Mil mãos não tem caminho até o começo",
@@ -174,20 +171,23 @@
         "[13:46:23] Aviso: nada para resgatar agora",
         "[13:46:35] Aviso: a bolsa já está vazia",
         "[13:46:56] Árvore de Habilidades: +1 pontos distribuídos",
-        "[13:46:57] Aviso: Mil mãos não tem caminho até o começo"
+        "[13:46:57] Aviso: Mil mãos não tem caminho até o começo",
+        "[13:48:35] Aviso: a bolsa já está vazia",
+        "[13:49:59] Árvore de Habilidades: +1 pontos distribuídos",
+        "[13:50:00] Aviso: Mil mãos não tem caminho até o começo"
       ],
       "mana": 135,
       "maxHp": 280,
       "maxMana": 135,
       "name": "Personagem #5",
-      "stamina": 111,
+      "stamina": 109,
       "status": "hunting",
-      "updatedAt": 1792849692587,
+      "updatedAt": 1792849813268,
       "vocation": "monk"
     }
   ],
   "goroutines": 16,
-  "ramAllocMB": 3.745208740234375,
+  "ramAllocMB": 3.8634872436523438,
   "ramSysMB": 69.4162826538086,
-  "uptime": "1h47m6s"
+  "uptime": "1h49m7s"
 }
