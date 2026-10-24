@@ -2,7 +2,7 @@
   "accounts": [
     {
       "currentArea": "troll-cave",
-      "durationSec": 7323,
+      "durationSec": 7443,
       "expPerHour": 0,
       "gold": 519,
       "hp": 255,
@@ -10,7 +10,6 @@
       "kills": 0,
       "level": 8,
       "logs": [
-        "[07:29:34] Aviso: você já pegou a recompensa de hoje",
         "[07:29:34] Aviso: nada para resgatar agora",
         "[07:29:43] Aviso: a bolsa já está vazia",
         "[07:31:46] Aviso: a bolsa já está vazia",
@@ -24,20 +23,21 @@
         "[07:43:49] Aviso: a bolsa já está vazia",
         "[07:44:37] Aviso: você já pegou a recompensa de hoje",
         "[07:44:37] Aviso: nada para resgatar agora",
-        "[07:45:52] Aviso: a bolsa já está vazia"
+        "[07:45:52] Aviso: a bolsa já está vazia",
+        "[07:47:55] Aviso: a bolsa já está vazia"
       ],
       "mana": 70,
       "maxHp": 255,
       "maxMana": 70,
       "name": "Personagem #1",
-      "stamina": 233,
+      "stamina": 231,
       "status": "hunting",
-      "updatedAt": 1792827973745,
+      "updatedAt": 1792828093570,
       "vocation": "knight"
     },
     {
       "currentArea": "troll-cave",
-      "durationSec": 7323,
+      "durationSec": 7443,
       "expPerHour": 120.98211329597065,
       "gold": 997,
       "hp": 220,
@@ -45,7 +45,6 @@
       "kills": 0,
       "level": 15,
       "logs": [
-        "[07:40:13] Entrando na caçada da party com 'Personagem #2' em 'Troll Cave'",
         "[07:40:25] Migrando caçada de 'troll-cave' para 'dark-pyramid'",
         "[07:40:25] Iniciando caçada em 'dark-pyramid'",
         "[07:40:31] Entrando na caçada da party com 'Personagem #2' em 'Troll Cave'",
@@ -59,20 +58,21 @@
         "[07:44:40] Aviso: nada para resgatar agora",
         "[07:45:31] Árvore de Habilidades: +3 pontos distribuídos",
         "[07:45:31] Aviso: Inverno sem fim não tem caminho até o começo",
-        "[07:46:07] Aviso: a bolsa já está vazia"
+        "[07:46:07] Aviso: a bolsa já está vazia",
+        "[07:48:07] Aviso: a bolsa já está vazia"
       ],
       "mana": 455,
       "maxHp": 220,
       "maxMana": 455,
       "name": "Personagem #2",
-      "stamina": 233,
+      "stamina": 231,
       "status": "hunting",
-      "updatedAt": 1792827973655,
+      "updatedAt": 1792828093603,
       "vocation": "druid"
     },
     {
       "currentArea": "troll-cave",
-      "durationSec": 7323,
+      "durationSec": 7443,
       "expPerHour": 0,
       "gold": 623,
       "hp": 225,
@@ -80,7 +80,6 @@
       "kills": 0,
       "level": 16,
       "logs": [
-        "[07:39:55] Prey Slot 1: presa 'vexclaw' selecionada (+31%)",
         "[07:39:55] Prey Slot 2: presa 'cobra-scout' selecionada (+34%)",
         "[07:40:13] Aviso: a bolsa já está vazia",
         "[07:40:13] Aviso: Personagem #3 já está na sua caçada",
@@ -94,20 +93,21 @@
         "[07:44:40] Aviso: você já pegou a recompensa de hoje",
         "[07:44:40] Aviso: nada para resgatar agora",
         "[07:45:31] Árvore de Habilidades: +4 pontos distribuídos",
-        "[07:45:31] Aviso: Fim de tudo passa do máximo"
+        "[07:45:31] Aviso: Fim de tudo passa do máximo",
+        "[07:46:19] Aviso: a bolsa já está vazia"
       ],
       "mana": 485,
       "maxHp": 225,
       "maxMana": 485,
       "name": "Personagem #3",
-      "stamina": 233,
+      "stamina": 231,
       "status": "hunting",
-      "updatedAt": 1792827973747,
+      "updatedAt": 1792828093573,
       "vocation": "sorcerer"
     },
     {
       "currentArea": "troll-cave",
-      "durationSec": 7323,
+      "durationSec": 7443,
       "expPerHour": 72.38354795218089,
       "gold": 532,
       "hp": 270,
@@ -115,7 +115,6 @@
       "kills": 0,
       "level": 13,
       "logs": [
-        "[07:40:13] Entrando na caçada da party com 'Personagem #4' em 'Troll Cave'",
         "[07:40:28] Migrando caçada de 'troll-cave' para 'amazon-camp'",
         "[07:40:28] Iniciando caçada em 'amazon-camp'",
         "[07:40:31] Entrando na caçada da party com 'Personagem #4' em 'Troll Cave'",
@@ -129,20 +128,21 @@
         "[07:44:37] Aviso: nada para resgatar agora",
         "[07:45:37] Árvore de Habilidades: +2 pontos distribuídos",
         "[07:45:37] Aviso: Julgamento não tem caminho até o começo",
-        "[07:46:10] Aviso: a bolsa já está vazia"
+        "[07:46:10] Aviso: a bolsa já está vazia",
+        "[07:48:13] Aviso: a bolsa já está vazia"
       ],
       "mana": 215,
       "maxHp": 270,
       "maxMana": 215,
       "name": "Personagem #4",
-      "stamina": 233,
+      "stamina": 231,
       "status": "hunting",
-      "updatedAt": 1792827973655,
+      "updatedAt": 1792828093615,
       "vocation": "paladin"
     },
     {
       "currentArea": "troll-cave",
-      "durationSec": 7323,
+      "durationSec": 7443,
       "expPerHour": 0,
       "gold": 371,
       "hp": 280,
@@ -150,7 +150,6 @@
       "kills": 0,
       "level": 11,
       "logs": [
-        "[07:38:01] Aviso: a bolsa já está vazia",
         "[07:39:46] Árvore de Habilidades: +1 pontos distribuídos",
         "[07:39:46] Aviso: Mil mãos não tem caminho até o começo",
         "[07:40:04] Aviso: a bolsa já está vazia",
@@ -164,20 +163,21 @@
         "[07:44:43] Aviso: nada para resgatar agora",
         "[07:45:49] Árvore de Habilidades: +1 pontos distribuídos",
         "[07:45:49] Aviso: Mil mãos não tem caminho até o começo",
-        "[07:46:04] Aviso: a bolsa já está vazia"
+        "[07:46:04] Aviso: a bolsa já está vazia",
+        "[07:48:07] Aviso: a bolsa já está vazia"
       ],
       "mana": 135,
       "maxHp": 280,
       "maxMana": 135,
       "name": "Personagem #5",
-      "stamina": 232,
+      "stamina": 230,
       "status": "hunting",
-      "updatedAt": 1792827973745,
+      "updatedAt": 1792828093571,
       "vocation": "monk"
     }
   ],
   "goroutines": 16,
-  "ramAllocMB": 2.3554534912109375,
+  "ramAllocMB": 2.682464599609375,
   "ramSysMB": 85.48270416259766,
-  "uptime": "2h2m5s"
+  "uptime": "2h4m5s"
 }
