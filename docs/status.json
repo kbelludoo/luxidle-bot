@@ -2,7 +2,7 @@
   "accounts": [
     {
       "currentArea": "troll-cave",
-      "durationSec": 262,
+      "durationSec": 383,
       "expPerHour": 0,
       "gold": 26396,
       "hp": 300,
@@ -16,20 +16,21 @@
         "[14:31:59] Aviso: nada para resgatar agora",
         "[14:31:59] Aviso: a bolsa já está vazia",
         "[14:33:59] Aviso: a bolsa já está vazia",
-        "[14:35:59] Aviso: a bolsa já está vazia"
+        "[14:35:59] Aviso: a bolsa já está vazia",
+        "[14:38:02] Aviso: a bolsa já está vazia"
       ],
       "mana": 85,
       "maxHp": 300,
       "maxMana": 85,
       "name": "Personagem #1",
-      "stamina": 65,
+      "stamina": 63,
       "status": "hunting",
-      "updatedAt": 1792852573362,
+      "updatedAt": 1792852694333,
       "vocation": "knight"
     },
     {
       "currentArea": "troll-cave",
-      "durationSec": 262,
+      "durationSec": 383,
       "expPerHour": 0,
       "gold": 1387,
       "hp": 230,
@@ -43,20 +44,21 @@
         "[14:31:56] Aviso: nada para resgatar agora",
         "[14:31:56] Aviso: a bolsa já está vazia",
         "[14:33:59] Aviso: a bolsa já está vazia",
-        "[14:35:59] Aviso: a bolsa já está vazia"
+        "[14:35:59] Aviso: a bolsa já está vazia",
+        "[14:38:02] Aviso: a bolsa já está vazia"
       ],
       "mana": 515,
       "maxHp": 230,
       "maxMana": 515,
       "name": "Personagem #2",
-      "stamina": 65,
+      "stamina": 63,
       "status": "hunting",
-      "updatedAt": 1792852573360,
+      "updatedAt": 1792852694332,
       "vocation": "druid"
     },
     {
       "currentArea": "troll-cave",
-      "durationSec": 262,
+      "durationSec": 383,
       "expPerHour": 0,
       "gold": 1377,
       "hp": 235,
@@ -75,20 +77,21 @@
         "[14:32:11] Aviso: Personagem #3 já está numa party",
         "[14:32:11] Aviso: Personagem #3 já está numa party",
         "[14:33:56] Aviso: a bolsa já está vazia",
-        "[14:35:59] Aviso: a bolsa já está vazia"
+        "[14:35:59] Aviso: a bolsa já está vazia",
+        "[14:37:59] Aviso: a bolsa já está vazia"
       ],
       "mana": 545,
       "maxHp": 235,
       "maxMana": 545,
       "name": "Personagem #3",
-      "stamina": 63,
+      "stamina": 61,
       "status": "hunting",
-      "updatedAt": 1792852573358,
+      "updatedAt": 1792852694454,
       "vocation": "sorcerer"
     },
     {
       "currentArea": "troll-cave",
-      "durationSec": 262,
+      "durationSec": 383,
       "expPerHour": 0,
       "gold": 1011,
       "hp": 280,
@@ -101,20 +104,21 @@
         "[14:31:56] Aviso: nada para resgatar agora",
         "[14:31:56] Aviso: a bolsa já está vazia",
         "[14:33:59] Aviso: a bolsa já está vazia",
-        "[14:36:02] Aviso: a bolsa já está vazia"
+        "[14:36:02] Aviso: a bolsa já está vazia",
+        "[14:38:02] Aviso: a bolsa já está vazia"
       ],
       "mana": 230,
       "maxHp": 280,
       "maxMana": 230,
       "name": "Personagem #4",
-      "stamina": 66,
+      "stamina": 64,
       "status": "hunting",
-      "updatedAt": 1792852573361,
+      "updatedAt": 1792852694331,
       "vocation": "paladin"
     },
     {
       "currentArea": "troll-cave",
-      "durationSec": 262,
+      "durationSec": 383,
       "expPerHour": 0,
       "gold": 1081,
       "hp": 280,
@@ -127,20 +131,21 @@
         "[14:31:56] Aviso: nada para resgatar agora",
         "[14:31:57] Aviso: a bolsa já está vazia",
         "[14:33:59] Aviso: a bolsa já está vazia",
-        "[14:35:59] Aviso: a bolsa já está vazia"
+        "[14:35:59] Aviso: a bolsa já está vazia",
+        "[14:38:02] Aviso: a bolsa já está vazia"
       ],
       "mana": 135,
       "maxHp": 280,
       "maxMana": 135,
       "name": "Personagem #5",
-      "stamina": 63,
+      "stamina": 61,
       "status": "hunting",
-      "updatedAt": 1792852573361,
+      "updatedAt": 1792852694332,
       "vocation": "monk"
     }
   ],
   "goroutines": 16,
-  "ramAllocMB": 3.4460678100585938,
+  "ramAllocMB": 2.8775177001953125,
   "ramSysMB": 57.166282653808594,
-  "uptime": "4m23s"
+  "uptime": "6m24s"
 }
