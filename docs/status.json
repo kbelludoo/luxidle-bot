@@ -1,13 +1,13 @@
 {
   "accounts": [
     {
-      "currentArea": "",
-      "durationSec": 10940,
-      "expPerHour": 34895.9177263469,
-      "gold": 36859,
+      "currentArea": "troll-cave",
+      "durationSec": 11056,
+      "expPerHour": 34994.7126328133,
+      "gold": 36888,
       "hp": 495,
       "id": "acc-1",
-      "kills": 2525,
+      "kills": 2559,
       "level": 24,
       "logs": [
         "[17:22:15] Aviso: a bolsa já está vazia",
@@ -26,26 +26,25 @@
         "[17:58:27] Aviso: você já pegou a recompensa de hoje",
         "[17:58:27] Aviso: nada para resgatar agora"
       ],
-      "mana": 143,
+      "mana": 146,
       "maxHp": 495,
       "maxMana": 150,
       "name": "Personagem #1",
-      "stamina": 102,
+      "stamina": 100,
       "status": "hunting",
-      "updatedAt": 1792864818014,
+      "updatedAt": 1792864934030,
       "vocation": "knight"
     },
     {
       "currentArea": "",
-      "durationSec": 10940,
-      "expPerHour": 42386.45064366382,
-      "gold": 1356,
-      "hp": 274,
+      "durationSec": 11056,
+      "expPerHour": 42516.04685590659,
+      "gold": 1447,
+      "hp": 275,
       "id": "acc-2",
-      "kills": 3067,
+      "kills": 3109,
       "level": 26,
       "logs": [
-        "[17:20:06] Aviso: a bolsa já está vazia",
         "[17:24:09] Aviso: a bolsa já está vazia",
         "[17:28:21] Aviso: você já pegou a recompensa de hoje",
         "[17:28:21] Aviso: nada para resgatar agora",
@@ -59,20 +58,21 @@
         "[17:54:06] Enviou 651 de ouro para Personagem #2",
         "[17:56:57] Prey Slot 2: presa 'blood-priest' selecionada (+40%)",
         "[17:58:27] Aviso: você já pegou a recompensa de hoje",
-        "[17:58:27] Aviso: nada para resgatar agora"
+        "[17:58:27] Aviso: nada para resgatar agora",
+        "[18:00:48] Aviso: a bolsa já está vazia"
       ],
-      "mana": 782,
+      "mana": 783,
       "maxHp": 275,
       "maxMana": 785,
       "name": "Personagem #2",
-      "stamina": 102,
+      "stamina": 100,
       "status": "hunting",
-      "updatedAt": 1792864818013,
+      "updatedAt": 1792864934029,
       "vocation": "druid"
     },
     {
       "currentArea": "troll-cave",
-      "durationSec": 10940,
+      "durationSec": 11056,
       "expPerHour": 204192.97459428397,
       "gold": 1208,
       "hp": 240,
@@ -80,7 +80,6 @@
       "kills": 786,
       "level": 19,
       "logs": [
-        "[17:38:30] Aviso: a bolsa já está vazia",
         "[17:40:33] Aviso: a bolsa já está vazia",
         "[17:42:36] Aviso: a bolsa já está vazia",
         "[17:43:21] Aviso: você já pegou a recompensa de hoje",
@@ -94,25 +93,26 @@
         "[17:56:45] Aviso: a bolsa já está vazia",
         "[17:58:21] Aviso: você já pegou a recompensa de hoje",
         "[17:58:21] Aviso: nada para resgatar agora",
-        "[17:58:45] Aviso: a bolsa já está vazia"
+        "[17:58:45] Aviso: a bolsa já está vazia",
+        "[18:00:45] Aviso: a bolsa já está vazia"
       ],
       "mana": 575,
       "maxHp": 240,
       "maxMana": 575,
       "name": "Personagem #3",
-      "stamina": 396,
+      "stamina": 400,
       "status": "idle (cidade)",
-      "updatedAt": 1792864818014,
+      "updatedAt": 1792864934026,
       "vocation": "sorcerer"
     },
     {
       "currentArea": "troll-cave",
-      "durationSec": 10940,
-      "expPerHour": 39138.7040873725,
-      "gold": 1334,
+      "durationSec": 11056,
+      "expPerHour": 39343.41174172923,
+      "gold": 1385,
       "hp": 390,
       "id": "acc-4",
-      "kills": 2832,
+      "kills": 2877,
       "level": 25,
       "logs": [
         "[17:01:54] Aviso: a bolsa já está vazia",
@@ -131,23 +131,23 @@
         "[17:58:18] Aviso: você já pegou a recompensa de hoje",
         "[17:58:18] Aviso: nada para resgatar agora"
       ],
-      "mana": 386,
+      "mana": 387,
       "maxHp": 390,
       "maxMana": 395,
       "name": "Personagem #4",
-      "stamina": 103,
+      "stamina": 101,
       "status": "hunting",
-      "updatedAt": 1792864818017,
+      "updatedAt": 1792864934031,
       "vocation": "paladin"
     },
     {
       "currentArea": "troll-cave",
-      "durationSec": 10940,
-      "expPerHour": 33831.474680701336,
-      "gold": 1017,
+      "durationSec": 11056,
+      "expPerHour": 34023.49373947775,
+      "gold": 1097,
       "hp": 436,
       "id": "acc-5",
-      "kills": 2448,
+      "kills": 2488,
       "level": 23,
       "logs": [
         "[17:11:57] Aviso: a bolsa já está vazia",
@@ -170,14 +170,14 @@
       "maxHp": 436,
       "maxMana": 255,
       "name": "Personagem #5",
-      "stamina": 99,
+      "stamina": 97,
       "status": "hunting",
-      "updatedAt": 1792864818014,
+      "updatedAt": 1792864934028,
       "vocation": "monk"
     }
   ],
   "goroutines": 16,
-  "ramAllocMB": 2.2881927490234375,
+  "ramAllocMB": 2.8662567138671875,
   "ramSysMB": 57.666282653808594,
-  "uptime": "3h2m21s"
+  "uptime": "3h4m17s"
 }
