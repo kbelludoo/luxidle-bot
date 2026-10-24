@@ -2,7 +2,7 @@
   "accounts": [
     {
       "currentArea": "troll-cave",
-      "durationSec": 743,
+      "durationSec": 863,
       "expPerHour": 0,
       "gold": 26396,
       "hp": 300,
@@ -20,20 +20,21 @@
         "[14:38:02] Aviso: a bolsa já está vazia",
         "[14:40:02] Aviso: a bolsa já está vazia",
         "[14:42:05] Aviso: a bolsa já está vazia",
-        "[14:44:08] Aviso: a bolsa já está vazia"
+        "[14:44:08] Aviso: a bolsa já está vazia",
+        "[14:46:08] Aviso: a bolsa já está vazia"
       ],
       "mana": 85,
       "maxHp": 300,
       "maxMana": 85,
       "name": "Personagem #1",
-      "stamina": 57,
+      "stamina": 55,
       "status": "hunting",
-      "updatedAt": 1792853054079,
+      "updatedAt": 1792853174674,
       "vocation": "knight"
     },
     {
       "currentArea": "troll-cave",
-      "durationSec": 743,
+      "durationSec": 863,
       "expPerHour": 0,
       "gold": 1387,
       "hp": 230,
@@ -51,20 +52,21 @@
         "[14:38:02] Aviso: a bolsa já está vazia",
         "[14:40:02] Aviso: a bolsa já está vazia",
         "[14:42:05] Aviso: a bolsa já está vazia",
-        "[14:44:08] Aviso: a bolsa já está vazia"
+        "[14:44:08] Aviso: a bolsa já está vazia",
+        "[14:46:11] Aviso: a bolsa já está vazia"
       ],
       "mana": 515,
       "maxHp": 230,
       "maxMana": 515,
       "name": "Personagem #2",
-      "stamina": 57,
+      "stamina": 55,
       "status": "hunting",
-      "updatedAt": 1792853054079,
+      "updatedAt": 1792853174674,
       "vocation": "druid"
     },
     {
       "currentArea": "troll-cave",
-      "durationSec": 743,
+      "durationSec": 863,
       "expPerHour": 0,
       "gold": 1377,
       "hp": 235,
@@ -72,7 +74,6 @@
       "kills": 0,
       "level": 18,
       "logs": [
-        "[14:31:56] Aviso: você já pegou a recompensa de hoje",
         "[14:31:56] Aviso: nada para resgatar agora",
         "[14:31:56] Aviso: a bolsa já está vazia",
         "[14:31:56] Aviso: Personagem #3 já está na sua caçada",
@@ -86,20 +87,21 @@
         "[14:37:59] Aviso: a bolsa já está vazia",
         "[14:40:02] Aviso: a bolsa já está vazia",
         "[14:42:02] Aviso: a bolsa já está vazia",
-        "[14:44:05] Aviso: a bolsa já está vazia"
+        "[14:44:05] Aviso: a bolsa já está vazia",
+        "[14:46:08] Aviso: a bolsa já está vazia"
       ],
       "mana": 545,
       "maxHp": 235,
       "maxMana": 545,
       "name": "Personagem #3",
-      "stamina": 55,
+      "stamina": 53,
       "status": "hunting",
-      "updatedAt": 1792853054079,
+      "updatedAt": 1792853174670,
       "vocation": "sorcerer"
     },
     {
       "currentArea": "troll-cave",
-      "durationSec": 743,
+      "durationSec": 863,
       "expPerHour": 0,
       "gold": 1011,
       "hp": 280,
@@ -116,20 +118,21 @@
         "[14:38:02] Aviso: a bolsa já está vazia",
         "[14:40:05] Aviso: a bolsa já está vazia",
         "[14:42:08] Aviso: a bolsa já está vazia",
-        "[14:44:08] Aviso: a bolsa já está vazia"
+        "[14:44:08] Aviso: a bolsa já está vazia",
+        "[14:46:08] Aviso: a bolsa já está vazia"
       ],
       "mana": 230,
       "maxHp": 280,
       "maxMana": 230,
       "name": "Personagem #4",
-      "stamina": 58,
+      "stamina": 56,
       "status": "hunting",
-      "updatedAt": 1792853054079,
+      "updatedAt": 1792853174674,
       "vocation": "paladin"
     },
     {
       "currentArea": "troll-cave",
-      "durationSec": 743,
+      "durationSec": 864,
       "expPerHour": 0,
       "gold": 1081,
       "hp": 280,
@@ -146,20 +149,21 @@
         "[14:38:02] Aviso: a bolsa já está vazia",
         "[14:40:02] Aviso: a bolsa já está vazia",
         "[14:42:05] Aviso: a bolsa já está vazia",
-        "[14:44:08] Aviso: a bolsa já está vazia"
+        "[14:44:08] Aviso: a bolsa já está vazia",
+        "[14:46:08] Aviso: a bolsa já está vazia"
       ],
       "mana": 135,
       "maxHp": 280,
       "maxMana": 135,
       "name": "Personagem #5",
-      "stamina": 55,
+      "stamina": 53,
       "status": "hunting",
-      "updatedAt": 1792853054079,
+      "updatedAt": 1792853174674,
       "vocation": "monk"
     }
   ],
   "goroutines": 16,
-  "ramAllocMB": 3.394805908203125,
+  "ramAllocMB": 3.0173187255859375,
   "ramSysMB": 57.166282653808594,
-  "uptime": "12m24s"
+  "uptime": "14m25s"
 }
