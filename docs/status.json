@@ -1,13 +1,13 @@
 {
   "accounts": [
     {
-      "currentArea": "troll-cave",
-      "durationSec": 3126,
-      "expPerHour": 191744.3780082728,
-      "gold": 47292,
+      "currentArea": "",
+      "durationSec": 3248,
+      "expPerHour": 186971.8765129385,
+      "gold": 47357,
       "hp": 525,
       "id": "acc-1",
-      "kills": 3965,
+      "kills": 0,
       "level": 26,
       "logs": [
         "Entrou no jogo como Personagem #1 (Level 24 knight)",
@@ -29,19 +29,19 @@
       "maxHp": 525,
       "maxMana": 160,
       "name": "Personagem #1",
-      "stamina": 30,
+      "stamina": 28,
       "status": "hunting",
-      "updatedAt": 1792869135279,
+      "updatedAt": 1792869256976,
       "vocation": "knight"
     },
     {
-      "currentArea": "",
-      "durationSec": 3126,
-      "expPerHour": 233308.3347666864,
-      "gold": 1291,
+      "currentArea": "troll-cave",
+      "durationSec": 3248,
+      "expPerHour": 226034.7043861121,
+      "gold": 1335,
       "hp": 285,
       "id": "acc-2",
-      "kills": 4810,
+      "kills": 4856,
       "level": 28,
       "logs": [
         "[18:20:23] Aviso: nada para resgatar agora",
@@ -60,18 +60,18 @@
         "[19:05:29] Aviso: nada para resgatar agora",
         "[19:05:38] Enviou 526 de ouro para Personagem #2"
       ],
-      "mana": 845,
+      "mana": 842,
       "maxHp": 285,
       "maxMana": 845,
       "name": "Personagem #2",
-      "stamina": 30,
+      "stamina": 28,
       "status": "hunting",
-      "updatedAt": 1792869135280,
+      "updatedAt": 1792869256973,
       "vocation": "druid"
     },
     {
       "currentArea": "auto",
-      "durationSec": 3126,
+      "durationSec": 3248,
       "expPerHour": 0,
       "gold": 1208,
       "hp": 240,
@@ -79,7 +79,6 @@
       "kills": 0,
       "level": 19,
       "logs": [
-        "[18:50:29] Aviso: você já pegou a recompensa de hoje",
         "[18:50:29] Aviso: nada para resgatar agora",
         "[18:50:50] Aviso: a bolsa já está vazia",
         "[18:52:53] Aviso: a bolsa já está vazia",
@@ -93,25 +92,26 @@
         "[19:05:32] Aviso: nada para resgatar agora",
         "[19:07:05] Aviso: a bolsa já está vazia",
         "[19:09:05] Aviso: a bolsa já está vazia",
-        "[19:11:08] Aviso: a bolsa já está vazia"
+        "[19:11:08] Aviso: a bolsa já está vazia",
+        "[19:13:11] Aviso: a bolsa já está vazia"
       ],
       "mana": 575,
       "maxHp": 240,
       "maxMana": 575,
       "name": "Personagem #3",
-      "stamina": 540,
+      "stamina": 544,
       "status": "idle (cidade)",
-      "updatedAt": 1792869135280,
+      "updatedAt": 1792869256971,
       "vocation": "sorcerer"
     },
     {
-      "currentArea": "",
-      "durationSec": 3126,
-      "expPerHour": 220607.1532658703,
-      "gold": 1284,
+      "currentArea": "troll-cave",
+      "durationSec": 3248,
+      "expPerHour": 213985.52068575416,
+      "gold": 1358,
       "hp": 410,
       "id": "acc-4",
-      "kills": 4548,
+      "kills": 4597,
       "level": 27,
       "logs": [
         "Entrou no jogo como Personagem #4 (Level 25 paladin)",
@@ -126,23 +126,23 @@
         "[19:05:26] Aviso: você já pegou a recompensa de hoje",
         "[19:05:26] Aviso: nada para resgatar agora"
       ],
-      "mana": 425,
+      "mana": 422,
       "maxHp": 410,
       "maxMana": 425,
       "name": "Personagem #4",
-      "stamina": 31,
+      "stamina": 29,
       "status": "hunting",
-      "updatedAt": 1792869135280,
+      "updatedAt": 1792869256974,
       "vocation": "paladin"
     },
     {
       "currentArea": "",
-      "durationSec": 3126,
-      "expPerHour": 187711.79482723886,
-      "gold": 1140,
+      "durationSec": 3248,
+      "expPerHour": 182751.28639019397,
+      "gold": 1205,
       "hp": 462,
       "id": "acc-5",
-      "kills": 3881,
+      "kills": 3926,
       "level": 25,
       "logs": [
         "Entrou no jogo como Personagem #5 (Level 24 monk)",
@@ -158,18 +158,18 @@
         "[19:05:29] Aviso: você já pegou a recompensa de hoje",
         "[19:05:29] Aviso: nada para resgatar agora"
       ],
-      "mana": 134,
+      "mana": 107,
       "maxHp": 462,
       "maxMana": 275,
       "name": "Personagem #5",
-      "stamina": 27,
+      "stamina": 25,
       "status": "hunting",
-      "updatedAt": 1792869135280,
+      "updatedAt": 1792869256973,
       "vocation": "monk"
     }
   ],
   "goroutines": 16,
-  "ramAllocMB": 2.23333740234375,
+  "ramAllocMB": 3.36053466796875,
   "ramSysMB": 89.9162826538086,
-  "uptime": "52m7s"
+  "uptime": "54m9s"
 }
