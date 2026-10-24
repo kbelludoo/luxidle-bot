@@ -2,7 +2,7 @@
   "accounts": [
     {
       "currentArea": "troll-cave",
-      "durationSec": 31,
+      "durationSec": 132,
       "expPerHour": 0,
       "gold": 26396,
       "hp": 300,
@@ -21,14 +21,14 @@
       "maxHp": 300,
       "maxMana": 85,
       "name": "Personagem #1",
-      "stamina": 72,
+      "stamina": 70,
       "status": "hunting",
-      "updatedAt": 1792852123382,
+      "updatedAt": 1792852224179,
       "vocation": "knight"
     },
     {
       "currentArea": "troll-cave",
-      "durationSec": 31,
+      "durationSec": 132,
       "expPerHour": 0,
       "gold": 1387,
       "hp": 230,
@@ -41,20 +41,21 @@
         "[14:28:23] Aviso: nada para resgatar agora",
         "[14:28:23] Aviso: a bolsa já está vazia",
         "[14:28:24] Árvore de Habilidades: +4 pontos distribuídos",
-        "[14:28:24] Aviso: Inverno sem fim passa do máximo"
+        "[14:28:24] Aviso: Inverno sem fim passa do máximo",
+        "[14:30:23] Aviso: a bolsa já está vazia"
       ],
       "mana": 515,
       "maxHp": 230,
       "maxMana": 515,
       "name": "Personagem #2",
-      "stamina": 73,
+      "stamina": 71,
       "status": "hunting",
-      "updatedAt": 1792852123382,
+      "updatedAt": 1792852224123,
       "vocation": "druid"
     },
     {
       "currentArea": "troll-cave",
-      "durationSec": 31,
+      "durationSec": 132,
       "expPerHour": 0,
       "gold": 1377,
       "hp": 235,
@@ -67,20 +68,25 @@
         "[14:28:23] Aviso: nada para resgatar agora",
         "[14:28:23] Aviso: a bolsa já está vazia",
         "[14:28:24] Árvore de Habilidades: +5 pontos distribuídos",
-        "[14:28:24] Aviso: Fim de tudo passa do máximo"
+        "[14:28:24] Aviso: Fim de tudo passa do máximo",
+        "[14:28:59] Aviso: Personagem #3 já está numa party",
+        "[14:28:59] Aviso: Personagem #3 já está numa party",
+        "[14:28:59] Aviso: Personagem #3 já está numa party",
+        "[14:28:59] Aviso: Personagem #3 já está numa party",
+        "[14:30:23] Aviso: a bolsa já está vazia"
       ],
       "mana": 545,
       "maxHp": 235,
       "maxMana": 545,
       "name": "Personagem #3",
-      "stamina": 71,
+      "stamina": 69,
       "status": "hunting",
-      "updatedAt": 1792852123382,
+      "updatedAt": 1792852224119,
       "vocation": "sorcerer"
     },
     {
       "currentArea": "troll-cave",
-      "durationSec": 31,
+      "durationSec": 132,
       "expPerHour": 0,
       "gold": 1011,
       "hp": 280,
@@ -99,14 +105,14 @@
       "maxHp": 280,
       "maxMana": 230,
       "name": "Personagem #4",
-      "stamina": 73,
+      "stamina": 72,
       "status": "hunting",
-      "updatedAt": 1792852123382,
+      "updatedAt": 1792852224179,
       "vocation": "paladin"
     },
     {
       "currentArea": "troll-cave",
-      "durationSec": 31,
+      "durationSec": 132,
       "expPerHour": 0,
       "gold": 1081,
       "hp": 280,
@@ -125,14 +131,14 @@
       "maxHp": 280,
       "maxMana": 135,
       "name": "Personagem #5",
-      "stamina": 70,
+      "stamina": 69,
       "status": "hunting",
-      "updatedAt": 1792852123382,
+      "updatedAt": 1792852224179,
       "vocation": "monk"
     }
   ],
   "goroutines": 16,
-  "ramAllocMB": 4.0568389892578125,
-  "ramSysMB": 69.1662826538086,
-  "uptime": "33s"
+  "ramAllocMB": 3.6137466430664062,
+  "ramSysMB": 69.4162826538086,
+  "uptime": "2m14s"
 }
