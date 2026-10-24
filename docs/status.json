@@ -2,7 +2,7 @@
   "accounts": [
     {
       "currentArea": "troll-cave",
-      "durationSec": 416,
+      "durationSec": 504,
       "expPerHour": 0,
       "gold": 26396,
       "hp": 300,
@@ -17,20 +17,21 @@
         "[14:31:59] Aviso: a bolsa já está vazia",
         "[14:33:59] Aviso: a bolsa já está vazia",
         "[14:35:59] Aviso: a bolsa já está vazia",
-        "[14:38:02] Aviso: a bolsa já está vazia"
+        "[14:38:02] Aviso: a bolsa já está vazia",
+        "[14:40:02] Aviso: a bolsa já está vazia"
       ],
       "mana": 85,
       "maxHp": 300,
       "maxMana": 85,
       "name": "Personagem #1",
-      "stamina": 62,
+      "stamina": 61,
       "status": "hunting",
-      "updatedAt": 1792852726979,
+      "updatedAt": 1792852815464,
       "vocation": "knight"
     },
     {
       "currentArea": "troll-cave",
-      "durationSec": 416,
+      "durationSec": 504,
       "expPerHour": 0,
       "gold": 1387,
       "hp": 230,
@@ -45,20 +46,21 @@
         "[14:31:56] Aviso: a bolsa já está vazia",
         "[14:33:59] Aviso: a bolsa já está vazia",
         "[14:35:59] Aviso: a bolsa já está vazia",
-        "[14:38:02] Aviso: a bolsa já está vazia"
+        "[14:38:02] Aviso: a bolsa já está vazia",
+        "[14:40:02] Aviso: a bolsa já está vazia"
       ],
       "mana": 515,
       "maxHp": 230,
       "maxMana": 515,
       "name": "Personagem #2",
-      "stamina": 63,
+      "stamina": 61,
       "status": "hunting",
-      "updatedAt": 1792852726979,
+      "updatedAt": 1792852815462,
       "vocation": "druid"
     },
     {
       "currentArea": "troll-cave",
-      "durationSec": 416,
+      "durationSec": 504,
       "expPerHour": 0,
       "gold": 1377,
       "hp": 235,
@@ -78,20 +80,21 @@
         "[14:32:11] Aviso: Personagem #3 já está numa party",
         "[14:33:56] Aviso: a bolsa já está vazia",
         "[14:35:59] Aviso: a bolsa já está vazia",
-        "[14:37:59] Aviso: a bolsa já está vazia"
+        "[14:37:59] Aviso: a bolsa já está vazia",
+        "[14:40:02] Aviso: a bolsa já está vazia"
       ],
       "mana": 545,
       "maxHp": 235,
       "maxMana": 545,
       "name": "Personagem #3",
-      "stamina": 61,
+      "stamina": 59,
       "status": "hunting",
-      "updatedAt": 1792852726979,
+      "updatedAt": 1792852815460,
       "vocation": "sorcerer"
     },
     {
       "currentArea": "troll-cave",
-      "durationSec": 416,
+      "durationSec": 504,
       "expPerHour": 0,
       "gold": 1011,
       "hp": 280,
@@ -105,20 +108,21 @@
         "[14:31:56] Aviso: a bolsa já está vazia",
         "[14:33:59] Aviso: a bolsa já está vazia",
         "[14:36:02] Aviso: a bolsa já está vazia",
-        "[14:38:02] Aviso: a bolsa já está vazia"
+        "[14:38:02] Aviso: a bolsa já está vazia",
+        "[14:40:05] Aviso: a bolsa já está vazia"
       ],
       "mana": 230,
       "maxHp": 280,
       "maxMana": 230,
       "name": "Personagem #4",
-      "stamina": 63,
+      "stamina": 62,
       "status": "hunting",
-      "updatedAt": 1792852726979,
+      "updatedAt": 1792852815463,
       "vocation": "paladin"
     },
     {
       "currentArea": "troll-cave",
-      "durationSec": 416,
+      "durationSec": 504,
       "expPerHour": 0,
       "gold": 1081,
       "hp": 280,
@@ -132,20 +136,21 @@
         "[14:31:57] Aviso: a bolsa já está vazia",
         "[14:33:59] Aviso: a bolsa já está vazia",
         "[14:35:59] Aviso: a bolsa já está vazia",
-        "[14:38:02] Aviso: a bolsa já está vazia"
+        "[14:38:02] Aviso: a bolsa já está vazia",
+        "[14:40:02] Aviso: a bolsa já está vazia"
       ],
       "mana": 135,
       "maxHp": 280,
       "maxMana": 135,
       "name": "Personagem #5",
-      "stamina": 60,
+      "stamina": 59,
       "status": "hunting",
-      "updatedAt": 1792852726979,
+      "updatedAt": 1792852815463,
       "vocation": "monk"
     }
   ],
   "goroutines": 16,
-  "ramAllocMB": 3.8863677978515625,
+  "ramAllocMB": 2.7877883911132812,
   "ramSysMB": 57.166282653808594,
-  "uptime": "6m57s"
+  "uptime": "8m25s"
 }
