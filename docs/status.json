@@ -2,7 +2,7 @@
   "accounts": [
     {
       "currentArea": "troll-cave",
-      "durationSec": 368,
+      "durationSec": 487,
       "expPerHour": 0,
       "gold": 26396,
       "hp": 300,
@@ -10,7 +10,6 @@
       "kills": 0,
       "level": 11,
       "logs": [
-        "[13:35:07] Árvore de Habilidades: +1 pontos distribuídos",
         "[13:35:07] Aviso: Muralha viva não tem caminho até o começo",
         "[13:36:25] Aviso: a bolsa já está vazia",
         "[13:38:09] Aviso: entre com um personagem primeiro",
@@ -26,20 +25,21 @@
         "[13:42:47] Prey Slot 1: presa 'souleater' selecionada (+28%)",
         "[13:42:47] Prey Slot 2: presa 'abyssal-dragon' selecionada (+21%)",
         "[13:44:11] Árvore de Habilidades: +1 pontos distribuídos",
-        "[13:44:12] Aviso: Muralha viva não tem caminho até o começo"
+        "[13:44:12] Aviso: Muralha viva não tem caminho até o começo",
+        "[13:44:29] Aviso: a bolsa já está vazia"
       ],
       "mana": 85,
       "maxHp": 300,
       "maxMana": 85,
       "name": "Personagem #1",
-      "stamina": 116,
+      "stamina": 114,
       "status": "hunting",
-      "updatedAt": 1792849453828,
+      "updatedAt": 1792849572804,
       "vocation": "knight"
     },
     {
       "currentArea": "troll-cave",
-      "durationSec": 368,
+      "durationSec": 487,
       "expPerHour": 3262.180820641586,
       "gold": 1387,
       "hp": 230,
@@ -47,9 +47,6 @@
       "kills": 0,
       "level": 17,
       "logs": [
-        "[13:36:38] Iniciando caçada em 'dark-pyramid'",
-        "[13:36:49] Entrando na caçada da party com 'Personagem #2' em 'Troll Cave'",
-        "[13:38:08] Migrando caçada de 'troll-cave' para 'dark-pyramid'",
         "[13:38:09] Iniciando caçada em 'dark-pyramid'",
         "Entrou no jogo como Personagem #2 (Level 17 druid)",
         "[13:38:12] Entrando na caçada da party com 'Personagem #2' em 'Troll Cave'",
@@ -63,20 +60,23 @@
         "[13:42:09] Iniciando caçada em 'dark-pyramid'",
         "[13:42:23] Entrando na caçada da party com 'Personagem #2' em 'Troll Cave'",
         "[13:42:32] Aviso: a bolsa já está vazia",
-        "[13:43:02] Prey Slot 1: presa 'darklight-source' selecionada (+26%)"
+        "[13:43:02] Prey Slot 1: presa 'darklight-source' selecionada (+26%)",
+        "[13:44:14] Árvore de Habilidades: +4 pontos distribuídos",
+        "[13:44:14] Aviso: Inverno sem fim passa do máximo",
+        "[13:44:35] Aviso: a bolsa já está vazia"
       ],
       "mana": 515,
       "maxHp": 230,
       "maxMana": 515,
       "name": "Personagem #2",
-      "stamina": 117,
+      "stamina": 115,
       "status": "hunting",
-      "updatedAt": 1792849453821,
+      "updatedAt": 1792849572799,
       "vocation": "druid"
     },
     {
       "currentArea": "troll-cave",
-      "durationSec": 368,
+      "durationSec": 487,
       "expPerHour": 2729.174697063262,
       "gold": 1377,
       "hp": 235,
@@ -84,9 +84,6 @@
       "kills": 0,
       "level": 18,
       "logs": [
-        "[13:38:29] Aviso: a caçada já tem 5 pessoas",
-        "[13:38:29] Aviso: a caçada já tem 5 pessoas",
-        "[13:38:29] Aviso: a caçada já tem 5 pessoas",
         "[13:38:29] Aviso: a caçada já tem 5 pessoas",
         "[13:38:47] Aviso: a bolsa já está vazia",
         "[13:40:47] Aviso: a bolsa já está vazia",
@@ -100,20 +97,23 @@
         "[13:42:41] Aviso: a caçada já tem 5 pessoas",
         "[13:42:41] Aviso: a caçada já tem 5 pessoas",
         "[13:42:41] Aviso: a caçada já tem 5 pessoas",
-        "[13:42:50] Aviso: a bolsa já está vazia"
+        "[13:42:50] Aviso: a bolsa já está vazia",
+        "[13:44:20] Árvore de Habilidades: +5 pontos distribuídos",
+        "[13:44:21] Aviso: Fim de tudo passa do máximo",
+        "[13:44:53] Aviso: a bolsa já está vazia"
       ],
       "mana": 545,
       "maxHp": 235,
       "maxMana": 545,
       "name": "Personagem #3",
-      "stamina": 115,
+      "stamina": 113,
       "status": "hunting",
-      "updatedAt": 1792849453820,
+      "updatedAt": 1792849572798,
       "vocation": "sorcerer"
     },
     {
       "currentArea": "troll-cave",
-      "durationSec": 368,
+      "durationSec": 487,
       "expPerHour": 1952.4234107944715,
       "gold": 1011,
       "hp": 280,
@@ -121,9 +121,6 @@
       "kills": 0,
       "level": 14,
       "logs": [
-        "[13:36:49] Entrando na caçada da party com 'Personagem #4' em 'Troll Cave'",
-        "[13:38:08] Migrando caçada de 'troll-cave' para 'amazon-camp'",
-        "[13:38:09] Iniciando caçada em 'amazon-camp'",
         "Entrou no jogo como Personagem #4 (Level 14 paladin)",
         "[13:38:13] Árvore de Habilidades: +3 pontos distribuídos",
         "[13:38:13] Entrando na caçada da party com 'Personagem #4' em 'Troll Cave'",
@@ -137,20 +134,23 @@
         "[13:42:17] Prey Slot 1: presa 'lion' selecionada (+37%)",
         "[13:42:17] Prey Slot 2: presa 'ghastly-dragon' selecionada (+31%)",
         "[13:42:23] Entrando na caçada da party com 'Personagem #4' em 'Troll Cave'",
-        "[13:42:32] Aviso: a bolsa já está vazia"
+        "[13:42:32] Aviso: a bolsa já está vazia",
+        "[13:44:14] Árvore de Habilidades: +3 pontos distribuídos",
+        "[13:44:15] Aviso: Julgamento não tem caminho até o começo",
+        "[13:44:35] Aviso: a bolsa já está vazia"
       ],
       "mana": 230,
       "maxHp": 280,
       "maxMana": 230,
       "name": "Personagem #4",
-      "stamina": 118,
+      "stamina": 116,
       "status": "hunting",
-      "updatedAt": 1792849453825,
+      "updatedAt": 1792849572802,
       "vocation": "paladin"
     },
     {
       "currentArea": "troll-cave",
-      "durationSec": 368,
+      "durationSec": 487,
       "expPerHour": 0,
       "gold": 1081,
       "hp": 280,
@@ -158,7 +158,6 @@
       "kills": 0,
       "level": 11,
       "logs": [
-        "[13:34:52] Árvore de Habilidades: +1 pontos distribuídos",
         "[13:34:52] Aviso: Mil mãos não tem caminho até o começo",
         "[13:36:25] Aviso: a bolsa já está vazia",
         "[13:37:55] Árvore de Habilidades: +1 pontos distribuídos",
@@ -174,20 +173,21 @@
         "[13:42:50] Prey Slot 1: presa 'lost-basher' selecionada (+22%)",
         "[13:42:50] Prey Slot 2: presa 'magma-crawler' selecionada (+15%)",
         "[13:43:56] Árvore de Habilidades: +1 pontos distribuídos",
-        "[13:43:57] Aviso: Mil mãos não tem caminho até o começo"
+        "[13:43:57] Aviso: Mil mãos não tem caminho até o começo",
+        "[13:44:35] Aviso: a bolsa já está vazia"
       ],
       "mana": 135,
       "maxHp": 280,
       "maxMana": 135,
       "name": "Personagem #5",
-      "stamina": 115,
+      "stamina": 113,
       "status": "hunting",
-      "updatedAt": 1792849453826,
+      "updatedAt": 1792849572803,
       "vocation": "monk"
     }
   ],
   "goroutines": 16,
-  "ramAllocMB": 4.2966156005859375,
+  "ramAllocMB": 2.8869247436523438,
   "ramSysMB": 69.4162826538086,
-  "uptime": "1h43m7s"
+  "uptime": "1h45m6s"
 }
