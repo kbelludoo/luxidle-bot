@@ -2,7 +2,7 @@
   "accounts": [
     {
       "currentArea": "troll-cave",
-      "durationSec": 966,
+      "durationSec": 1088,
       "expPerHour": 0,
       "gold": 26396,
       "hp": 300,
@@ -10,7 +10,6 @@
       "kills": 0,
       "level": 11,
       "logs": [
-        "[13:42:47] Prey Slot 1: presa 'souleater' selecionada (+28%)",
         "[13:42:47] Prey Slot 2: presa 'abyssal-dragon' selecionada (+21%)",
         "[13:44:11] Árvore de Habilidades: +1 pontos distribuídos",
         "[13:44:12] Aviso: Muralha viva não tem caminho até o começo",
@@ -26,20 +25,21 @@
         "[13:50:35] Aviso: a bolsa já está vazia",
         "[13:52:38] Aviso: a bolsa já está vazia",
         "[13:53:17] Árvore de Habilidades: +1 pontos distribuídos",
-        "[13:53:18] Aviso: Muralha viva não tem caminho até o começo"
+        "[13:53:18] Aviso: Muralha viva não tem caminho até o começo",
+        "[13:54:41] Aviso: a bolsa já está vazia"
       ],
       "mana": 85,
       "maxHp": 300,
       "maxMana": 85,
       "name": "Personagem #1",
-      "stamina": 106,
+      "stamina": 104,
       "status": "hunting",
-      "updatedAt": 1792850052704,
+      "updatedAt": 1792850174388,
       "vocation": "knight"
     },
     {
       "currentArea": "troll-cave",
-      "durationSec": 967,
+      "durationSec": 1088,
       "expPerHour": 3262.180820641586,
       "gold": 1387,
       "hp": 230,
@@ -47,8 +47,6 @@
       "kills": 0,
       "level": 17,
       "logs": [
-        "[13:42:32] Aviso: a bolsa já está vazia",
-        "[13:43:02] Prey Slot 1: presa 'darklight-source' selecionada (+26%)",
         "[13:44:14] Árvore de Habilidades: +4 pontos distribuídos",
         "[13:44:14] Aviso: Inverno sem fim passa do máximo",
         "[13:44:35] Aviso: a bolsa já está vazia",
@@ -63,20 +61,22 @@
         "[13:50:38] Aviso: a bolsa já está vazia",
         "[13:52:38] Aviso: a bolsa já está vazia",
         "[13:53:20] Árvore de Habilidades: +4 pontos distribuídos",
-        "[13:53:21] Aviso: Inverno sem fim passa do máximo"
+        "[13:53:21] Aviso: Inverno sem fim passa do máximo",
+        "[13:54:41] Aviso: a bolsa já está vazia",
+        "[13:55:20] Prey Slot 2: presa 'troll' selecionada (+40%)"
       ],
       "mana": 515,
       "maxHp": 230,
       "maxMana": 515,
       "name": "Personagem #2",
-      "stamina": 107,
+      "stamina": 105,
       "status": "hunting",
-      "updatedAt": 1792850052699,
+      "updatedAt": 1792850174383,
       "vocation": "druid"
     },
     {
       "currentArea": "troll-cave",
-      "durationSec": 966,
+      "durationSec": 1088,
       "expPerHour": 2729.174697063262,
       "gold": 1377,
       "hp": 235,
@@ -84,7 +84,6 @@
       "kills": 0,
       "level": 18,
       "logs": [
-        "[13:42:41] Aviso: a caçada já tem 5 pessoas",
         "[13:42:50] Aviso: a bolsa já está vazia",
         "[13:44:20] Árvore de Habilidades: +5 pontos distribuídos",
         "[13:44:21] Aviso: Fim de tudo passa do máximo",
@@ -100,20 +99,21 @@
         "[13:50:56] Aviso: a bolsa já está vazia",
         "[13:52:59] Aviso: a bolsa já está vazia",
         "[13:53:30] Árvore de Habilidades: +5 pontos distribuídos",
-        "[13:53:30] Aviso: Fim de tudo passa do máximo"
+        "[13:53:30] Aviso: Fim de tudo passa do máximo",
+        "[13:55:02] Aviso: a bolsa já está vazia"
       ],
       "mana": 545,
       "maxHp": 235,
       "maxMana": 545,
       "name": "Personagem #3",
-      "stamina": 105,
+      "stamina": 103,
       "status": "hunting",
-      "updatedAt": 1792850052699,
+      "updatedAt": 1792850174383,
       "vocation": "sorcerer"
     },
     {
       "currentArea": "troll-cave",
-      "durationSec": 966,
+      "durationSec": 1088,
       "expPerHour": 1952.4234107944715,
       "gold": 1011,
       "hp": 280,
@@ -121,7 +121,6 @@
       "kills": 0,
       "level": 14,
       "logs": [
-        "[13:42:23] Entrando na caçada da party com 'Personagem #4' em 'Troll Cave'",
         "[13:42:32] Aviso: a bolsa já está vazia",
         "[13:44:14] Árvore de Habilidades: +3 pontos distribuídos",
         "[13:44:15] Aviso: Julgamento não tem caminho até o começo",
@@ -137,20 +136,21 @@
         "[13:50:38] Aviso: a bolsa já está vazia",
         "[13:52:41] Aviso: a bolsa já está vazia",
         "[13:53:21] Árvore de Habilidades: +3 pontos distribuídos",
-        "[13:53:21] Aviso: Julgamento não tem caminho até o começo"
+        "[13:53:21] Aviso: Julgamento não tem caminho até o começo",
+        "[13:54:41] Aviso: a bolsa já está vazia"
       ],
       "mana": 230,
       "maxHp": 280,
       "maxMana": 230,
       "name": "Personagem #4",
-      "stamina": 108,
+      "stamina": 106,
       "status": "hunting",
-      "updatedAt": 1792850052702,
+      "updatedAt": 1792850174387,
       "vocation": "paladin"
     },
     {
       "currentArea": "troll-cave",
-      "durationSec": 966,
+      "durationSec": 1088,
       "expPerHour": 0,
       "gold": 1081,
       "hp": 280,
@@ -158,9 +158,6 @@
       "kills": 0,
       "level": 11,
       "logs": [
-        "[13:42:50] Prey Slot 1: presa 'lost-basher' selecionada (+22%)",
-        "[13:42:50] Prey Slot 2: presa 'magma-crawler' selecionada (+15%)",
-        "[13:43:56] Árvore de Habilidades: +1 pontos distribuídos",
         "[13:43:57] Aviso: Mil mãos não tem caminho até o começo",
         "[13:44:35] Aviso: a bolsa já está vazia",
         "[13:46:23] Aviso: você já pegou a recompensa de hoje",
@@ -174,20 +171,23 @@
         "[13:50:38] Aviso: a bolsa já está vazia",
         "[13:52:41] Aviso: a bolsa já está vazia",
         "[13:53:00] Árvore de Habilidades: +1 pontos distribuídos",
-        "[13:53:00] Aviso: Mil mãos não tem caminho até o começo"
+        "[13:53:00] Aviso: Mil mãos não tem caminho até o começo",
+        "[13:54:41] Aviso: a bolsa já está vazia",
+        "[13:56:00] Árvore de Habilidades: +1 pontos distribuídos",
+        "[13:56:00] Aviso: Mil mãos não tem caminho até o começo"
       ],
       "mana": 135,
       "maxHp": 280,
       "maxMana": 135,
       "name": "Personagem #5",
-      "stamina": 105,
+      "stamina": 103,
       "status": "hunting",
-      "updatedAt": 1792850052702,
+      "updatedAt": 1792850174387,
       "vocation": "monk"
     }
   ],
   "goroutines": 16,
-  "ramAllocMB": 4.066009521484375,
+  "ramAllocMB": 3.4624252319335938,
   "ramSysMB": 69.4162826538086,
-  "uptime": "1h53m6s"
+  "uptime": "1h55m8s"
 }
