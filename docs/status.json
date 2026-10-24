@@ -1,13 +1,13 @@
 {
   "accounts": [
     {
-      "currentArea": "",
-      "durationSec": 2776,
-      "expPerHour": 1633.456890193559,
-      "gold": 38726,
+      "currentArea": "troll-cave",
+      "durationSec": 2897,
+      "expPerHour": 2974.467685419366,
+      "gold": 38757,
       "hp": 405,
       "id": "acc-1",
-      "kills": 30,
+      "kills": 57,
       "level": 18,
       "logs": [
         "Entrou no jogo como Personagem #1 (Level 12 knight)",
@@ -21,28 +21,29 @@
         "[15:28:09] Aviso: nada para resgatar agora",
         "[15:41:45] Stamina zerada! Saindo da caçada para descansar e treinar.",
         "[15:43:09] Aviso: você já pegou a recompensa de hoje",
-        "[15:43:09] Aviso: nada para resgatar agora"
+        "[15:43:09] Aviso: nada para resgatar agora",
+        "[15:44:18] Prey Slot 1: presa 'ancient-scarab' selecionada (+28%)",
+        "[15:44:18] Prey Slot 2: presa 'obscure-predador' selecionada (+21%)"
       ],
-      "mana": 85,
+      "mana": 83,
       "maxHp": 405,
       "maxMana": 120,
       "name": "Personagem #1",
-      "stamina": 238,
+      "stamina": 236,
       "status": "hunting",
-      "updatedAt": 1792856654412,
+      "updatedAt": 1792856774939,
       "vocation": "knight"
     },
     {
       "currentArea": "troll-cave",
-      "durationSec": 2776,
-      "expPerHour": 2613.490661473347,
-      "gold": 1423,
+      "durationSec": 2897,
+      "expPerHour": 4592.132720270616,
+      "gold": 1502,
       "hp": 250,
       "id": "acc-2",
-      "kills": 48,
+      "kills": 88,
       "level": 21,
       "logs": [
-        "[14:58:03] Aviso: você já pegou a recompensa de hoje",
         "[14:58:03] Aviso: nada para resgatar agora",
         "[14:58:03] Aviso: a bolsa já está vazia",
         "[15:08:06] Enviou 868 de ouro para Personagem #2",
@@ -56,20 +57,21 @@
         "[15:38:18] Enviou 652 de ouro para Personagem #2",
         "[15:41:39] Stamina zerada! Saindo da caçada para descansar e treinar.",
         "[15:43:09] Aviso: você já pegou a recompensa de hoje",
-        "[15:43:09] Aviso: nada para resgatar agora"
+        "[15:43:09] Aviso: nada para resgatar agora",
+        "[15:44:18] Prey Slot 1: presa 'serpent-spawn' selecionada (+26%)"
       ],
-      "mana": 635,
+      "mana": 627,
       "maxHp": 250,
       "maxMana": 635,
       "name": "Personagem #2",
-      "stamina": 238,
+      "stamina": 236,
       "status": "hunting",
-      "updatedAt": 1792856654455,
+      "updatedAt": 1792856774956,
       "vocation": "druid"
     },
     {
       "currentArea": "troll-cave",
-      "durationSec": 2775,
+      "durationSec": 2897,
       "expPerHour": 204192.97459428397,
       "gold": 1208,
       "hp": 240,
@@ -77,7 +79,6 @@
       "kills": 786,
       "level": 19,
       "logs": [
-        "[15:22:33] Aviso: a bolsa já está vazia",
         "[15:24:36] Aviso: a bolsa já está vazia",
         "[15:26:36] Aviso: a bolsa já está vazia",
         "[15:28:09] Aviso: você já pegou a recompensa de hoje",
@@ -91,25 +92,26 @@
         "[15:40:45] Aviso: a bolsa já está vazia",
         "[15:42:48] Aviso: a bolsa já está vazia",
         "[15:43:12] Aviso: você já pegou a recompensa de hoje",
-        "[15:43:12] Aviso: nada para resgatar agora"
+        "[15:43:12] Aviso: nada para resgatar agora",
+        "[15:44:48] Aviso: a bolsa já está vazia"
       ],
       "mana": 575,
       "maxHp": 240,
       "maxMana": 575,
       "name": "Personagem #3",
-      "stamina": 124,
+      "stamina": 128,
       "status": "idle (cidade)",
-      "updatedAt": 1792856653224,
+      "updatedAt": 1792856774911,
       "vocation": "sorcerer"
     },
     {
       "currentArea": "",
-      "durationSec": 2777,
-      "expPerHour": 1198.687086546859,
-      "gold": 1018,
+      "durationSec": 2897,
+      "expPerHour": 3026.6882078501503,
+      "gold": 1027,
       "hp": 330,
       "id": "acc-4",
-      "kills": 22,
+      "kills": 58,
       "level": 19,
       "logs": [
         "[14:58:24] Entrando na caçada da party com 'Personagem #4' em 'Troll Cave'",
@@ -128,23 +130,23 @@
         "[15:43:15] Prey Slot 2: presa 'cao-infernal' selecionada (+31%)",
         "[15:43:24] Enviou 527 de ouro para Personagem #4"
       ],
-      "mana": 223,
+      "mana": 191,
       "maxHp": 330,
       "maxMana": 305,
       "name": "Personagem #4",
-      "stamina": 239,
+      "stamina": 237,
       "status": "hunting",
-      "updatedAt": 1792856654517,
+      "updatedAt": 1792856774905,
       "vocation": "paladin"
     },
     {
-      "currentArea": "",
-      "durationSec": 2777,
-      "expPerHour": 3650.3397179242024,
-      "gold": 1117,
+      "currentArea": "troll-cave",
+      "durationSec": 2897,
+      "expPerHour": 4905.100041063758,
+      "gold": 1170,
       "hp": 358,
       "id": "acc-5",
-      "kills": 67,
+      "kills": 94,
       "level": 17,
       "logs": [
         "[14:58:00] Aviso: você já pegou a recompensa de hoje",
@@ -163,18 +165,18 @@
         "[15:43:18] Prey Slot 1: presa 'wereboar' selecionada (+22%)",
         "[15:43:18] Prey Slot 2: presa 'putrid-mummy' selecionada (+15%)"
       ],
-      "mana": 67,
+      "mana": 64,
       "maxHp": 358,
       "maxMana": 195,
       "name": "Personagem #5",
-      "stamina": 235,
+      "stamina": 233,
       "status": "hunting",
-      "updatedAt": 1792856654412,
+      "updatedAt": 1792856774941,
       "vocation": "monk"
     }
   ],
   "goroutines": 16,
-  "ramAllocMB": 2.27410888671875,
+  "ramAllocMB": 2.5489730834960938,
   "ramSysMB": 57.666282653808594,
-  "uptime": "46m18s"
+  "uptime": "48m18s"
 }
