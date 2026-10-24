@@ -307,6 +307,21 @@ func (b *Bot) handleMessage(data []byte) {
 			Hunt string `json:"hunt"`
 		}
 		if err := json.Unmarshal(data, &p); err == nil && p.From != "" {
+			// Se o membro ainda estiver abaixo do threshold da party, ignora para continuar o catch-up solo
+			minRequiredLevel := 0
+			if b.manager != nil && b.config.Settings.PartyLeader != "" {
+				for _, st := range b.manager.GetAllStatuses() {
+					if strings.EqualFold(st.Name, b.config.Settings.PartyLeader) {
+						minRequiredLevel = (st.Level * 2) / 3
+						break
+					}
+				}
+			}
+			if minRequiredLevel > 0 && b.character != nil && b.character.Level < minRequiredLevel {
+				log.Printf("[%s] ⏳ Convite de caçada em '%s' de '%s' ignorado: personagem em catch-up (Level %d < %d)", b.ID(), p.Hunt, p.From, b.character.Level, minRequiredLevel)
+				return
+			}
+
 			log.Printf("[%s] ⚔️ Convite de caçada em '%s' recebido de '%s'. Aceitando...", b.ID(), p.Hunt, p.From)
 			b.addLog(fmt.Sprintf("Entrando na caçada da party com '%s' em '%s'", p.From, p.Hunt))
 			_ = b.socket.SendJSON(map[string]any{
@@ -608,6 +623,13 @@ func (b *Bot) handleStateReceived(p InboundPacket) {
 		b.status.Status = "hunting"
 		b.status.CurrentArea = b.hunt.HuntID
 
+		// Se a caçada atual estiver em modo manual, encerra para reiniciar em modo ciclo (automático)
+		if b.hunt.Manual && b.config.Settings.AutoHunt {
+			log.Printf("[%s] ⚠️ Caçada manual detectada! Parando caçada manual para reiniciar em modo ciclo (automático)...", b.ID())
+			b.addLog("Saindo de caçada manual para entrar em modo automático.")
+			_ = b.socket.SendJSON(map[string]any{"t": "stopHunt"})
+		}
+
 		if b.hunt.Session != nil {
 			b.status.Kills = b.hunt.Session.Kills
 			// Calcula XP/h com base no tempo de sessão
@@ -844,29 +866,156 @@ func (b *Bot) performAutomationTick() {
 	}
 
 	if cfg.AutoHunt {
-		if hunt == nil {
-			// Não está caçando. Inicia caçada no melhor mapa!
-			b.startSafeHunt()
-		} else {
-			// Já está caçando. Verifica se o mapa atual ficou para trás (Level Up / Migração Dinâmica)
-			if now.Sub(b.lastActionAt) > 30*time.Second {
-				bestMap := b.resolveBestHunt(char.Level)
-				if bestMap != "" && hunt.HuntID != "" && hunt.HuntID != bestMap {
-					log.Printf("[%s] 🚀 Level UP ou mapa desatualizado! Migrando de '%s' para '%s' (melhor mapa disponível)...", b.ID(), hunt.HuntID, bestMap)
-					b.addLog(fmt.Sprintf("Migrando caçada de '%s' para '%s'", hunt.HuntID, bestMap))
-					b.lastActionAt = now
-					_ = b.socket.SendJSON(map[string]any{"t": "stopHunt"})
-					time.Sleep(500 * time.Millisecond)
-					b.startSafeHunt()
-					return
+		isLeader := (cfg.PartyLeader != "" && strings.EqualFold(char.Name, cfg.PartyLeader)) ||
+			(char.Party != nil && char.Party.SouLider)
+
+		inParty := cfg.AutoParty && (
+			(char.Party != nil && len(char.Party.Membros) > 1) ||
+			(hunt != nil && hunt.Party != nil && len(hunt.Party.Membros) > 1) ||
+			(cfg.PartyLeader != ""))
+
+		if inParty {
+			// Cenário 1: Operação em Grupo / Party Cooperativa
+			if isLeader {
+				// Líder coordena o Lobby e a migração de mapa da party
+				targetHuntID := b.resolveBestHunt(char.Level)
+
+				// Verifica se há membros que precisam de catch-up de level para partilha de EXP (minLevel >= floor(maxLevel * 2/3))
+				minRequiredLevel := (char.Level * 2) / 3
+				convocados := make([]string, 0)
+				allMembersReady := true
+
+				if b.manager != nil {
+					statuses := b.manager.GetAllStatuses()
+					for _, pm := range char.Party.Membros {
+						if strings.EqualFold(pm.Name, char.Name) {
+							continue
+						}
+						memberLevel := 0
+						for _, st := range statuses {
+							if strings.EqualFold(st.Name, pm.Name) {
+								memberLevel = st.Level
+								break
+							}
+						}
+						if memberLevel > 0 && memberLevel < minRequiredLevel {
+							allMembersReady = false
+						} else {
+							convocados = append(convocados, pm.Name)
+						}
+					}
+				} else {
+					for _, pm := range char.Party.Membros {
+						if !strings.EqualFold(pm.Name, char.Name) {
+							convocados = append(convocados, pm.Name)
+						}
+					}
+				}
+
+				if !allMembersReady && len(convocados) == 0 {
+					// Membros ainda estão em catch-up solo, líder aguarda para não inflar o nível
+					if hunt == nil && now.Sub(b.lastTrainAt) > 2*time.Minute {
+						b.lastTrainAt = now
+						log.Printf("[%s] ⏳ Membros em catch-up (nível mínimo requerido: %d). Líder treinando online nos bonecos...", b.ID(), minRequiredLevel)
+						_ = b.socket.SendJSON(map[string]any{"t": "training", "action": "start", "mode": "online"})
+					}
+				} else if hunt == nil {
+					// Time apto e não está caçando: abre o lobby se ainda não estiver aberto
+					if char.Lobby == nil && len(convocados) > 0 && now.Sub(b.lastPartyAt) > 10*time.Second {
+						b.lastPartyAt = now
+						token := generateActionToken("lobby:" + targetHuntID)
+						log.Printf("[%s] 🏰 Armando Lobby oficial para '%s' com %d aliados convocados...", b.ID(), targetHuntID, len(convocados))
+						b.addLog(fmt.Sprintf("Armando Lobby da party em '%s'", targetHuntID))
+						_ = b.socket.SendJSON(map[string]any{
+							"t":          "lobby",
+							"action":     "armar",
+							"huntId":     targetHuntID,
+							"modo":       "auto",
+							"convocados": convocados,
+							"acao":       token,
+						})
+					}
+				} else {
+					// Já está caçando com a party. Verifica se a party pode migrar para um mapa superior
+					if now.Sub(b.lastActionAt) > 30*time.Second {
+						if targetHuntID != "" && hunt.HuntID != "" && hunt.HuntID != targetHuntID {
+							log.Printf("[%s] 🚀 Level UP da party! Migrando de '%s' para '%s'...", b.ID(), hunt.HuntID, targetHuntID)
+							b.addLog(fmt.Sprintf("Migrando party de '%s' para '%s'", hunt.HuntID, targetHuntID))
+							b.lastActionAt = now
+							_ = b.socket.SendJSON(map[string]any{"t": "stopHunt"})
+						}
+					}
+				}
+			} else {
+				// Membro da party
+				leaderLevel := 0
+				leaderArea := ""
+				if b.manager != nil && cfg.PartyLeader != "" {
+					for _, st := range b.manager.GetAllStatuses() {
+						if strings.EqualFold(st.Name, cfg.PartyLeader) {
+							leaderLevel = st.Level
+							leaderArea = st.CurrentArea
+							break
+						}
+					}
+				}
+				minRequiredLevel := 0
+				if leaderLevel > 0 {
+					minRequiredLevel = (leaderLevel * 2) / 3
+				}
+
+				if minRequiredLevel > 0 && char.Level < minRequiredLevel {
+					// Nível insuficiente para divisão de EXP da party: faz catch-up solo em modo ciclo!
+					if hunt == nil {
+						log.Printf("[%s] ⚡ Catch-Up Solo: Nível %d < %d (threshold da party). Caçando solo no melhor mapa...", b.ID(), char.Level, minRequiredLevel)
+						b.startSafeHunt()
+					}
+				} else {
+					// Nível compatível para shared exp!
+					if hunt == nil {
+						// Se não está caçando e o líder está em caçada, junta-se na mesma caçada
+						if leaderArea != "" {
+							log.Printf("[%s] ⚔️ Aliado apto para a party (%d >= %d). Entrando na caçada com o líder em '%s'...", b.ID(), char.Level, minRequiredLevel, leaderArea)
+							token := generateActionToken(fmt.Sprintf("startHunt:%s:cycle", leaderArea))
+							_ = b.socket.SendJSON(map[string]any{
+								"t":        "startHunt",
+								"huntId":   leaderArea,
+								"strategy": cfg.Strategy,
+								"mode":     "cycle",
+								"ids":      []string{leaderArea},
+								"acao":     token,
+								"limites":  map[string]any{},
+							})
+						}
+					} else {
+						// Membro já está na caçada da party: permanece com o time, nunca migra individualmente!
+					}
 				}
 			}
-
-			// Garante configurações de assistência e combate
-			if cfg.AutoAssist {
-				_ = b.socket.SendJSON(map[string]any{"t": "huntAssist", "tipo": "ataque", "on": true})
-				_ = b.socket.SendJSON(map[string]any{"t": "huntAssist", "tipo": "barra", "on": true})
+		} else {
+			// Cenário 2: Caçada Solo (sem party ou party ainda sendo montada)
+			if hunt == nil {
+				b.startSafeHunt()
+			} else {
+				if now.Sub(b.lastActionAt) > 30*time.Second {
+					bestMap := b.resolveBestHunt(char.Level)
+					if bestMap != "" && hunt.HuntID != "" && hunt.HuntID != bestMap {
+						log.Printf("[%s] 🚀 Level UP ou mapa desatualizado! Migrando de '%s' para '%s'...", b.ID(), hunt.HuntID, bestMap)
+						b.addLog(fmt.Sprintf("Migrando caçada de '%s' para '%s'", hunt.HuntID, bestMap))
+						b.lastActionAt = now
+						_ = b.socket.SendJSON(map[string]any{"t": "stopHunt"})
+						time.Sleep(500 * time.Millisecond)
+						b.startSafeHunt()
+						return
+					}
+				}
 			}
+		}
+
+		// Garante configurações de assistência e combate
+		if hunt != nil && cfg.AutoAssist {
+			_ = b.socket.SendJSON(map[string]any{"t": "huntAssist", "tipo": "ataque", "on": true})
+			_ = b.socket.SendJSON(map[string]any{"t": "huntAssist", "tipo": "barra", "on": true})
 		}
 	} else if cfg.AutoTraining {
 		// Transição Automática: Se for o Knight esperando a party atingir o level da exp compartilhada (148)
@@ -985,12 +1134,24 @@ func (b *Bot) performAutomationTick() {
 						"name":   memberName,
 					})
 				} else if hunt != nil && !huntFull {
-					// Se o membro já está na party e o líder está caçando, convida para a mesma caçada
-					_ = b.socket.SendJSON(map[string]any{
-						"t":      "party",
-						"action": "invite",
-						"name":   memberName,
-					})
+					// Só convida para a caçada se o aliado já atingiu o threshold de shared EXP da party
+					memberLevel := 0
+					if b.manager != nil {
+						for _, st := range b.manager.GetAllStatuses() {
+							if strings.EqualFold(st.Name, memberName) {
+								memberLevel = st.Level
+								break
+							}
+						}
+					}
+					minRequiredLevel := (char.Level * 2) / 3
+					if memberLevel >= minRequiredLevel || memberLevel == 0 {
+						_ = b.socket.SendJSON(map[string]any{
+							"t":      "party",
+							"action": "invite",
+							"name":   memberName,
+						})
+					}
 				}
 			}
 		}
@@ -1005,8 +1166,21 @@ func (b *Bot) performAutomationTick() {
 						"name":   "kbelludoo",
 					})
 				}
+				// Configura formação para membros que estão atrás do knight
+				for _, m := range char.Lobby.Membros {
+					if !m.Lider && !strings.EqualFold(m.Nome, "kbelludoo") {
+						_ = b.socket.SendJSON(map[string]any{
+							"t":          "lobby",
+							"action":     "formacao",
+							"name":       m.Nome,
+							"seguirQuem": "kbelludoo",
+							"coleira":    3,
+						})
+					}
+				}
 				if char.Lobby.PodeComecar {
-					log.Printf("[%s] 🏰 Time pronto no lobby! Iniciando caçada...", b.ID())
+					log.Printf("[%s] 🏰 Time pronto no lobby! Iniciando caçada cooperativa (+100%% EXP)...", b.ID())
+					b.addLog("Time pronto no lobby. Entrando na caçada cooperativa.")
 					_ = b.socket.SendJSON(map[string]any{
 						"t":       "lobby",
 						"action":  "comecar",
@@ -1022,6 +1196,8 @@ func (b *Bot) performAutomationTick() {
 					}
 				}
 				if !isReady {
+					log.Printf("[%s] 🏰 Convocado para o lobby pelo líder! Confirmando 'Pronto'...", b.ID())
+					b.addLog("Convocado para o lobby. Confirmando pronto.")
 					_ = b.socket.SendJSON(map[string]any{
 						"t":      "lobby",
 						"action": "pronto",
@@ -1200,6 +1376,7 @@ func (b *Bot) handleArvoreReceived(data []byte) {
 	}
 
 	distribuidos := 0
+	// 1. Prioriza nós que já têm pontos alocados (> 0) e ainda não atingiram o máximo
 	for _, no := range p.View.Nos {
 		if livres <= 0 {
 			break
@@ -1209,7 +1386,7 @@ func (b *Bot) handleArvoreReceived(data []byte) {
 		if maximo <= 0 {
 			maximo = 5
 		}
-		if atual < maximo {
+		if atual > 0 && atual < maximo {
 			falta := maximo - atual
 			alocar := falta
 			if alocar > livres {
@@ -1218,6 +1395,29 @@ func (b *Bot) handleArvoreReceived(data []byte) {
 			plano[no.ID] = atual + alocar
 			livres -= alocar
 			distribuidos += alocar
+		}
+	}
+	// 2. Se ainda restarem pontos, aloca em nós raiz seguros (graus == 0)
+	if livres > 0 {
+		for _, no := range p.View.Nos {
+			if livres <= 0 {
+				break
+			}
+			atual := plano[no.ID]
+			maximo := no.Max
+			if maximo <= 0 {
+				maximo = 5
+			}
+			if no.Graus == 0 && atual < maximo {
+				falta := maximo - atual
+				alocar := falta
+				if alocar > livres {
+					alocar = livres
+				}
+				plano[no.ID] = atual + alocar
+				livres -= alocar
+				distribuidos += alocar
+			}
 		}
 	}
 
@@ -1431,8 +1631,8 @@ func (b *Bot) startSafeHunt() {
 
 	targetHuntID := b.resolveBestHunt(char.Level)
 	mode := cfg.HuntMode
-	if mode == "" {
-		mode = "online"
+	if mode == "" || mode == "online" {
+		mode = "cycle" // "cycle" é a Caça Automática oficial do Lux Idle
 	}
 	strat := cfg.Strategy
 	if strat == "" {
@@ -1441,7 +1641,7 @@ func (b *Bot) startSafeHunt() {
 
 	token := generateActionToken(fmt.Sprintf("startHunt:%s:%s", targetHuntID, mode))
 
-	log.Printf("[%s] 🏹 Iniciando caçada no mapa '%s' (modo: %s, alvo: %s)...", b.ID(), targetHuntID, mode, strat)
+	log.Printf("[%s] 🏹 Iniciando Caça Automática (modo ciclo) em '%s' (alvo: %s)...", b.ID(), targetHuntID, strat)
 	b.addLog(fmt.Sprintf("Iniciando caçada em '%s'", targetHuntID))
 
 	_ = b.socket.SendJSON(map[string]any{
@@ -1449,6 +1649,7 @@ func (b *Bot) startSafeHunt() {
 		"huntId":   targetHuntID,
 		"strategy": strat,
 		"mode":     mode,
+		"ids":      []string{targetHuntID},
 		"acao":     token,
 		"limites":  map[string]any{},
 	})
@@ -1601,8 +1802,10 @@ func (b *Bot) resolveBestHunt(level int) string {
 
 	// 4. Fallback inicial seguro com IDs canônicos do Lux Idle
 	if effectiveLevel < 12 {
+		return "troll-cave"
+	} else if effectiveLevel < 20 {
 		return "vip-rotworm"
-	} else if effectiveLevel < 30 {
+	} else if effectiveLevel < 40 {
 		return "vip-cyclops"
 	} else if effectiveLevel < 60 {
 		return "mistrock-cyclops"
@@ -1636,12 +1839,13 @@ func (b *Bot) ExecuteAction(action string, payload map[string]any) (any, error) 
 		if huntID == "" {
 			huntID = b.resolveBestHunt(b.status.Level)
 		}
-		token := generateActionToken("startHunt:" + huntID + ":online")
+		token := generateActionToken("startHunt:" + huntID + ":cycle")
 		err := b.socket.SendJSON(map[string]any{
 			"t":        "startHunt",
 			"huntId":   huntID,
 			"strategy": "nearest",
-			"mode":     "online",
+			"mode":     "cycle",
+			"ids":      []string{huntID},
 			"acao":     token,
 			"limites":  map[string]any{},
 		})
