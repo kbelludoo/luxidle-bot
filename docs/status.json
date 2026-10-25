@@ -2,12 +2,12 @@
   "accounts": [
     {
       "currentArea": "dark-pyramid",
-      "durationSec": 20199,
-      "expPerHour": 506316.9658142003,
-      "gold": 239737,
-      "hp": 1151,
+      "durationSec": 20319,
+      "expPerHour": 506322.61653180514,
+      "gold": 239786,
+      "hp": 1170,
       "id": "acc-1",
-      "kills": 4950,
+      "kills": 4979,
       "level": 69,
       "logs": [
         "[06:16:51] Aviso: a bolsa já está vazia",
@@ -31,19 +31,19 @@
       "maxHp": 1170,
       "maxMana": 375,
       "name": "Personagem #1",
-      "stamina": 1853,
+      "stamina": 1851,
       "status": "hunting",
-      "updatedAt": 1792911132470,
+      "updatedAt": 1792911252725,
       "vocation": "knight"
     },
     {
       "currentArea": "",
-      "durationSec": 20199,
-      "expPerHour": 781867.511659577,
-      "gold": 1227,
-      "hp": 540,
+      "durationSec": 20319,
+      "expPerHour": 781228.0001682398,
+      "gold": 1367,
+      "hp": 486,
       "id": "acc-2",
-      "kills": 16664,
+      "kills": 0,
       "level": 79,
       "logs": [
         "[06:02:42] Aviso: nada para resgatar agora",
@@ -63,18 +63,18 @@
         "[06:47:48] Aviso: nada para resgatar agora",
         "[06:49:24] Enviou 773 de ouro para Personagem #2"
       ],
-      "mana": 2369,
+      "mana": 2367,
       "maxHp": 540,
       "maxMana": 2375,
       "name": "Personagem #2",
-      "stamina": 1854,
+      "stamina": 1852,
       "status": "hunting",
-      "updatedAt": 1792911132454,
+      "updatedAt": 1792911252713,
       "vocation": "druid"
     },
     {
       "currentArea": "auto",
-      "durationSec": 20189,
+      "durationSec": 20310,
       "expPerHour": 0,
       "gold": 1341,
       "hp": 245,
@@ -82,7 +82,6 @@
       "kills": 0,
       "level": 20,
       "logs": [
-        "[06:27:30] Aviso: a bolsa já está vazia",
         "[06:29:33] Aviso: a bolsa já está vazia",
         "[06:31:36] Aviso: a bolsa já está vazia",
         "[06:33:00] Aviso: você já pegou a recompensa de hoje",
@@ -98,7 +97,8 @@
         "[06:48:00] Aviso: você já pegou a recompensa de hoje",
         "[06:48:00] Aviso: nada para resgatar agora",
         "[06:49:45] Aviso: a bolsa já está vazia",
-        "[06:51:45] Aviso: a bolsa já está vazia"
+        "[06:51:45] Aviso: a bolsa já está vazia",
+        "[06:53:48] Aviso: a bolsa já está vazia"
       ],
       "mana": 605,
       "maxHp": 245,
@@ -106,17 +106,17 @@
       "name": "Personagem #3",
       "stamina": 2400,
       "status": "idle (cidade)",
-      "updatedAt": 1792911132453,
+      "updatedAt": 1792911252712,
       "vocation": "sorcerer"
     },
     {
-      "currentArea": "dark-pyramid",
-      "durationSec": 20199,
-      "expPerHour": 782071.4637865704,
-      "gold": 1648,
+      "currentArea": "",
+      "durationSec": 20319,
+      "expPerHour": 781425.9898781179,
+      "gold": 1980,
       "hp": 930,
       "id": "acc-4",
-      "kills": 16664,
+      "kills": 0,
       "level": 79,
       "logs": [
         "[06:14:30] Aviso: a bolsa já está vazia",
@@ -136,26 +136,25 @@
         "[06:47:51] Aviso: você já pegou a recompensa de hoje",
         "[06:47:51] Aviso: nada para resgatar agora"
       ],
-      "mana": 1205,
+      "mana": 1199,
       "maxHp": 930,
       "maxMana": 1205,
       "name": "Personagem #4",
-      "stamina": 1854,
+      "stamina": 1852,
       "status": "hunting",
-      "updatedAt": 1792911132456,
+      "updatedAt": 1792911252713,
       "vocation": "paladin"
     },
     {
       "currentArea": "",
-      "durationSec": 20199,
-      "expPerHour": 794367.1648649469,
-      "gold": 1915,
-      "hp": 1037,
+      "durationSec": 20319,
+      "expPerHour": 794324.5760370429,
+      "gold": 2168,
+      "hp": 1004,
       "id": "acc-5",
       "kills": 0,
       "level": 79,
       "logs": [
-        "[06:17:45] Aviso: você já pegou a recompensa de hoje",
         "[06:17:45] Aviso: nada para resgatar agora",
         "[06:19:12] Enviou 618 de ouro para Personagem #5",
         "[06:29:15] Enviou 703 de ouro para Personagem #5",
@@ -170,20 +169,21 @@
         "[06:47:45] Aviso: você já pegou a recompensa de hoje",
         "[06:47:45] Aviso: nada para resgatar agora",
         "[06:47:54] Aviso: a bolsa já está vazia",
-        "[06:49:54] Aviso: a bolsa já está vazia"
+        "[06:49:54] Aviso: a bolsa já está vazia",
+        "[06:54:00] Aviso: a bolsa já está vazia"
       ],
-      "mana": 815,
+      "mana": 797,
       "maxHp": 1164,
       "maxMana": 815,
       "name": "Personagem #5",
-      "stamina": 1854,
+      "stamina": 1852,
       "status": "hunting",
-      "updatedAt": 1792911132455,
+      "updatedAt": 1792911252714,
       "vocation": "monk"
     }
   ],
   "goroutines": 16,
-  "ramAllocMB": 2.3148269653320312,
+  "ramAllocMB": 3.0680694580078125,
   "ramSysMB": 61.666282653808594,
-  "uptime": "6h20m5s"
+  "uptime": "6h22m6s"
 }
