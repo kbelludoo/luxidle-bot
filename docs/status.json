@@ -2,15 +2,14 @@
   "accounts": [
     {
       "currentArea": "",
-      "durationSec": 33759,
-      "expPerHour": 513200.73534939485,
-      "gold": 316198,
-      "hp": 1290,
+      "durationSec": 33880,
+      "expPerHour": 513184.67194808146,
+      "gold": 316330,
+      "hp": 1281,
       "id": "acc-1",
-      "kills": 8496,
+      "kills": 8528,
       "level": 77,
       "logs": [
-        "[10:04:03] Aviso: a bolsa já está vazia",
         "[10:06:06] Aviso: a bolsa já está vazia",
         "[10:10:06] Aviso: a bolsa já está vazia",
         "[10:12:09] Aviso: a bolsa já está vazia",
@@ -25,25 +24,26 @@
         "[10:32:27] Aviso: a bolsa já está vazia",
         "[10:33:24] Aviso: você já pegou a recompensa de hoje",
         "[10:33:24] Aviso: nada para resgatar agora",
-        "[10:34:27] Aviso: a bolsa já está vazia"
+        "[10:34:27] Aviso: a bolsa já está vazia",
+        "[10:38:27] Aviso: a bolsa já está vazia"
       ],
       "mana": 415,
       "maxHp": 1290,
       "maxMana": 415,
       "name": "Personagem #1",
-      "stamina": 1627,
+      "stamina": 1625,
       "status": "hunting",
-      "updatedAt": 1792924692968,
+      "updatedAt": 1792924813937,
       "vocation": "knight"
     },
     {
-      "currentArea": "dark-pyramid",
-      "durationSec": 33759,
-      "expPerHour": 787293.1223361022,
-      "gold": 1740,
-      "hp": 516,
+      "currentArea": "",
+      "durationSec": 33880,
+      "expPerHour": 787386.285823391,
+      "gold": 1956,
+      "hp": 554,
       "id": "acc-2",
-      "kills": 28452,
+      "kills": 28550,
       "level": 88,
       "logs": [
         "[10:06:42] Aviso: a bolsa já está vazia",
@@ -63,18 +63,18 @@
         "[10:33:18] Aviso: você já pegou a recompensa de hoje",
         "[10:33:18] Aviso: nada para resgatar agora"
       ],
-      "mana": 2639,
+      "mana": 2645,
       "maxHp": 585,
       "maxMana": 2645,
       "name": "Personagem #2",
-      "stamina": 1628,
+      "stamina": 1626,
       "status": "hunting",
-      "updatedAt": 1792924692941,
+      "updatedAt": 1792924813925,
       "vocation": "druid"
     },
     {
       "currentArea": "auto",
-      "durationSec": 33750,
+      "durationSec": 33871,
       "expPerHour": 0,
       "gold": 1341,
       "hp": 245,
@@ -82,7 +82,6 @@
       "kills": 0,
       "level": 20,
       "logs": [
-        "[10:12:57] Aviso: a bolsa já está vazia",
         "[10:15:00] Aviso: a bolsa já está vazia",
         "[10:17:00] Aviso: a bolsa já está vazia",
         "[10:18:21] Aviso: você já pegou a recompensa de hoje",
@@ -98,7 +97,8 @@
         "[10:33:24] Aviso: você já pegou a recompensa de hoje",
         "[10:33:24] Aviso: nada para resgatar agora",
         "[10:35:15] Aviso: a bolsa já está vazia",
-        "[10:37:15] Aviso: a bolsa já está vazia"
+        "[10:37:15] Aviso: a bolsa já está vazia",
+        "[10:39:18] Aviso: a bolsa já está vazia"
       ],
       "mana": 605,
       "maxHp": 245,
@@ -106,17 +106,17 @@
       "name": "Personagem #3",
       "stamina": 2400,
       "status": "idle (cidade)",
-      "updatedAt": 1792924692940,
+      "updatedAt": 1792924813925,
       "vocation": "sorcerer"
     },
     {
-      "currentArea": "dark-pyramid",
-      "durationSec": 33759,
-      "expPerHour": 787443.4322235025,
-      "gold": 1080,
+      "currentArea": "",
+      "durationSec": 33880,
+      "expPerHour": 787536.0676830154,
+      "gold": 1233,
       "hp": 1020,
       "id": "acc-4",
-      "kills": 28452,
+      "kills": 28550,
       "level": 88,
       "logs": [
         "[09:48:39] Prey Slot 1: presa 'werehyaena-shaman' selecionada (+37%)",
@@ -140,19 +140,19 @@
       "maxHp": 1020,
       "maxMana": 1340,
       "name": "Personagem #4",
-      "stamina": 1628,
+      "stamina": 1626,
       "status": "hunting",
-      "updatedAt": 1792924692943,
+      "updatedAt": 1792924813926,
       "vocation": "paladin"
     },
     {
-      "currentArea": "dark-pyramid",
-      "durationSec": 33759,
-      "expPerHour": 801526.7981300226,
-      "gold": 1668,
-      "hp": 909,
+      "currentArea": "",
+      "durationSec": 33880,
+      "expPerHour": 801569.1207394312,
+      "gold": 1852,
+      "hp": 1106,
       "id": "acc-5",
-      "kills": 28452,
+      "kills": 28550,
       "level": 88,
       "logs": [
         "[09:51:30] Prey Slot 1: presa 'banshee' selecionada (+22%)",
@@ -172,18 +172,18 @@
         "[10:33:12] Aviso: você já pegou a recompensa de hoje",
         "[10:33:12] Aviso: nada para resgatar agora"
       ],
-      "mana": 863,
+      "mana": 905,
       "maxHp": 1281,
       "maxMana": 905,
       "name": "Personagem #5",
-      "stamina": 1628,
+      "stamina": 1626,
       "status": "hunting",
-      "updatedAt": 1792924692943,
+      "updatedAt": 1792924813927,
       "vocation": "monk"
     }
   ],
   "goroutines": 16,
-  "ramAllocMB": 3.1428070068359375,
+  "ramAllocMB": 2.522796630859375,
   "ramSysMB": 61.666282653808594,
-  "uptime": "10h6m6s"
+  "uptime": "10h8m7s"
 }
