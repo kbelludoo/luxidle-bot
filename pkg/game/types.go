@@ -80,6 +80,7 @@ type CharacterState struct {
 	Mana          int                  `json:"mana"`
 	Gold          int64                `json:"gold"`
 	Coins         int64                `json:"coins,omitempty"`
+	Premium       int64                `json:"premium,omitempty"` // Tempo restante de VIP (ms)
 	Weight        float64              `json:"weight"`
 	Derived       *DerivedStats        `json:"derived,omitempty"`
 	Progress      *ProgressStats       `json:"progress,omitempty"`
@@ -89,7 +90,7 @@ type CharacterState struct {
 	AutoPronto    bool                 `json:"autoPronto,omitempty"`
 	AutoBoss      *AutoBossState       `json:"autoBoss,omitempty"`
 	BossCooldowns map[string]int64     `json:"bossCooldowns,omitempty"`
-	BossTasks     []BossTask           `json:"bossTasks,omitempty"`
+	BossTasks     any                  `json:"bossTasks,omitempty"`
 	Blessings     any                  `json:"blessings,omitempty"`
 	Stamina       any                  `json:"stamina,omitempty"`
 	MaxStamina    any                  `json:"maxStamina,omitempty"`
@@ -105,6 +106,17 @@ type CharacterState struct {
 	ActionPresets     []ActionPreset       `json:"actionPresets,omitempty"`
 	ActionPresetAtual string               `json:"actionPresetAtual,omitempty"`
 	GemBag            any                  `json:"gemBag,omitempty"`
+	Promoted          bool                 `json:"promoted,omitempty"`
+	Promotion         *PromotionState      `json:"promotion,omitempty"`
+}
+
+type PromotionState struct {
+	Done bool    `json:"done,omitempty"`
+	Cost int64   `json:"cost,omitempty"`
+	From string  `json:"from,omitempty"`
+	Name string  `json:"name,omitempty"`
+	HP   float64 `json:"hp,omitempty"`
+	Mana float64 `json:"mana,omitempty"`
 }
 
 type ActionPreset struct {

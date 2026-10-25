@@ -38,6 +38,7 @@ type AccountStatus struct {
 	Name        string         `json:"name"`
 	Level       int            `json:"level"`
 	Vocation    string         `json:"vocation,omitempty"`
+	Promoted    bool           `json:"promoted"`
 	HP          int            `json:"hp"`
 	MaxHP       int            `json:"maxHp"`
 	Mana        int            `json:"mana"`

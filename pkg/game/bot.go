@@ -47,9 +47,11 @@ type Bot struct {
 	lastStateAt  time.Time
 	lastBoxAt    time.Time
 	lastMountAt  time.Time
-	lastSkillsAt time.Time
-	lastCharmsAt time.Time
-	lastMarketAt time.Time
+	lastSkillsAt  time.Time
+	lastCharmsAt  time.Time
+	lastMarketAt  time.Time
+	lastPromoteAt time.Time
+	lastVipAt     time.Time
 
 	// Novos ciclos automáticos
 	lastEquipAt        time.Time
@@ -286,7 +288,11 @@ func (b *Bot) handleMessage(data []byte) {
 		b.handleCharmsReceived(data)
 
 	case "coinMarket":
+		log.Printf("[%s] 💰 Pacote coinMarket recebido: %s", b.ID(), string(data))
 		b.handleCoinMarketReceived(data)
+
+	case "store":
+		log.Printf("[%s] 🏬 Pacote store recebido: %s", b.ID(), string(data))
 
 	case "grupoConvite":
 		var p struct {
@@ -479,6 +485,9 @@ func (b *Bot) handleWelcomeReceived(p InboundPacket) {
 		b.status.Name = p.Character.Name
 		b.status.Level = p.Character.Level
 		b.status.Vocation = p.Character.Vocation
+		b.status.Promoted = p.Character.Promoted || (p.Character.Promotion != nil && p.Character.Promotion.Done) ||
+			strings.Contains(p.Character.Vocation, "Elite") || strings.Contains(p.Character.Vocation, "Master") ||
+			strings.Contains(p.Character.Vocation, "Elder") || strings.Contains(p.Character.Vocation, "Royal")
 		b.status.Gold = p.Character.Gold
 		b.status.HP = p.Character.HP
 		b.status.Mana = p.Character.Mana
@@ -584,6 +593,9 @@ func (b *Bot) handleStateReceived(p InboundPacket) {
 		b.status.Name = b.character.Name
 		b.status.Level = b.character.Level
 		b.status.Vocation = b.character.Vocation
+		b.status.Promoted = b.character.Promoted || (b.character.Promotion != nil && b.character.Promotion.Done) ||
+			strings.Contains(b.character.Vocation, "Elite") || strings.Contains(b.character.Vocation, "Master") ||
+			strings.Contains(b.character.Vocation, "Elder") || strings.Contains(b.character.Vocation, "Royal")
 		b.status.HP = b.character.HP
 		b.status.Mana = b.character.Mana
 		b.status.Gold = b.character.Gold
@@ -780,10 +792,18 @@ func (b *Bot) performAutomationTick() {
 	}
 
 	// 3. Promoção Automática de Vocação (Level 20+)
-	if cfg.AutoPromote && char.Level >= 20 && !strings.Contains(char.Vocation, "Elite") && !strings.Contains(char.Vocation, "Master") && !strings.Contains(char.Vocation, "Elder") && !strings.Contains(char.Vocation, "Royal") {
-		if now.Sub(b.lastActionAt) > 60*time.Second {
-			b.lastActionAt = now
-			log.Printf("[%s] Promovendo vocação no level %d...", b.ID(), char.Level)
+	isPromoted := char.Promoted || (char.Promotion != nil && char.Promotion.Done) ||
+		strings.Contains(char.Vocation, "Elite") || strings.Contains(char.Vocation, "Master") ||
+		strings.Contains(char.Vocation, "Elder") || strings.Contains(char.Vocation, "Royal")
+	promoteCost := int64(20000)
+	if char.Promotion != nil && char.Promotion.Cost > 0 {
+		promoteCost = char.Promotion.Cost
+	}
+	if cfg.AutoPromote && char.Level >= 20 && !isPromoted && char.Gold >= promoteCost {
+		if now.Sub(b.lastPromoteAt) > 30*time.Second {
+			b.lastPromoteAt = now
+			log.Printf("[%s] 👑 Promovendo vocação no level %d (custo: %d gold)...", b.ID(), char.Level, promoteCost)
+			b.addLog("Promovendo vocação...")
 			_ = b.socket.SendJSON(map[string]any{"t": "promote"})
 		}
 	}
@@ -867,7 +887,7 @@ func (b *Bot) performAutomationTick() {
 
 	if cfg.AutoHunt {
 		isLeader := (cfg.PartyLeader != "" && strings.EqualFold(char.Name, cfg.PartyLeader)) ||
-			(char.Party != nil && char.Party.SouLider)
+			(cfg.PartyLeader == "" && char.Party != nil && char.Party.SouLider)
 
 		inParty := cfg.AutoParty && (
 			(char.Party != nil && len(char.Party.Membros) > 1) ||
@@ -877,64 +897,13 @@ func (b *Bot) performAutomationTick() {
 		if inParty {
 			// Cenário 1: Operação em Grupo / Party Cooperativa
 			if isLeader {
-				// Líder coordena o Lobby e a migração de mapa da party
+				// Líder coordena a caçada da party e a migração dinâmica de mapa
 				targetHuntID := b.resolveBestHunt(char.Level)
 
-				// Verifica se há membros que precisam de catch-up de level para partilha de EXP (minLevel >= floor(maxLevel * 2/3))
-				minRequiredLevel := (char.Level * 2) / 3
-				convocados := make([]string, 0)
-				allMembersReady := true
-
-				if b.manager != nil {
-					statuses := b.manager.GetAllStatuses()
-					for _, pm := range char.Party.Membros {
-						if strings.EqualFold(pm.Name, char.Name) {
-							continue
-						}
-						memberLevel := 0
-						for _, st := range statuses {
-							if strings.EqualFold(st.Name, pm.Name) {
-								memberLevel = st.Level
-								break
-							}
-						}
-						if memberLevel > 0 && memberLevel < minRequiredLevel {
-							allMembersReady = false
-						} else {
-							convocados = append(convocados, pm.Name)
-						}
-					}
-				} else {
-					for _, pm := range char.Party.Membros {
-						if !strings.EqualFold(pm.Name, char.Name) {
-							convocados = append(convocados, pm.Name)
-						}
-					}
-				}
-
-				if !allMembersReady && len(convocados) == 0 {
-					// Membros ainda estão em catch-up solo, líder aguarda para não inflar o nível
-					if hunt == nil && now.Sub(b.lastTrainAt) > 2*time.Minute {
-						b.lastTrainAt = now
-						log.Printf("[%s] ⏳ Membros em catch-up (nível mínimo requerido: %d). Líder treinando online nos bonecos...", b.ID(), minRequiredLevel)
-						_ = b.socket.SendJSON(map[string]any{"t": "training", "action": "start", "mode": "online"})
-					}
-				} else if hunt == nil {
-					// Time apto e não está caçando: abre o lobby se ainda não estiver aberto
-					if char.Lobby == nil && len(convocados) > 0 && now.Sub(b.lastPartyAt) > 10*time.Second {
-						b.lastPartyAt = now
-						token := generateActionToken("lobby:" + targetHuntID)
-						log.Printf("[%s] 🏰 Armando Lobby oficial para '%s' com %d aliados convocados...", b.ID(), targetHuntID, len(convocados))
-						b.addLog(fmt.Sprintf("Armando Lobby da party em '%s'", targetHuntID))
-						_ = b.socket.SendJSON(map[string]any{
-							"t":          "lobby",
-							"action":     "armar",
-							"huntId":     targetHuntID,
-							"modo":       "auto",
-							"convocados": convocados,
-							"acao":       token,
-						})
-					}
+				if hunt == nil {
+					// Se o líder está na cidade e sem caçada, inicia a caçada segura imediatamente.
+					// Todos os aliados conectados entram dinamicamente via AutoParty (invite/accept em tempo real).
+					b.startSafeHunt()
 				} else {
 					// Já está caçando com a party. Verifica se a party pode migrar para um mapa superior
 					if now.Sub(b.lastActionAt) > 30*time.Second {
@@ -973,8 +942,8 @@ func (b *Bot) performAutomationTick() {
 				} else {
 					// Nível compatível para shared exp!
 					if hunt == nil {
-						// Se não está caçando e o líder está em caçada, junta-se na mesma caçada
-						if leaderArea != "" {
+						// Se não está caçando e o líder está em caçada válida, junta-se na mesma caçada
+						if leaderArea != "" && leaderArea != "auto" {
 							log.Printf("[%s] ⚔️ Aliado apto para a party (%d >= %d). Entrando na caçada com o líder em '%s'...", b.ID(), char.Level, minRequiredLevel, leaderArea)
 							token := generateActionToken(fmt.Sprintf("startHunt:%s:cycle", leaderArea))
 							_ = b.socket.SendJSON(map[string]any{
@@ -1077,7 +1046,7 @@ func (b *Bot) performAutomationTick() {
 	// 11. AutoParty e Sincronização de Caçada em Grupo
 	if cfg.AutoParty && char != nil {
 		isLeader := (cfg.PartyLeader != "" && strings.EqualFold(char.Name, cfg.PartyLeader)) ||
-			(char.Party != nil && char.Party.SouLider)
+			(cfg.PartyLeader == "" && char.Party != nil && char.Party.SouLider)
 
 		partyLeader := ""
 		if char.Party != nil {
@@ -1156,8 +1125,8 @@ func (b *Bot) performAutomationTick() {
 			}
 		}
 
-		// Automação cooperativa de Lobby oficial
-		if char.Lobby != nil {
+		// Automação cooperativa de Lobby oficial (somente se não estiver caçando)
+		if char.Lobby != nil && hunt == nil {
 			if char.Lobby.SouLider {
 				if char.Lobby.Frente == "" {
 					_ = b.socket.SendJSON(map[string]any{
@@ -1253,6 +1222,12 @@ func (b *Bot) performAutomationTick() {
 	if now.Sub(b.lastPresetAt) > 10*time.Minute {
 		b.lastPresetAt = now
 		b.checkAndApplyActionPresets()
+	}
+
+	// 20. Estratégia de VIP Automatizada (Fase 1: 30d / 250 coins -> Fase 2: 90d / 650 coins)
+	if now.Sub(b.lastVipAt) > 2*time.Minute {
+		b.lastVipAt = now
+		b.checkAndHandleVIP()
 	}
 }
 
@@ -1494,6 +1469,56 @@ func (b *Bot) handleCharmsReceived(data []byte) {
 	}
 }
 
+// checkAndHandleVIP implementa a progressão estratégica de VIP da equipe:
+// Fase 1: 1ª VIP de 30 dias (250 coins) no líder (klord) para destravar o motor (+10% EXP, party e hunts exclusivas).
+// Fase 2: 2ª VIP de 90 dias (650 coins) para economia de 100 coins e 3 meses de estabilidade total.
+// Fase 3: Transição para Bestiário e Charms de endgame.
+func (b *Bot) checkAndHandleVIP() {
+	b.mu.RLock()
+	char := b.character
+	cfg := b.config.Settings
+	b.mu.RUnlock()
+
+	if char == nil || !cfg.AutoHunt {
+		return
+	}
+
+	// VIP é gerenciada pelo líder da party (klord) ou conta principal (kbelludoo)
+	isLeader := (cfg.PartyLeader != "" && strings.EqualFold(char.Name, cfg.PartyLeader)) ||
+		(cfg.PartyLeader == "" && strings.EqualFold(char.Name, cfg.MainAccount))
+
+	if !isLeader {
+		return
+	}
+
+	// Fase 1: Destravar o motor — 1ª VIP de 30 dias (250 coins)
+	if char.Premium <= 0 {
+		if char.Coins >= 250 {
+			log.Printf("[%s] 👑 [Estratégia VIP] Fase 1: Ativando 1ª VIP de 30 dias ('premium-30' por 250 coins)!", b.ID())
+			b.addLog("Ativando 1ª VIP de 30 dias (250 Coins)...")
+			_ = b.socket.SendJSON(map[string]any{
+				"t":      "store",
+				"action": "buy",
+				"id":     "premium-30",
+			})
+			return
+		}
+	} else {
+		// Fase 2: Estabilidade e Economia — 2ª VIP de 90 dias ('premium-90' por 650 coins)
+		vipDaysRemaining := char.Premium / (86400 * 1000)
+		if vipDaysRemaining < 80 && char.Coins >= 650 {
+			log.Printf("[%s] 👑 [Estratégia VIP] Fase 2: Ativando 2ª VIP de 90 dias ('premium-90' por 650 coins, 100 coins OFF)!", b.ID())
+			b.addLog("Ativando 2ª VIP de 90 dias (650 Coins - 100 Coins OFF)...")
+			_ = b.socket.SendJSON(map[string]any{
+				"t":      "store",
+				"action": "buy",
+				"id":     "premium-90",
+			})
+			return
+		}
+	}
+}
+
 func (b *Bot) checkAndHandleCoinMarket() {
 	_ = b.socket.SendJSON(map[string]any{
 		"t":      "coinMarket",
@@ -1503,26 +1528,47 @@ func (b *Bot) checkAndHandleCoinMarket() {
 
 func (b *Bot) handleCoinMarketReceived(data []byte) {
 	var p struct {
-		Orders []struct {
-			ID     string `json:"id"`
-			Kind   string `json:"kind"`
-			Amount int    `json:"amount"`
-			Price  int64  `json:"price"`
-		} `json:"orders"`
+		Dados *struct {
+			Pagina int `json:"pagina"`
+			Compra struct {
+				Linhas []struct {
+					ID     string `json:"id"`
+					Amount int    `json:"amount"`
+					Price  int64  `json:"price"`
+				} `json:"linhas"`
+			} `json:"compra"`
+			Venda struct {
+				Linhas []struct {
+					ID     string `json:"id"`
+					Amount int    `json:"amount"`
+					Price  int64  `json:"price"`
+				} `json:"linhas"`
+			} `json:"venda"`
+			Minhas []struct {
+				ID     string `json:"id"`
+				Amount int    `json:"amount"`
+				Price  int64  `json:"price"`
+			} `json:"minhas"`
+		} `json:"dados"`
 	}
-	if err := json.Unmarshal(data, &p); err != nil || len(p.Orders) == 0 {
+	if err := json.Unmarshal(data, &p); err != nil || p.Dados == nil {
 		return
 	}
 
-	var lowestSell int64 = 0
-	for _, o := range p.Orders {
-		if o.Kind == "sell" && (lowestSell == 0 || o.Price < lowestSell) {
-			lowestSell = o.Price
-		}
+	bestBuy := int64(0)
+	if len(p.Dados.Compra.Linhas) > 0 {
+		bestBuy = p.Dados.Compra.Linhas[0].Price
 	}
 
-	if lowestSell > 0 {
-		log.Printf("[%s] 💰 Cotação Lux Coin: 1 Coin = %d ouro", b.ID(), lowestSell)
+	bestSell := int64(0)
+	if len(p.Dados.Venda.Linhas) > 0 {
+		bestSell = p.Dados.Venda.Linhas[0].Price
+	}
+
+	if bestSell > 0 || bestBuy > 0 {
+		log.Printf("[%s] 💰 Câmbio Lux Coins — Vendem desde: %d gold | Pagam até: %d gold (%d ofertas de venda, %d de compra)",
+			b.ID(), bestSell, bestBuy, len(p.Dados.Venda.Linhas), len(p.Dados.Compra.Linhas))
+		b.addLog(fmt.Sprintf("Cotação Coins: Venda %d gold | Compra %d gold", bestSell, bestBuy))
 	}
 }
 
@@ -1726,7 +1772,10 @@ func (b *Bot) mergeCatalogLocked(c *CatalogData) {
 func (b *Bot) resolveBestHunt(level int) string {
 	b.mu.RLock()
 	defer b.mu.RUnlock()
+	return b.resolveBestHuntLocked(level)
+}
 
+func (b *Bot) resolveBestHuntLocked(level int) string {
 	// 1. Se o usuário fixou um mapa específico no settings
 	target := b.config.Settings.HuntTarget
 	if target != "" && target != "auto" {
@@ -1766,7 +1815,7 @@ func (b *Bot) resolveBestHunt(level int) string {
 			}
 		} else if b.config.Settings.PartyLeader != "" {
 			for _, st := range statuses {
-				if strings.EqualFold(st.Name, b.config.Settings.PartyLeader) && st.CurrentArea != "" && st.Status == "hunting" {
+				if strings.EqualFold(st.Name, b.config.Settings.PartyLeader) && st.CurrentArea != "" && st.CurrentArea != "auto" && st.Status == "hunting" {
 					if b.catalog != nil && len(b.catalog.Hunts) > 0 {
 						for _, h := range b.catalog.Hunts {
 							if h.ID == st.CurrentArea && level >= h.Level {
@@ -1783,6 +1832,15 @@ func (b *Bot) resolveBestHunt(level int) string {
 
 	// 3. Se temos catálogo recebido do servidor, filtra os mapas onde level <= effectiveLevel
 	if b.catalog != nil && len(b.catalog.Hunts) > 0 {
+		// No range de 15 a 59, 'dark-pyramid' é o melhor mapa de EXP em grupo do Lux Idle (+800k EXP/h)
+		if effectiveLevel >= 15 && effectiveLevel < 60 {
+			for _, h := range b.catalog.Hunts {
+				if h.ID == "dark-pyramid" {
+					return "dark-pyramid"
+				}
+			}
+		}
+
 		eligible := make([]CatalogHunt, 0)
 		for _, h := range b.catalog.Hunts {
 			if h.Level <= effectiveLevel {
@@ -1803,14 +1861,14 @@ func (b *Bot) resolveBestHunt(level int) string {
 	// 4. Fallback inicial seguro com IDs canônicos do Lux Idle
 	if effectiveLevel < 12 {
 		return "troll-cave"
-	} else if effectiveLevel < 20 {
-		return "vip-rotworm"
-	} else if effectiveLevel < 40 {
-		return "vip-cyclops"
+	} else if effectiveLevel < 15 {
+		return "amazon-camp"
 	} else if effectiveLevel < 60 {
-		return "mistrock-cyclops"
-	} else if effectiveLevel < 120 {
 		return "dark-pyramid"
+	} else if effectiveLevel < 80 {
+		return "cults-carlin"
+	} else if effectiveLevel < 100 {
+		return "drefia-wyrm-caves"
 	}
 	return "putrid-mummies"
 }
@@ -1837,7 +1895,7 @@ func (b *Bot) ExecuteAction(action string, payload map[string]any) (any, error) 
 	case "startHunt":
 		huntID, _ := payload["huntId"].(string)
 		if huntID == "" {
-			huntID = b.resolveBestHunt(b.status.Level)
+			huntID = b.resolveBestHuntLocked(b.status.Level)
 		}
 		token := generateActionToken("startHunt:" + huntID + ":cycle")
 		err := b.socket.SendJSON(map[string]any{
@@ -1892,6 +1950,84 @@ func (b *Bot) ExecuteAction(action string, payload map[string]any) (any, error) 
 		err := b.socket.SendJSON(map[string]any{"t": "training", "action": "start", "mode": "online"})
 		b.addLogLocked("Treino online acionado.")
 		return "Treino iniciado", err
+
+	case "transfer":
+		to, _ := payload["name"].(string)
+		if to == "" {
+			return nil, fmt.Errorf("parâmetro 'name' obrigatório")
+		}
+		var amt int64
+		switch v := payload["amount"].(type) {
+		case float64:
+			amt = int64(v)
+		case int64:
+			amt = v
+		case int:
+			amt = int64(v)
+		}
+		if amt <= 0 {
+			return nil, fmt.Errorf("valor de transferência inválido")
+		}
+		err := b.socket.SendJSON(map[string]any{
+			"t":      "bank",
+			"action": "transfer",
+			"name":   to,
+			"amount": amt,
+		})
+		b.addLogLocked(fmt.Sprintf("Transferência de %d gold para %s enviada.", amt, to))
+		return fmt.Sprintf("Transferência de %d para %s enviada", amt, to), err
+
+	case "coinMarket":
+		page := 1
+		if p, ok := payload["pagina"].(float64); ok && p > 0 {
+			page = int(p)
+		}
+		err := b.socket.SendJSON(map[string]any{
+			"t":      "coinMarket",
+			"pagina": page,
+		})
+		return "Consulta de cotação de moedas enviada", err
+
+	case "buyCoins":
+		var amt int64
+		switch v := payload["amount"].(type) {
+		case float64:
+			amt = int64(v)
+		case int64:
+			amt = v
+		case int:
+			amt = int64(v)
+		}
+		var price int64
+		switch v := payload["price"].(type) {
+		case float64:
+			price = int64(v)
+		case int64:
+			price = v
+		case int:
+			price = int64(v)
+		}
+		if amt <= 0 || price <= 0 {
+			return nil, fmt.Errorf("quantidade e preço por moeda devem ser positivos")
+		}
+		totalCost := amt * price
+		if b.character != nil && b.character.Gold < totalCost {
+			return nil, fmt.Errorf("saldo insuficiente: precisa de %d gold mas tem %d", totalCost, b.character.Gold)
+		}
+		err := b.socket.SendJSON(map[string]any{
+			"t":      "coinMarket",
+			"action": "order",
+			"kind":   "buy",
+			"amount": amt,
+			"price":  price,
+			"pagina": 1,
+		})
+		b.addLogLocked(fmt.Sprintf("Ordem de compra de %d coins a %d gold enviada (Total: %d).", amt, price, totalCost))
+		return fmt.Sprintf("Ordem de compra de %d Lux Coins a %d gold enviada (Custo: %d gold)", amt, price, totalCost), err
+
+	case "store":
+		err := b.socket.SendJSON(map[string]any{"t": "store"})
+		return "Loja solicitada", err
 
 	default:
 		return nil, fmt.Errorf("ação desconhecida: %s", action)
@@ -2018,11 +2154,43 @@ func (b *Bot) checkAndHandleGoldTransfer() {
 		mainAcc = "kbelludoo"
 	}
 
+	// 1. Se for a conta principal (tesouraria central kbelludoo):
+	// Financia automaticamente qualquer aliado da party nível 20+ que precisa de ouro para promoção
 	if strings.EqualFold(char.Name, mainAcc) {
+		if b.manager != nil && char.Gold >= 100000 {
+			for _, st := range b.manager.GetAllStatuses() {
+				if strings.EqualFold(st.Name, mainAcc) {
+					continue
+				}
+				isPromoted := st.Promoted || strings.Contains(st.Vocation, "Elite") || strings.Contains(st.Vocation, "Master") ||
+					strings.Contains(st.Vocation, "Elder") || strings.Contains(st.Vocation, "Royal")
+				if st.Level >= 20 && !isPromoted && st.Gold < 20000 {
+					log.Printf("[%s] 💰 AutoBank: Financiando 25.000 gold para '%s' comprar Promoção de Vocação...", b.ID(), st.Name)
+					b.addLog(fmt.Sprintf("Financiou 25.000 gold para %s (Promoção)", st.Name))
+					_ = b.socket.SendJSON(map[string]any{
+						"t":      "bank",
+						"action": "transfer",
+						"name":   st.Name,
+						"amount": 25000,
+					})
+					return // financia um aliado por ciclo para manter fluxo ordenado
+				}
+			}
+		}
 		return
 	}
 
+	// 2. Se for conta secundária:
+	// Mantém reserva de 25.000 de ouro se atingiu nível 20 e ainda precisa comprar a promoção
+	isPromoted := char.Promoted || (char.Promotion != nil && char.Promotion.Done) ||
+		strings.Contains(char.Vocation, "Elite") || strings.Contains(char.Vocation, "Master") ||
+		strings.Contains(char.Vocation, "Elder") || strings.Contains(char.Vocation, "Royal")
+
 	reserve := int64(1000)
+	if char.Level >= 20 && !isPromoted {
+		reserve = 25000
+	}
+
 	if char.Gold > reserve+500 {
 		transferAmount := char.Gold - reserve
 		log.Printf("[%s] 💰 AutoBank: Centralizando %d de ouro para a conta principal '%s'...", b.ID(), transferAmount, mainAcc)

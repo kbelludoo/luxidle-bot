@@ -68,6 +68,52 @@ func main() {
 		}
 		sendAction(client, *serverURL, args[1], "toggleAutoHunt", map[string]any{})
 
+	case "promote":
+		if len(args) < 2 {
+			fmt.Println("Uso: botctl promote <account-id>")
+			os.Exit(1)
+		}
+		sendAction(client, *serverURL, args[1], "promote", map[string]any{})
+
+	case "transfer":
+		if len(args) < 4 {
+			fmt.Println("Uso: botctl transfer <from-account-id> <to-char-name> <amount>")
+			os.Exit(1)
+		}
+		var amt int64
+		_, _ = fmt.Sscanf(args[3], "%d", &amt)
+		sendAction(client, *serverURL, args[1], "transfer", map[string]any{
+			"name":   args[2],
+			"amount": amt,
+		})
+
+	case "market":
+		if len(args) < 2 {
+			fmt.Println("Uso: botctl market <account-id>")
+			os.Exit(1)
+		}
+		sendAction(client, *serverURL, args[1], "coinMarket", map[string]any{"pagina": 1})
+
+	case "buy-coins":
+		if len(args) < 4 {
+			fmt.Println("Uso: botctl buy-coins <account-id> <quantidade-coins> <preco-por-coin-em-gold>")
+			os.Exit(1)
+		}
+		var amt, price int64
+		_, _ = fmt.Sscanf(args[2], "%d", &amt)
+		_, _ = fmt.Sscanf(args[3], "%d", &price)
+		sendAction(client, *serverURL, args[1], "buyCoins", map[string]any{
+			"amount": amt,
+			"price":  price,
+		})
+
+	case "action":
+		if len(args) < 3 {
+			fmt.Println("Uso: botctl action <account-id> <action-name>")
+			os.Exit(1)
+		}
+		sendAction(client, *serverURL, args[1], args[2], map[string]any{})
+
 	default:
 		printUsage()
 	}
@@ -94,8 +140,13 @@ func sendAction(client *http.Client, serverURL, accountID, action string, payloa
 
 func printUsage() {
 	fmt.Println("Uso do botctl (Utilitário Nativo em Go):")
-	fmt.Println("  botctl status                   - Exibe o status de todas as contas")
-	fmt.Println("  botctl stop-hunt <account-id>   - Encerra a caçada de uma conta")
-	fmt.Println("  botctl start-hunt <account-id>  - Inicia a caçada (com mapa opcional)")
-	fmt.Println("  botctl toggle-hunt <account-id> - Liga/desliga o auto-hunt da conta")
+	fmt.Println("  botctl status                                        - Exibe o status de todas as contas")
+	fmt.Println("  botctl stop-hunt <account-id>                        - Encerra a caçada de uma conta")
+	fmt.Println("  botctl start-hunt <account-id> [hunt-id]             - Inicia a caçada (com mapa opcional)")
+	fmt.Println("  botctl toggle-hunt <account-id>                      - Liga/desliga o auto-hunt da conta")
+	fmt.Println("  botctl promote <account-id>                          - Envia comando de promoção de vocação")
+	fmt.Println("  botctl transfer <account-id> <dest-name> <amount>    - Transfere ouro entre personagens")
+	fmt.Println("  botctl market <account-id>                           - Consulta cotação de Lux Coins no mercado")
+	fmt.Println("  botctl buy-coins <account-id> <quant> <preco_ouro>   - Envia ordem de compra de Lux Coins com ouro")
+	fmt.Println("  botctl action <account-id> <action-name>             - Dispara ação arbitrária no bot")
 }
