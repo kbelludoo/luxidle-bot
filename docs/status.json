@@ -2,12 +2,12 @@
   "accounts": [
     {
       "currentArea": "",
-      "durationSec": 8033,
-      "expPerHour": 20859.92503417833,
-      "gold": 4358508,
+      "durationSec": 8154,
+      "expPerHour": 36377.40905798417,
+      "gold": 4359126,
       "hp": 1425,
       "id": "acc-1",
-      "kills": 310,
+      "kills": 549,
       "level": 86,
       "logs": [
         "[14:47:17] Aviso: hunt não encontrada",
@@ -33,19 +33,19 @@
       "maxHp": 1425,
       "maxMana": 460,
       "name": "Personagem #1",
-      "stamina": 1351,
+      "stamina": 1349,
       "status": "hunting",
-      "updatedAt": 1792941253890,
+      "updatedAt": 1792941374816,
       "vocation": "knight"
     },
     {
       "currentArea": "",
-      "durationSec": 8033,
-      "expPerHour": 20023.68751051388,
-      "gold": 1234,
-      "hp": 552,
+      "durationSec": 8154,
+      "expPerHour": 35025.63333750614,
+      "gold": 1651,
+      "hp": 559,
       "id": "acc-2",
-      "kills": 310,
+      "kills": 549,
       "level": 97,
       "logs": [
         "[14:48:47] Aviso: você já pegou a recompensa de hoje",
@@ -67,18 +67,18 @@
         "[15:08:56] Aviso: a bolsa já está vazia",
         "[15:12:23] Enviou 506 de ouro para Personagem #2"
       ],
-      "mana": 2915,
+      "mana": 2909,
       "maxHp": 630,
       "maxMana": 2915,
       "name": "Personagem #2",
-      "stamina": 1352,
+      "stamina": 1350,
       "status": "hunting",
-      "updatedAt": 1792941253884,
+      "updatedAt": 1792941374812,
       "vocation": "druid"
     },
     {
       "currentArea": "dark-pyramid",
-      "durationSec": 8024,
+      "durationSec": 8145,
       "expPerHour": 7521.108782887288,
       "gold": 1350,
       "hp": 250,
@@ -86,7 +86,6 @@
       "kills": 131,
       "level": 21,
       "logs": [
-        "[15:03:08] Aviso: a bolsa já está vazia",
         "[15:03:44] Aviso: você já pegou a recompensa de hoje",
         "[15:03:44] Aviso: nada para resgatar agora",
         "[15:05:11] Aviso: a bolsa já está vazia",
@@ -106,7 +105,8 @@
         "[15:11:20] Aviso: a caçada já tem 5 pessoas",
         "[15:11:24] Caçada iniciada manualmente.",
         "[15:11:26] Migrando party de 'dark-pyramid' para 'vip-cyclops'",
-        "[15:13:14] Aviso: a bolsa já está vazia"
+        "[15:13:14] Aviso: a bolsa já está vazia",
+        "[15:15:17] Aviso: a bolsa já está vazia"
       ],
       "mana": 635,
       "maxHp": 250,
@@ -114,20 +114,19 @@
       "name": "Personagem #3",
       "stamina": 2400,
       "status": "idle (cidade)",
-      "updatedAt": 1792941253889,
+      "updatedAt": 1792941374818,
       "vocation": "sorcerer"
     },
     {
       "currentArea": "dark-pyramid",
-      "durationSec": 8033,
-      "expPerHour": 19882.438466377822,
-      "gold": 1226,
+      "durationSec": 8154,
+      "expPerHour": 34886.4106046028,
+      "gold": 1895,
       "hp": 1110,
       "id": "acc-4",
-      "kills": 310,
+      "kills": 549,
       "level": 97,
       "logs": [
-        "[14:33:38] Aviso: você já pegou a recompensa de hoje",
         "[14:33:38] Aviso: nada para resgatar agora",
         "[14:36:41] Enviou 672 de ouro para Personagem #4",
         "[14:36:59] Aviso: a bolsa já está vazia",
@@ -144,25 +143,26 @@
         "[15:08:29] Entrando na caçada da party com 'Personagem #4' em 'Cyclops'",
         "[15:08:35] Aviso: saia da cacada antes de ligar o Auto Boss.",
         "[15:08:47] Entrando na caçada da party com 'Personagem #4' em 'Cyclops'",
-        "[15:11:53] Enviou 1062 de ouro para Personagem #4"
+        "[15:11:53] Enviou 1062 de ouro para Personagem #4",
+        "[15:15:26] Aviso: a bolsa já está vazia"
       ],
       "mana": 1475,
       "maxHp": 1110,
       "maxMana": 1475,
       "name": "Personagem #4",
-      "stamina": 1352,
+      "stamina": 1350,
       "status": "hunting",
-      "updatedAt": 1792941253884,
+      "updatedAt": 1792941374811,
       "vocation": "paladin"
     },
     {
       "currentArea": "dark-pyramid",
-      "durationSec": 8033,
-      "expPerHour": 20023.79450631876,
-      "gold": 1436,
-      "hp": 1280,
+      "durationSec": 8154,
+      "expPerHour": 35025.82236127332,
+      "gold": 2017,
+      "hp": 1269,
       "id": "acc-5",
-      "kills": 310,
+      "kills": 549,
       "level": 97,
       "logs": [
         "[14:48:35] Aviso: nada para resgatar agora",
@@ -184,18 +184,18 @@
         "[15:08:47] Entrando na caçada da party com 'Personagem #5' em 'Cyclops'",
         "[15:12:11] Enviou 826 de ouro para Personagem #5"
       ],
-      "mana": 977,
+      "mana": 995,
       "maxHp": 1398,
       "maxMana": 995,
       "name": "Personagem #5",
-      "stamina": 1352,
+      "stamina": 1350,
       "status": "hunting",
-      "updatedAt": 1792941253885,
+      "updatedAt": 1792941374813,
       "vocation": "monk"
     }
   ],
   "goroutines": 16,
-  "ramAllocMB": 3.3056182861328125,
+  "ramAllocMB": 3.1096420288085938,
   "ramSysMB": 69.6662826538086,
-  "uptime": "14h42m7s"
+  "uptime": "14h44m8s"
 }
