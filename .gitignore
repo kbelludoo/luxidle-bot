@@ -38,3 +38,11 @@ scratch/
 main.js.new
 botctl
 
+# IDE & AI Assistant configs
+.agents/
+.cursor/
+.cursorrules
+.gemini/
+.opencode/
+*.mbvmdb
+
